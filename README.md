@@ -31,10 +31,12 @@ cd ProjeEkibiOneriSistemi
 
 
 2️⃣ Bağımlılıkları Yükle
+
 dotnet restore
 
 
 3️⃣ Projeyi Çalıştır
+
 dotnet run
 
 
