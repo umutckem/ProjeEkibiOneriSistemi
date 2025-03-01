@@ -63,7 +63,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="View\" />
+	  <MauiXaml Update="View\AnaEkran.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

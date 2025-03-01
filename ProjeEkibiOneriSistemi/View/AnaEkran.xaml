@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.AnaEkran"
+             Title=""
+             BackgroundColor="Transparent">
+
+    <!-- Arka Plan Resmi -->
+    <Grid>
+        <Image Aspect="AspectFill" Source="anamenu.png" HeightRequest="1000"/>
+
+        <!-- Başlık -->
+        <Label Text="Proje Ekibi Öneri Sistemi" 
+               FontSize="30" 
+               Margin="0,50" 
+               FontFamily="Segoe UI" 
+               TextColor="#2c3e50" 
+               VerticalOptions="Start" 
+               HorizontalOptions="Center"/>
+
+        <!-- Alt Başlık -->
+        <Label Text="Giriş Ekranı" 
+               FontSize="24" 
+               Margin="0,100" 
+               FontFamily="Segoe UI" 
+               TextColor="#34495e" 
+               VerticalOptions="Start" 
+               HorizontalOptions="Center"/>
+
+        <!-- Giriş Çerçevesi -->
+        <Frame VerticalOptions="Start" 
+               HorizontalOptions="Center" 
+               WidthRequest="400" 
+               HeightRequest="500" 
+               Margin="0,150" 
+               BackgroundColor="#ecf0f1" 
+               CornerRadius="20" 
+               HasShadow="True" 
+               Opacity="0.9">
+
+            <!-- Giriş Formu -->
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20">
+                <Entry Placeholder="Ogrenci No"
+                       x:Name="ogrenciNo"
+                       TextColor="#2c3e50" 
+                       PlaceholderColor="#95a5a6" 
+                       WidthRequest="300"/>
+
+                <Entry Placeholder="Sifre" 
+                       x:Name="Sifre"
+                       TextColor="#2c3e50" 
+                       PlaceholderColor="#95a5a6" 
+                       WidthRequest="300" 
+                       IsPassword="True"/>
+
+                <Button Text="Giriş Yap" 
+                        BackgroundColor="#3498db" 
+                        TextColor="White" 
+                        CornerRadius="10" 
+                        WidthRequest="200" 
+                        HeightRequest="40" 
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        Clicked="Button_Clicked"/>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

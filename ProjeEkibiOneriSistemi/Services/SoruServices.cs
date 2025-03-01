@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjeEkibiOneriSistemi.Services
 {
-    internal class SoruServices : BaseService, ISoruServices
+    public class SoruServices : BaseService, ISoruServices
     {
         public async Task ekleSoru(Soru soru)
         {

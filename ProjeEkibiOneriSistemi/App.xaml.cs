@@ -1,4 +1,6 @@
-﻿namespace ProjeEkibiOneriSistemi
+﻿using ProjeEkibiOneriSistemi.View;
+
+namespace ProjeEkibiOneriSistemi
 {
     public partial class App : Application
     {
@@ -6,7 +8,8 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new AnaEkran());
+
         }
     }
 }
