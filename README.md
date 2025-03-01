@@ -24,6 +24,7 @@ ASP.NET API kullanılarak geliştirilmiştir.
 
 
 1️⃣ Depoyu Klonla
+
 git clone https://github.com/kullaniciadi/ProjeEkibiOneriSistemi.git
 
 cd ProjeEkibiOneriSistemi
