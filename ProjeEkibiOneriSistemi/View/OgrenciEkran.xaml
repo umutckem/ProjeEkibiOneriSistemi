@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.OgrenciEkran"
+             Title="">
+
+    <Grid>
+        <!-- Profil Resmi Çerçeve İçinde -->
+        <Frame Grid.Row="0" Grid.Column="0"
+               Padding="0"
+               BorderColor="LightGray"
+               CornerRadius="150" 
+            BackgroundColor="Transparent"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Margin="20">
+            <Image Aspect="AspectFill"
+                   Source="{Binding ogrenciResmi}"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   BackgroundColor="LightGray" 
+                Clip="True">
+                
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnImageTapped"/>
+
+                </Image.GestureRecognizers>
+            </Image>
+        </Frame>
+    </Grid>
+</ContentPage>

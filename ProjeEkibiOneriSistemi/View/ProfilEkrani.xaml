@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.ProfilEkrani"
+             Title="">
+    <Grid>
+        <Image Source="profilekrani.jpg" HeightRequest="1000"/>
+        <Frame HeightRequest="1000" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="Salmon" Opacity="0.5"/>
+        <Frame HeightRequest="1000" WidthRequest="260" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="SandyBrown" Opacity="0.9" Margin="20,0"/>
+        <Frame HeightRequest="1000" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="SandyBrown" Opacity="0.5" Margin="310,0"/>
+
+
+        <Label Text="Ad Soyad" Margin="125,200" TextColor="YellowGreen" FontAttributes="Bold"/>
+        <Label Text="Telefon" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Start" Margin="130,320" TextColor="YellowGreen"/>
+        <Label Text="Mail" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Start" Margin="140,260" TextColor="YellowGreen"/>
+        <Label Text="Bölüm" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End" Margin="130,345" TextColor="YellowGreen"/>
+        <Label Text="Sınıf" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End" Margin="130,280" TextColor="YellowGreen"/>
+        <Label Text="Ogrenci No" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End" Margin="107,220" TextColor="YellowGreen"/>
+        <Label Text="TC" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End" Margin="137,160" TextColor="YellowGreen"/>
+
+
+        <Label Text="{Binding Ad} " VerticalOptions="Start" HorizontalOptions="Start"  HeightRequest="200" TextColor="White" FontSize="16" FontAttributes="Bold" Margin="80,220"/>
+        <Label Text="{Binding Soyad} " VerticalOptions="Start" HorizontalOptions="Start"  HeightRequest="200" TextColor="White" FontSize="16" FontAttributes="Bold" Margin="160,220"/>
+        <Label Text="{Binding Id}" HorizontalOptions="End" VerticalOptions="End" Margin="10,2"/>
+        <Label Text="{Binding Email}" HorizontalOptions="Start" VerticalOptions="Start" Margin="40,280" FontAttributes="Bold"/>
+        <Label Text="{Binding Telefon}" HorizontalOptions="Start" VerticalOptions="Start" Margin="113,340" FontAttributes="Bold"/>
+        <Label Text="{Binding Bolum}" HorizontalOptions="Start" VerticalOptions="End" Margin="70,320" FontAttributes="Bold"/>
+        <Label Text="{Binding Sinif}" HorizontalOptions="Start" VerticalOptions="End" Margin="140,250" FontAttributes="Bold"/>
+        <Label Text="{Binding ogrenciNo}" HorizontalOptions="Start" VerticalOptions="End" Margin="105,190" FontAttributes="Bold"/>
+        <Label Text="{Binding TC}" HorizontalOptions="Start" VerticalOptions="End" Margin="100,130" FontAttributes="Bold"/>
+
+
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,190"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,310"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,250"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,365"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="End" Margin="0,305"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="End" Margin="0,245"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="End" Margin="0,185"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="End" Margin="0,125"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="310,35"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="310,84"/>
+
+        <Frame HeightRequest="1.5" WidthRequest="150" HorizontalOptions="Start" VerticalOptions="Start" Margin="80,244" BackgroundColor="Wheat" BorderColor="Wheat"/>
+        <Frame HeightRequest="1.5" WidthRequest="250" HorizontalOptions="Start" VerticalOptions="Start" Margin="23,304" BackgroundColor="Wheat" BorderColor="Wheat"/>
+        <Frame HeightRequest="1.5" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="Start" Margin="103,360" BackgroundColor="Wheat" BorderColor="Wheat"/>
+        <Frame HeightRequest="1.5" WidthRequest="190" HorizontalOptions="Start" VerticalOptions="End" Margin="53,315" BackgroundColor="Wheat" BorderColor="Wheat"/>
+        <Frame HeightRequest="1.5" WidthRequest="30" HorizontalOptions="Start" VerticalOptions="End" Margin="130,250" BackgroundColor="Wheat" BorderColor="Wheat"/>
+        <Frame HeightRequest="1.5" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="End" Margin="95,190" BackgroundColor="Wheat" BorderColor="Wheat"/>
+        <Frame HeightRequest="1.5" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="End" Margin="95,130" BackgroundColor="Wheat" BorderColor="Wheat"/>
+
+        <Button VerticalOptions="End" HorizontalOptions="Start" Margin="65,50" Text="Bilgilerimi Kontrol Et" FontAttributes="Bold" FontFamily="Arial Black" Clicked="Button_Clicked"/>
+
+        
+        <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="300" HeightRequest="40" CornerRadius="0" Margin="310,40" Opacity="0.5" Background="SeaGreen"/>
+        <Label Text="Öğrenci Verileri" Margin="400,47" FontAttributes="Italic" FontSize="20" TextColor="Wheat" Opacity="1" FontFamily="Impact"/>
+
+
+
+        <Frame Grid.Row="0" Grid.Column="0"
+               Padding="0"
+               BorderColor="LightGray"
+               CornerRadius="150" 
+            BackgroundColor="Transparent"
+               HorizontalOptions="Start"
+               VerticalOptions="Start"
+               Margin="70,20">
+            <Image Aspect="AspectFill"
+                   Source="{Binding ogrenciResmi}"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   BackgroundColor="LightGray" 
+                >
+            </Image>
+        </Frame>
+        
+        
+        
+        
+        
+    </Grid>
+</ContentPage>

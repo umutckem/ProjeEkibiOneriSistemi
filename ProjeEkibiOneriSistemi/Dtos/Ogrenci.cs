@@ -16,6 +16,8 @@ namespace ProjeEkibiOneriSistemi.Dtos
         public string Bolum { get; set; }
         public int Sinif { get; set; }
         public string ogrenciNo { get; set; }
+        public string TC { get; set; }
+        public string ogrenciResmi { get; set; }
 
     }
 }

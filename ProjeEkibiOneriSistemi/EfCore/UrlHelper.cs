@@ -21,6 +21,11 @@ namespace ProjeEkibiOneriSistemi.EfCore
 
         // Kullanıcı Yanıtları API URL
         public static string YanitlarUrl = $"{BaseUrl}/Yanitlar";
-    }
 
+        // Proje API URL (Eksik olan kısım tamamlandı)
+        public static string ProjeUrl = $"{BaseUrl}/Proje";
+
+        // Öğrenci Proje API URL (Öğrencinin geçmiş projelerini takip etmek için)
+        public static string OgrenciProjeUrl = $"{BaseUrl}/OgrenciProje";
+    }
 }

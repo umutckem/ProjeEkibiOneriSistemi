@@ -15,9 +15,24 @@ namespace ProjeEkibiOneriSistemi.View
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(ogrenciNo.Text) || string.IsNullOrWhiteSpace(Sifre.Text))
+            {
+                await DisplayAlert("Hata", "Lütfen tüm alanlarý doldurunuz!", "Tamam");
+                return;
+            }
             var OgrenciBilgileri = await _ogrenciServices.GetOgrencis();
+            var ogrenci =  OgrenciBilgileri.FirstOrDefault(x => x.ogrenciNo == ogrenciNo.Text && x.TC == Sifre.Text);
+            if (ogrenci is not null)
+            {
+                await DisplayAlert("Giriþ Baþarýlý", $"{ogrenci.Ad}, hoþ geldiniz!", "Tamam");
+                OgrenciEkran ogrenciEkran = new OgrenciEkran();
+                ogrenciEkran.setOgrenci(ogrenci);
+                await Navigation.PushAsync(ogrenciEkran);
+                return;
+            }
 
-            await DisplayAlert("Baþarýlý","","Tamam");
+
+            await DisplayAlert("Hata","Giriþ Yapýlamadý!","Tamam");
 
         }
     }
