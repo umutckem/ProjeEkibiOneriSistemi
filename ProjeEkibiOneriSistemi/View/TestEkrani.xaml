@@ -1,8 +1,34 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjeEkibiOneriSistemi.View.TestEkrani"
-             Title=""
              Loaded="ContentPage_Loaded">
 
+    <StackLayout Padding="20">
+
+        <!-- Soru Başlığı -->
+        <Label x:Name="lblSoruMetni"
+               Text="Soru Yükleniyor..."
+               FontSize="20"
+               TextColor="White"
+               HorizontalOptions="Center"
+               Margin="10"/>
+
+        <!-- Seçim Butonları -->
+        <StackLayout x:Name="RadioGroup" Padding="10">
+            <RadioButton Content="Hiç Bilmiyorum" Value="1" GroupName="cevapGroup" CheckedChanged="RadioButton_CheckedChanged"/>
+            <RadioButton Content="Az Biliyorum" Value="3" GroupName="cevapGroup" CheckedChanged="RadioButton_CheckedChanged"/>
+            <RadioButton Content="Orta" Value="5" GroupName="cevapGroup" CheckedChanged="RadioButton_CheckedChanged"/>
+            <RadioButton Content="İyi Biliyorum" Value="7" GroupName="cevapGroup" CheckedChanged="RadioButton_CheckedChanged"/>
+            <RadioButton Content="Çok İyi Biliyorum" Value="10" GroupName="cevapGroup" CheckedChanged="RadioButton_CheckedChanged"/>
+        </StackLayout>
+
+        <!-- Sonraki Soru Butonu -->
+        <Button Text="Sonraki Soru"
+                Clicked="BtnSonrakiSoru_Clicked"
+                BackgroundColor="DarkSlateGray"
+                TextColor="White"
+                FontSize="16"
+                Padding="10"
+                Margin="20"/>
+    </StackLayout>
 </ContentPage>

@@ -5,10 +5,11 @@
              Loaded="ContentPage_Loaded"
              Title="">
     <Grid>
-        
+
         <Image Source="testekrani.jpg" HeightRequest="1400"/>
-
-
+        <Frame VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="500" HeightRequest="600" BackgroundColor="BlanchedAlmond" Opacity="0.1"/>
+        <Frame VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="600" WidthRequest="1.5" Margin="650,0"/>
+        <Frame VerticalOptions="Start" HorizontalOptions="End" HeightRequest="600" WidthRequest="1.5" Margin="650,0"/>
 
         <CollectionView x:Name="CollectionViewKategori" HeightRequest="500" SelectionMode="Single" SelectionChanged="CollectionViewKategori_SelectionChanged">
             <CollectionView.ItemTemplate>
