@@ -21,7 +21,11 @@ public partial class ProfilEkrani : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-		var OgrenciBilgileri = await _ogrenciServices.GetOgrencis();
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+
+        var OgrenciBilgileri = await _ogrenciServices.GetOgrencis();
 		var guncelOgrenciBilgileri = OgrenciBilgileri.FirstOrDefault(x => x.Id == ogrenci.Id);
 		if(guncelOgrenciBilgileri is not null)
 		{

@@ -15,6 +15,10 @@ namespace ProjeEkibiOneriSistemi.View
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            var button = (Button)sender;
+            await button.ScaleTo(0.9, 100); // Küçültme efekti
+            await button.ScaleTo(1, 100); // Eski haline getirme
+
             if (string.IsNullOrWhiteSpace(ogrenciNo.Text) || string.IsNullOrWhiteSpace(Sifre.Text))
             {
                 await DisplayAlert("Hata", "Lütfen tüm alanlarý doldurunuz!", "Tamam");

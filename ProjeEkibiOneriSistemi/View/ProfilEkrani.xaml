@@ -17,6 +17,9 @@
         <Label Text="Sınıf" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End" Margin="130,280" TextColor="YellowGreen"/>
         <Label Text="Ogrenci No" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End" Margin="107,220" TextColor="YellowGreen"/>
         <Label Text="TC" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End" Margin="137,160" TextColor="YellowGreen"/>
+        <Label Text="Toplam Cevaplanan Soru Sayisi" Margin="360,90" HorizontalOptions="Start" VerticalOptions="Start" TextColor="YellowGreen" FontAttributes="Bold"/>
+        <Label Text="Ortalama Puan" Margin="405,150" HorizontalOptions="Start" VerticalOptions="Start" TextColor="PaleVioletRed" FontAttributes="Bold"/>
+
 
 
         <Label Text="{Binding Ad} " VerticalOptions="Start" HorizontalOptions="Start"  HeightRequest="200" TextColor="White" FontSize="16" FontAttributes="Bold" Margin="80,220"/>
@@ -28,6 +31,8 @@
         <Label Text="{Binding Sinif}" HorizontalOptions="Start" VerticalOptions="End" Margin="140,250" FontAttributes="Bold"/>
         <Label Text="{Binding ogrenciNo}" HorizontalOptions="Start" VerticalOptions="End" Margin="105,190" FontAttributes="Bold"/>
         <Label Text="{Binding TC}" HorizontalOptions="Start" VerticalOptions="End" Margin="100,130" FontAttributes="Bold"/>
+        <Label Text="{Binding ToplamCevaplananSoruSayisi}"  Margin="450,120" HorizontalOptions="Start" VerticalOptions="Start" />
+        <Label Text="{Binding OrtalamaPuan}"  Margin="450,180" HorizontalOptions="Start" VerticalOptions="Start" />
 
 
         <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,190"/>
@@ -40,6 +45,9 @@
         <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="End" Margin="0,125"/>
         <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="310,35"/>
         <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="310,84"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="310,144"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="310,214"/>
+
 
         <Frame HeightRequest="1.5" WidthRequest="150" HorizontalOptions="Start" VerticalOptions="Start" Margin="80,244" BackgroundColor="Wheat" BorderColor="Wheat"/>
         <Frame HeightRequest="1.5" WidthRequest="250" HorizontalOptions="Start" VerticalOptions="Start" Margin="23,304" BackgroundColor="Wheat" BorderColor="Wheat"/>
@@ -48,13 +56,16 @@
         <Frame HeightRequest="1.5" WidthRequest="30" HorizontalOptions="Start" VerticalOptions="End" Margin="130,250" BackgroundColor="Wheat" BorderColor="Wheat"/>
         <Frame HeightRequest="1.5" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="End" Margin="95,190" BackgroundColor="Wheat" BorderColor="Wheat"/>
         <Frame HeightRequest="1.5" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="End" Margin="95,130" BackgroundColor="Wheat" BorderColor="Wheat"/>
+        <Frame HeightRequest="1.5" WidthRequest="40" HorizontalOptions="Start" VerticalOptions="Start" Margin="435,140" BackgroundColor="Wheat" BorderColor="Wheat"/>
+        <Frame HeightRequest="1.5" WidthRequest="40" HorizontalOptions="Start" VerticalOptions="Start" Margin="435,200" BackgroundColor="Wheat" BorderColor="Wheat"/>
 
         <Button VerticalOptions="End" HorizontalOptions="Start" Margin="65,50" Text="Bilgilerimi Kontrol Et" FontAttributes="Bold" FontFamily="Arial Black" Clicked="Button_Clicked"/>
 
         
         <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="300" HeightRequest="40" CornerRadius="0" Margin="310,40" Opacity="0.5" Background="SeaGreen"/>
         <Label Text="Öğrenci Verileri" Margin="400,47" FontAttributes="Italic" FontSize="20" TextColor="Wheat" Opacity="1" FontFamily="Impact"/>
-
+        
+        
 
 
         <Frame Grid.Row="0" Grid.Column="0"

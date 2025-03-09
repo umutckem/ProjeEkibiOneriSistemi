@@ -5,6 +5,22 @@
              Title="">
 
     <Grid>
+        <Image Source="ogrenciekrani.jpg" HeightRequest="1200"/>
+        <Frame HeightRequest="1000" WidthRequest="200" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="SeaGreen" Opacity="0.2"/>
+        <Frame HeightRequest="1.5" WidthRequest="200" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,200" BackgroundColor="Wheat" BorderColor="Wheat"/>
+
+        <Label Text="*" Margin="10,20" TextColor="Wheat"/>
+        <Label Text="*" Margin="10,170" TextColor="Wheat"/>
+        <Label Text="*" Margin="170,20" TextColor="Wheat"/>
+        <Label Text="*" Margin="170,170" TextColor="Wheat"/>
+
+        <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,220" WidthRequest="160" Text="Testler" FontAttributes="Bold" BackgroundColor="AntiqueWhite" Clicked="Button_Clicked"/>
+        <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,280" WidthRequest="160" Text="Projeler" FontAttributes="Bold" BackgroundColor="AntiqueWhite" FontFamily="Arial Black" TextColor="DarkCyan"/>
+        <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,340" WidthRequest="160" Text="Projelerim " FontAttributes="Bold" BackgroundColor="AntiqueWhite"/>
+        <Button VerticalOptions="End" HorizontalOptions="Start" Margin="20,290" WidthRequest="160" Text="Destek " FontAttributes="Bold" BackgroundColor="AntiqueWhite"/>
+
+
+
         <!-- Profil Resmi Çerçeve İçinde -->
         <Frame Grid.Row="0" Grid.Column="0"
                Padding="0"
