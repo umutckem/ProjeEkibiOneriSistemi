@@ -6,7 +6,7 @@
              Title="">
     <Grid>
 
-        <Image Source="testekrani.jpg" HeightRequest="1400"/>
+        <Image Source="ogrenciekrani.jpg" HeightRequest="1400"/>
         <Frame VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="500" HeightRequest="600" BackgroundColor="BlanchedAlmond" Opacity="0.1"/>
         <Frame VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="600" WidthRequest="1.5" Margin="650,0"/>
         <Frame VerticalOptions="Start" HorizontalOptions="End" HeightRequest="600" WidthRequest="1.5" Margin="650,0"/>
@@ -17,7 +17,7 @@
                     <VerticalStackLayout HorizontalOptions="Center" Padding="350,10" Spacing="0">
                         
                         <HorizontalStackLayout>
-                            <Label Text="Kategori Id:" Padding="10,0" TextColor="GreenYellow"  FontFamily="Cambria"/>
+                            <Label Text="Id:" Padding="10,0" TextColor="GreenYellow"  FontFamily="Cambria"/>
                             <Label Text="{Binding Id}" TextColor="White"  FontFamily="Cambria"/>
                         </HorizontalStackLayout>
                         

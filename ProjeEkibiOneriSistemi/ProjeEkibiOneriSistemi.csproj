@@ -75,6 +75,9 @@
 	  <MauiXaml Update="View\OgrenciEkran.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\OgrenciSoruGecmisEkrani.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\ProfilEkrani.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -7,6 +7,7 @@
         {
             private readonly ISoruServices _soruServices;
             private readonly IKullaniciYanitiSerives _yanitServices;
+            private readonly IOgrenciServices _ogrenciServices;
             public Kategori Kategori;
             public Ogrenci ogrenci;
             private List<Soru> Sorular;
@@ -18,6 +19,7 @@
                 InitializeComponent();
                 _soruServices = new SoruServices();
                 _yanitServices = new KullaniciYanitiServices();
+                _ogrenciServices = new OgrenciServices();
             }
 
             public void setKategori(Kategori _kategori)
@@ -83,7 +85,13 @@
             // Kullanýcý Yanýtýný Kaydet ve Sonraki Soruyu Göster
             private async void BtnSonrakiSoru_Clicked(object sender, EventArgs e)
             {
-                if (MevcutSoruIndex >= Sorular.Count)
+
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+
+
+        if (MevcutSoruIndex >= Sorular.Count)
                     return;
 
                 var seciliSoru = Sorular[MevcutSoruIndex];
