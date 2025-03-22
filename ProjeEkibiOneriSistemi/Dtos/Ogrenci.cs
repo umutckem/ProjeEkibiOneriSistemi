@@ -17,6 +17,7 @@ namespace ProjeEkibiOneriSistemi.Dtos
         public int Sinif { get; set; }
         public string ogrenciNo { get; set; }
         public string TC { get; set; }
+        public string Sifre { get; set; }
         public string ogrenciResmi { get; set; }
         public int ToplamCevaplananSoruSayisi { get; set; }
         public float OrtalamaPuan { get; set; }

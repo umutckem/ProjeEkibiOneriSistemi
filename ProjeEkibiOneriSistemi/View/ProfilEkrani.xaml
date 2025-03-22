@@ -5,10 +5,13 @@
              Title="">
     <Grid>
         <Image Source="profilekrani.jpg" HeightRequest="1000"/>
-        <Frame HeightRequest="1000" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="Salmon" Opacity="0.5"/>
-        <Frame HeightRequest="1000" WidthRequest="260" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="SandyBrown" Opacity="0.9" Margin="20,0"/>
-        <Frame HeightRequest="1000" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="SandyBrown" Opacity="0.5" Margin="310,0"/>
-
+        <Frame HeightRequest="1000" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="#2C3E50" Opacity="0.5"/>
+        <Frame HeightRequest="1000" WidthRequest="260" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="#2C3E50" Opacity="0.9" Margin="20,0"/>
+        <Frame HeightRequest="1000" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="#2C3E50" Opacity="0.5" Margin="310,0"/>
+        <Frame HeightRequest="1000" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="#2C3E50" Opacity="0.5" Margin="310,0"/>
+        <Frame HeightRequest="1000" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="#2C3E50" Opacity="0.5" Margin="620,0"/>
+        <Frame HeightRequest="1000" WidthRequest="300" HorizontalOptions="End" VerticalOptions="Start" BackgroundColor="#2C3E50" Opacity="0.5" Margin="307,0"/>
+        <Frame HeightRequest="1000" WidthRequest="300" HorizontalOptions="End" VerticalOptions="Start" BackgroundColor="#2C3E50" Opacity="0.5" Margin="0,0"/>
 
         <Label Text="Ad Soyad" Margin="125,200" TextColor="YellowGreen" FontAttributes="Bold"/>
         <Label Text="Telefon" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Start" Margin="130,320" TextColor="YellowGreen"/>
@@ -19,7 +22,7 @@
         <Label Text="TC" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End" Margin="137,160" TextColor="YellowGreen"/>
         <Label Text="Toplam Cevaplanan Soru Sayisi" Margin="360,90" HorizontalOptions="Start" VerticalOptions="Start" TextColor="YellowGreen" FontAttributes="Bold"/>
         <Label Text="Ortalama Puan" Margin="405,150" HorizontalOptions="Start" VerticalOptions="Start" TextColor="PaleVioletRed" FontAttributes="Bold"/>
-
+       
 
 
         <Label Text="{Binding Ad} " VerticalOptions="Start" HorizontalOptions="Start"  HeightRequest="200" TextColor="White" FontSize="16" FontAttributes="Bold" Margin="80,220"/>
@@ -47,6 +50,8 @@
         <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="310,84"/>
         <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="310,144"/>
         <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="Start" VerticalOptions="Start" Margin="310,214"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="End" VerticalOptions="Start" Margin="0,20"/>
+        <Frame HeightRequest="1.5" WidthRequest="300" HorizontalOptions="End" VerticalOptions="Start" Margin="0,80"/>
 
 
         <Frame HeightRequest="1.5" WidthRequest="150" HorizontalOptions="Start" VerticalOptions="Start" Margin="80,244" BackgroundColor="Wheat" BorderColor="Wheat"/>
@@ -59,14 +64,19 @@
         <Frame HeightRequest="1.5" WidthRequest="40" HorizontalOptions="Start" VerticalOptions="Start" Margin="435,140" BackgroundColor="Wheat" BorderColor="Wheat"/>
         <Frame HeightRequest="1.5" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="Start" Margin="405,200" BackgroundColor="Wheat" BorderColor="Wheat"/>
 
-        <Button VerticalOptions="End" HorizontalOptions="Start" Margin="65,50" Text="Bilgilerimi Kontrol Et" FontAttributes="Bold" FontFamily="Arial Black" Clicked="Button_Clicked"/>
-        <Button VerticalOptions="End" HorizontalOptions="Start" Margin="380,50" WidthRequest="150" Text="Geçmiş sorular" FontAttributes="Bold" BackgroundColor="IndianRed" Clicked="Button_Clicked_1"/>
+        <Button VerticalOptions="Start" HorizontalOptions="End" Margin="80,200" WidthRequest="150" Text="Bilgileri Guncelle" FontAttributes="Italic" FontFamily="Impact" Clicked="Button_Clicked"/>
+        <Button VerticalOptions="Start" HorizontalOptions="End" Margin="80,250" WidthRequest="150" Text="Geçmiş sorular" FontAttributes="Italic" BackgroundColor="IndianRed" Clicked="Button_Clicked_1" FontFamily="Impact"/>
+        <Button VerticalOptions="Start" HorizontalOptions="End" WidthRequest="150" BackgroundColor="#27AE60" Margin="80,100" Text="Şifre Değiştir" FontAttributes="Italic" FontFamily="Impact" TextColor="SeaShell" Clicked="Button_Clicked_2"/>
+        <Button VerticalOptions="Start" HorizontalOptions="End" WidthRequest="150" BackgroundColor="#27AE60" Margin="80,150" Text="Mail Güncelle" FontAttributes="Italic" FontFamily="Impact" TextColor="SeaShell" Clicked="Button_Clicked_3"/>
+
 
 
         <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="300" HeightRequest="40" CornerRadius="0" Margin="310,40" Opacity="0.5" Background="SeaGreen"/>
         <Label VerticalOptions="Start" HorizontalOptions="Start" Text="Öğrenci Verileri" Margin="400,47" FontAttributes="Italic" FontSize="20" TextColor="Wheat" Opacity="1" FontFamily="Impact"/>
-        
-        
+
+        <Frame VerticalOptions="Start" HorizontalOptions="End" WidthRequest="300" HeightRequest="40" CornerRadius="0" Margin="0,30" Opacity="0.5" Background="SeaGreen"/>
+        <Label Text="AYARLAR" Margin="120,40" HorizontalOptions="End" VerticalOptions="Start" TextColor="Wheat" FontAttributes="Italic" FontSize="20" FontFamily="Impact"/>
+
 
 
         <Frame Grid.Row="0" Grid.Column="0"

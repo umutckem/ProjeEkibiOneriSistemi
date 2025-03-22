@@ -26,7 +26,7 @@ public partial class OgrenciSoruGecmisEkrani : ContentPage
         var secilenYanit = e.CurrentSelection[0] as KullaniciYaniti; // Seçilen kategoriyi al
         if (secilenYanit != null)
         {
-            bool secim = await DisplayAlert("Seçilen Kullanici Yaniti", $"ID: {secilenYanit.Id}\nSoru Id: {secilenYanit.SoruId}", "Tamam", "Hayýr");
+            bool secim = await DisplayAlert("Seçilen Kullanici Yaniti", $"ID: {secilenYanit.Id}\nKategori Id: {secilenYanit.KategoriId} \nBu soruyu silerseniz bu soruya ait bütün ilgili kategori'nin soru cevaplarýda silenecektir. ", "Tamam", "Hayýr");
             if (secim)
             {
 

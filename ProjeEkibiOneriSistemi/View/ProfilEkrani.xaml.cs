@@ -71,6 +71,7 @@ public partial class ProfilEkrani : ContentPage
                 ToplamCevaplananSoruSayisi = ogrencininGuncelCevaplananSoruSayisi.Count,
                 ogrenciResmi = ogrenci.ogrenciResmi,
                 TC = ogrenci.TC,
+                Sifre = ogrenci.Sifre,
                 Telefon = ogrenci.Telefon,
             });
         }
@@ -110,6 +111,7 @@ public partial class ProfilEkrani : ContentPage
                 ogrenciResmi = ogrenci.ogrenciResmi,
                 TC = ogrenci.TC,
                 Telefon = ogrenci.Telefon,
+                Sifre = ogrenci.Sifre
             });
         }
     }
@@ -123,5 +125,25 @@ public partial class ProfilEkrani : ContentPage
         OgrenciSoruGecmisEkrani ogrenciSoruGecmisEkrani = new OgrenciSoruGecmisEkrani();
         ogrenciSoruGecmisEkrani.setOgrenci(ogrenci);
         await Navigation.PushAsync(ogrenciSoruGecmisEkrani);
+    }
+
+    private async void Button_Clicked_2(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+        SifreDegistirmeEkrani sifreDegistirmeEkrani = new SifreDegistirmeEkrani();
+        sifreDegistirmeEkrani.SetOgrenci(ogrenci);
+        await Navigation.PushAsync(sifreDegistirmeEkrani);
+    }
+
+    private async void Button_Clicked_3(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+        MailGuncellemeEkrani mailGuncellemeEkrani = new MailGuncellemeEkrani();
+        mailGuncellemeEkrani.setOgrenci(ogrenci);
+        await Navigation.PushAsync(mailGuncellemeEkrani);
     }
 }

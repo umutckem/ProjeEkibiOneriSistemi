@@ -37,4 +37,15 @@ public partial class OgrenciEkran : ContentPage
         testEkrani.setOgrenci(ogrenci);
         await Navigation.PushAsync(testEkrani);
     }
+
+    private async void Button_Clicked_1(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+        ProjeEkrani projeEkrani = new ProjeEkrani();
+        projeEkrani.setOgrenci(ogrenci);
+        await Navigation.PushAsync(projeEkrani);
+
+    }
 }

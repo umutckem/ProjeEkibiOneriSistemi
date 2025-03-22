@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.ProjeEkrani"
+             Loaded="ContentPage_Loaded">
+
+    <Grid>
+        <Image Source="ogrenciekrani.jpg" HeightRequest="1400"/>
+
+        <!-- İçerik Bölgesi -->
+        <ScrollView>
+            <CollectionView x:Name="CollectionViewProje" HeightRequest="500" SelectionMode="Single" SelectionChanged="CollectionViewProje_SelectionChanged"
+                            Margin="20" BackgroundColor="Transparent">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Frame BorderColor="GreenYellow" CornerRadius="10" Padding="15" Margin="10" BackgroundColor="Black" >
+                                <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="10" >
+
+                                    <!-- Ad -->
+                                    <Label Text="Ad:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="0" Grid.Column="0"/>
+                                    <Label Text="{Binding Ad}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="0" Grid.Column="1"
+                                           LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>
+
+                                    <!-- Açıklama -->
+                                    <Label Text="Aciklama:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="1" Grid.Column="0"/>
+                                    <Label Text="{Binding Aciklama}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="1" Grid.Column="1"
+                                           LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>
+
+                                    <!-- Başlangıç Tarihi -->
+                                    <Label Text="Başlangıç Tarihi:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="0"/>
+                                    <Label Text="{Binding BaslangicTarihi}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="1"/>
+
+                                    <!-- Bitiş Tarihi -->
+                                    <Label Text="Bitiş Tarihi:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="3" Grid.Column="0"/>
+                                    <Label Text="{Binding BitisTarihi}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="3" Grid.Column="1"/>
+
+                                    <!-- Aktif Mi -->
+                                    <Label Text="Aktif Mi:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="4" Grid.Column="0"/>
+                                    <Label Text="{Binding AktifMi}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="4" Grid.Column="1"/>
+
+                                </Grid>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

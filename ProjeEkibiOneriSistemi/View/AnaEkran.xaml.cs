@@ -25,7 +25,7 @@ namespace ProjeEkibiOneriSistemi.View
                 return;
             }
             var OgrenciBilgileri = await _ogrenciServices.GetOgrencis();
-            var ogrenci =  OgrenciBilgileri.FirstOrDefault(x => x.ogrenciNo == ogrenciNo.Text && x.TC == Sifre.Text);
+            var ogrenci =  OgrenciBilgileri.FirstOrDefault(x => x.ogrenciNo == ogrenciNo.Text && x.Sifre == Sifre.Text);
             if (ogrenci is not null)
             {
                 await DisplayAlert("Giriþ Baþarýlý", $"{ogrenci.Ad}, hoþ geldiniz!", "Tamam");
