@@ -61,6 +61,16 @@
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         Clicked="Button_Clicked"/>
+                
+                <Button Text="Şifre Unuttum"
+                        BackgroundColor="#3498db" 
+                        WidthRequest="200" 
+                        HeightRequest="40"
+                        TextColor="White"
+                        CornerRadius="10"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        Clicked="Button_Clicked_1"/>
             </StackLayout>
         </Frame>
     </Grid>

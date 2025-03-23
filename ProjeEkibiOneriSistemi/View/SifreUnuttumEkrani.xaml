@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.SifreUnuttumEkrani">
+    <Grid>
+        <Image Aspect="AspectFill" Source="anamenu1.jpg" HeightRequest="1000"/>
+        
+        <Frame Opacity="0.5"
+               BackgroundColor="#2C3E50"
+               WidthRequest="1000"
+               HeightRequest="600"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+        <Entry VerticalOptions="Start"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               Margin="0,150"
+               Placeholder="Tc"
+               PlaceholderColor="AliceBlue"
+               x:Name="TC"/>
+        <Entry VerticalOptions="Start"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               Margin="0,200"
+               Placeholder="Telefon No"
+               PlaceholderColor="AliceBlue"
+               x:Name="telefonNo"/>
+        <Entry VerticalOptions="Start"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               Margin="0,250"
+               Placeholder="Baba Adı"
+               PlaceholderColor="AliceBlue"
+               x:Name="babaAdi"/>
+        <Entry VerticalOptions="Start"
+               HorizontalOptions="Center"
+               WidthRequest="200"
+               Margin="0,300"
+               Placeholder="Ana Adi"
+               PlaceholderColor="AliceBlue"
+               x:Name="anaAdi"/>
+        <Button VerticalOptions="End"
+                HorizontalOptions="Center"
+                WidthRequest="200"
+                Margin="0,300"
+                Text="Kaydet"
+                FontAttributes="Italic"
+                FontFamily="Arial"
+                BackgroundColor="#27AE60"
+                Clicked="Button_Clicked"/>
+
+    </Grid>
+
+</ContentPage>

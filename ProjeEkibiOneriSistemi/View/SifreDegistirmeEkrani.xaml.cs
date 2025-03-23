@@ -51,7 +51,9 @@ public partial class SifreDegistirmeEkrani : ContentPage
                         ogrenciResmi = guncelOgrenciBilgileri.ogrenciResmi,
                         ToplamCevaplananSoruSayisi = guncelOgrenciBilgileri.ToplamCevaplananSoruSayisi,
                         OrtalamaPuan = guncelOgrenciBilgileri.OrtalamaPuan,
-                        Sifre = sifre.Text
+                        Sifre = sifre.Text,
+                        AnneAdi = guncelOgrenciBilgileri.AnneAdi,
+                        BabaAdi = guncelOgrenciBilgileri.BabaAdi,
                     });
                     await DisplayAlert("", "Þifre Baþarýlý Þekilde Deðiþtirilmiþtir.", "Tamam");
                     ProfilEkrani profilEkrani = new ProfilEkrani();

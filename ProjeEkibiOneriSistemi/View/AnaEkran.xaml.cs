@@ -39,5 +39,16 @@ namespace ProjeEkibiOneriSistemi.View
             await DisplayAlert("Hata","Giriþ Yapýlamadý!","Tamam");
 
         }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            await button.ScaleTo(0.9, 100); // Küçültme efekti
+            await button.ScaleTo(1, 100); // Eski haline getirme
+
+            SifreUnuttumEkrani sifreUnuttumEkrani = new SifreUnuttumEkrani();
+            await Navigation.PushAsync(sifreUnuttumEkrani);
+
+        }
     }
 }

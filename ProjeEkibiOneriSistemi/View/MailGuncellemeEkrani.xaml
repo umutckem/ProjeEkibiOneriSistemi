@@ -4,6 +4,32 @@
              x:Class="ProjeEkibiOneriSistemi.View.MailGuncellemeEkrani">
     <Grid>
         <Image Source="profilekrani.jpg" HeightRequest="1000"/>
-        
+        <Frame Opacity="0.5"
+               BackgroundColor="#2C3E50"
+               WidthRequest="1000"
+               HeightRequest="600"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+        <Entry VerticalOptions="Start"
+               HorizontalOptions="Center"
+               WidthRequest="250"
+               Placeholder="E-Mail Adresi"
+               Margin="0,200"
+               x:Name="mail"/>
+        <Entry VerticalOptions="Start"
+               HorizontalOptions="Center"
+               WidthRequest="250"
+               Placeholder="E-Mail Adresi Tekrar"
+               Margin="0,250"
+               x:Name="tekrarMail"/>
+        <Button VerticalOptions="Start"
+                HorizontalOptions="Center"
+                WidthRequest="250"
+                CornerRadius="10"
+                BackgroundColor="AntiqueWhite"
+                Text="KAYDET"
+                FontAttributes="Italic"
+                Margin="0,300"
+                Clicked="Button_Clicked"/>
     </Grid>
 </ContentPage>

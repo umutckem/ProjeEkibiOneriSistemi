@@ -32,8 +32,36 @@ public partial class ProjeEkrani : ContentPage
 
     }
 
-    private void CollectionViewProje_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private async void CollectionViewProje_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var secilenProje = e.CurrentSelection[0] as Proje; // Seçilen kategoriyi al
+		if (e.CurrentSelection.Count > 0)
+		{
+            var secilenProje = e.CurrentSelection[0] as Proje; // Seçilen kategoriyi al
+			if (secilenProje != null) 
+			{
+
+                bool secim = await DisplayAlert("Seçilen Proje", $"Ad: {secilenProje.Ad}\nAçýklama: {secilenProje.Aciklama}", "Tamam", "Hayýr");
+
+				if (secim) 
+				{
+                    if (_ogrenci == null)
+                    {
+                        await DisplayAlert("Hata", "Öðrenci bilgisi bulunamadý!", "Tamam");
+                        return;
+                    }
+
+                    ProjeBilgiEkrani projeBilgiEkrani = new ProjeBilgiEkrani();
+                    projeBilgiEkrani.setOgrenci(_ogrenci);
+                    projeBilgiEkrani.setProje(secilenProje);
+                    await Navigation.PushAsync(projeBilgiEkrani);
+
+                }
+
+
+            }
+
+        }
+
+            
     }
 }

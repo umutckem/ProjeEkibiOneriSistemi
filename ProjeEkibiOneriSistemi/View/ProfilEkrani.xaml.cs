@@ -73,6 +73,8 @@ public partial class ProfilEkrani : ContentPage
                 TC = ogrenci.TC,
                 Sifre = ogrenci.Sifre,
                 Telefon = ogrenci.Telefon,
+                BabaAdi = ogrenci.BabaAdi,
+                AnneAdi = ogrenci.AnneAdi
             });
         }
     }
@@ -111,7 +113,9 @@ public partial class ProfilEkrani : ContentPage
                 ogrenciResmi = ogrenci.ogrenciResmi,
                 TC = ogrenci.TC,
                 Telefon = ogrenci.Telefon,
-                Sifre = ogrenci.Sifre
+                Sifre = ogrenci.Sifre,
+                BabaAdi = ogrenci.BabaAdi,
+                AnneAdi = ogrenci.AnneAdi,
             });
         }
     }
