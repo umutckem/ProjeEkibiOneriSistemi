@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.ProjelerimEkrani"
+            Loaded="ContentPage_Loaded">
+    <Grid>
+        <Image Source="ogrenciekrani.jpg" HeightRequest="1200"/>
+        <!-- Sayfa Çerçevesi -->
+        <Frame VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="500" HeightRequest="600"
+        BackgroundColor="#1E1E1E" CornerRadius="15" Opacity="0.8" Padding="20">
+
+            <!-- Kategori Listesi -->
+            <CollectionView x:Name="CollectionViewKatilimcilar" HeightRequest="500" SelectionMode="Single" 
+                     SelectionChanged="CollectionViewKatilimcilar_SelectionChanged"
+                     Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <Frame BorderColor="#00ADB5" CornerRadius="10" Padding="15" Margin="5"
+                        BackgroundColor="#222831" >
+                                <Grid ColumnDefinitions="100, *" RowDefinitions="Auto, Auto" RowSpacing="8">
+
+                                    <!-- ID -->
+                                    <Label Text="Proje Ad:" TextColor="#00ADB5" FontFamily="Arial" FontSize="16" FontAttributes="Bold"
+                                Grid.Row="0" Grid.Column="0"/>
+                                    <Label Text="{Binding Ad}" TextColor="White" FontFamily="Arial" FontSize="16"
+                                Grid.Row="0" Grid.Column="1"/>
+
+                                    <!-- Kategori Adı -->
+                                    <Label Text="Acıklama:" TextColor="#00ADB5" FontFamily="Arial" FontSize="16" FontAttributes="Bold"
+                                Grid.Row="1" Grid.Column="0"/>
+                                    <Label Text="{Binding Aciklama}" TextColor="White" FontFamily="Arial" FontSize="16"
+                                Grid.Row="1" Grid.Column="1"/>
+
+                                </Grid>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Frame>
+    </Grid>
+</ContentPage>

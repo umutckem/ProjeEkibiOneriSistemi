@@ -16,7 +16,7 @@
 
         <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,220" WidthRequest="160" Text="Testler" FontAttributes="Bold" BackgroundColor="AntiqueWhite" Clicked="Button_Clicked"/>
         <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,280" WidthRequest="160" Text="Projeler" FontAttributes="Bold" BackgroundColor="AntiqueWhite" FontFamily="Arial Black" TextColor="DarkKhaki" Clicked="Button_Clicked_1" />
-        <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,340" WidthRequest="160" Text="Projelerim " FontAttributes="Bold" BackgroundColor="AntiqueWhite"/>
+        <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,340" WidthRequest="160" Text="Projelerim " FontAttributes="Bold" BackgroundColor="AntiqueWhite" Clicked="Button_Clicked_2"/>
         <Button VerticalOptions="End" HorizontalOptions="Start" Margin="20,290" WidthRequest="160" Text="Destek " FontAttributes="Bold" BackgroundColor="AntiqueWhite"/>
         <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="200" Margin="0"/>
         <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="200" Margin="0,200"/>

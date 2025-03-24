@@ -42,6 +42,9 @@ public partial class ProfilEkrani : ContentPage
             ogrenci = guncelOgrenciBilgileri;
             await puanHesapla(ogrenci.Id); // Burada da await ekledik
             await DisplayAlert("Baþarýlý", "Bilgileriniz Güncellenmiþtir!", "Tamam");
+            ProfilEkrani profilEkrani = new ProfilEkrani();
+            profilEkrani.setOgrenci(guncelOgrenciBilgileri);
+            await Navigation.PushAsync(profilEkrani);
             return;
         }
 

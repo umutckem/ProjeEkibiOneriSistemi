@@ -93,6 +93,12 @@
 	  <MauiXaml Update="View\ProjeEkrani.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\ProjelerimBilgiEkrani.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\ProjelerimEkrani.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\SifreDegistirmeEkrani.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

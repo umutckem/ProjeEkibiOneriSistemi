@@ -27,5 +27,8 @@ namespace ProjeEkibiOneriSistemi.EfCore
 
         // Öğrenci Proje API URL (Öğrencinin geçmiş projelerini takip etmek için)
         public static string OgrenciProjeUrl = $"{BaseUrl}/OgrenciProje";
+
+        public static string KatilimciUrl = $"{BaseUrl}/Katilimcilar";
+
     }
 }
