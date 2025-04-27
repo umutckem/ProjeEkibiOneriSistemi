@@ -68,6 +68,8 @@
         <Button VerticalOptions="Start" HorizontalOptions="End" Margin="80,250" WidthRequest="150" Text="Geçmiş sorular" FontAttributes="Italic" BackgroundColor="IndianRed" Clicked="Button_Clicked_1" FontFamily="Impact"/>
         <Button VerticalOptions="Start" HorizontalOptions="End" WidthRequest="150" BackgroundColor="#27AE60" Margin="80,100" Text="Şifre Değiştir" FontAttributes="Italic" FontFamily="Impact" TextColor="SeaShell" Clicked="Button_Clicked_2"/>
         <Button VerticalOptions="Start" HorizontalOptions="End" WidthRequest="150" BackgroundColor="#27AE60" Margin="80,150" Text="Mail Güncelle" FontAttributes="Italic" FontFamily="Impact" TextColor="SeaShell" Clicked="Button_Clicked_3"/>
+        <Button VerticalOptions="End" HorizontalOptions="End" WidthRequest="150" BackgroundColor="#27AE60" Margin="80,40" Text="Ana Menü" FontAttributes="Italic" FontFamily="Impact" TextColor="SeaShell" Clicked="Button_Clicked_4"/>
+
 
 
 

@@ -59,4 +59,14 @@ public partial class OgrenciEkran : ContentPage
         projelerimEkrani.setOgrenci(ogrenci);
         await Navigation.PushAsync(projelerimEkrani);
     }
+
+    private async void Cikis_Clicked(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+
+        AnaEkran anaEkran = new AnaEkran();
+        Application.Current.MainPage = new NavigationPage(anaEkran);
+    }
 }

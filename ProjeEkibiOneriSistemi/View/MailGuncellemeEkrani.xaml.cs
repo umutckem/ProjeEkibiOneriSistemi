@@ -54,8 +54,8 @@ public partial class MailGuncellemeEkrani : ContentPage
 					await DisplayAlert("","Mail Adresi Baþarýlý Bir Þekilde Güncellendi","Tamam");
 					ProfilEkrani profilEkrani = new ProfilEkrani();
 					profilEkrani.setOgrenci(ogrenci);
-					await Navigation.PushAsync(profilEkrani);
-				}
+                    Application.Current.MainPage = new NavigationPage(profilEkrani);
+                }
 			}
 			else
 			{

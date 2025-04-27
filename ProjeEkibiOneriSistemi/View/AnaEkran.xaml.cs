@@ -31,7 +31,7 @@ namespace ProjeEkibiOneriSistemi.View
                 await DisplayAlert("Giriþ Baþarýlý", $"{ogrenci.Ad}, hoþ geldiniz!", "Tamam");
                 OgrenciEkran ogrenciEkran = new OgrenciEkran();
                 ogrenciEkran.setOgrenci(ogrenci);
-                await Navigation.PushAsync(ogrenciEkran);
+                Application.Current.MainPage = new NavigationPage(ogrenciEkran);
                 return;
             }
 

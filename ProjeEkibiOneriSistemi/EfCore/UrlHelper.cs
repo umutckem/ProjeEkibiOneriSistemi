@@ -30,5 +30,7 @@ namespace ProjeEkibiOneriSistemi.EfCore
 
         public static string KatilimciUrl = $"{BaseUrl}/Katilimcilar";
 
+        public static string GrupUrl = $"{BaseUrl}/grup";
+
     }
 }

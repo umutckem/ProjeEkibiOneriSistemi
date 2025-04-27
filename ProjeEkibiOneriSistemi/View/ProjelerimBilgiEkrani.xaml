@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProjeEkibiOneriSistemi.View.ProjelerimBilgiEkrani">
+             x:Class="ProjeEkibiOneriSistemi.View.ProjelerimBilgiEkrani"
+             BackgroundColor="#f5f5f5"
+             Loaded="ContentPage_Loaded_1">
+
     <Grid>
-        <Image Source="ogrenciekrani.jpg" HeightRequest="1200"/>
-        <Label x:Name="projeAdi" Text=""/>
-        
-        
-        
+        <!-- Arka Plan Görseli -->
+        <Image Source="ogrenciekrani.jpg" Aspect="AspectFill" Opacity="0.2" />
+
+        <!-- İçerik -->
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+                <!-- Proje Bilgileri Kartı -->
+                <Frame CornerRadius="20" BackgroundColor="White" HasShadow="True" Padding="20">
+                    <VerticalStackLayout Spacing="15">
+                        <HorizontalStackLayout Spacing="20">
+                            <Label Text="Proje Adı:" FontSize="16" FontAttributes="Bold" TextColor="#2c3e50" />
+                            <Label x:Name="projeAdi" Text="" FontSize="18" TextColor="#34495e" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="20">
+                            <Label Text="Proje Açıklaması:" FontSize="16" FontAttributes="Bold" TextColor="#2c3e50" />
+                            <Label x:Name="projeAciklama" Text="" FontSize="16" TextColor="#34495e" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="20">
+                            <Label Text="Başlangıç Tarihi:" FontSize="16" FontAttributes="Bold" TextColor="#2c3e50" />
+                            <Label x:Name="projeBaslangicTarihi" Text="" FontSize="16" TextColor="#34495e" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="20">
+                            <Label Text="Bitiş Tarihi:" FontSize="16" FontAttributes="Bold" TextColor="#2c3e50" />
+                            <Label x:Name="projeBitisTarihi" Text="" FontSize="16" TextColor="#34495e" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="20">
+                            <Label Text="Proje Aktif Mi?" FontSize="16" FontAttributes="Bold" TextColor="#2c3e50" />
+                            <Label x:Name="projeBitisAktifMi" Text="" FontSize="16" TextColor="#34495e" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="20">
+                            <Label Text="Projeye Katılım Sayısı:" FontSize="16" FontAttributes="Bold" TextColor="#2c3e50" />
+                            <Label x:Name="projeyeKatilimSayisi" Text="" FontSize="16" TextColor="#34495e" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Grup Üyeleri Başlığı -->
+                <Label Text="Grup Üyeleri" TextColor="DarkBlue" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+
+                <!-- Grup Üyeleri Listesi -->
+                <Frame BackgroundColor="White" CornerRadius="15" HasShadow="True" Padding="10">
+                    <CollectionView x:Name="grupUyeleriCollectionView">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="#ecf0f1" CornerRadius="10" Padding="10" Margin="5">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="Ogrenci Adı" TextColor="#7f8c8d" FontSize="12" />
+                                        <Label Text="{Binding Ad}" TextColor="#2c3e50" FontSize="14" />
+                                        <Label Text="Ogrenci Soyadi" TextColor="#7f8c8d" FontSize="12" />
+                                        <Label Text="{Binding Soyad}" TextColor="#2c3e50" FontSize="14" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
     </Grid>
-    
 
 </ContentPage>

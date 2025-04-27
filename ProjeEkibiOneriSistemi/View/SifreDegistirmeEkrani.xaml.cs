@@ -58,7 +58,7 @@ public partial class SifreDegistirmeEkrani : ContentPage
                     await DisplayAlert("", "Þifre Baþarýlý Þekilde Deðiþtirilmiþtir.", "Tamam");
                     ProfilEkrani profilEkrani = new ProfilEkrani();
                     profilEkrani.setOgrenci(guncelOgrenciBilgileri);
-                    await Navigation.PushAsync(profilEkrani);
+                    Application.Current.MainPage = new NavigationPage(profilEkrani);
                 }
                 else
                 {

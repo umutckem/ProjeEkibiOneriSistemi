@@ -44,7 +44,7 @@ public partial class ProfilEkrani : ContentPage
             await DisplayAlert("Baþarýlý", "Bilgileriniz Güncellenmiþtir!", "Tamam");
             ProfilEkrani profilEkrani = new ProfilEkrani();
             profilEkrani.setOgrenci(guncelOgrenciBilgileri);
-            await Navigation.PushAsync(profilEkrani);
+            Application.Current.MainPage = new NavigationPage(profilEkrani);
             return;
         }
 
@@ -152,5 +152,12 @@ public partial class ProfilEkrani : ContentPage
         MailGuncellemeEkrani mailGuncellemeEkrani = new MailGuncellemeEkrani();
         mailGuncellemeEkrani.setOgrenci(ogrenci);
         await Navigation.PushAsync(mailGuncellemeEkrani);
+    }
+
+    private void Button_Clicked_4(object sender, EventArgs e)
+    {
+        OgrenciEkran ogrenciEkran = new OgrenciEkran();
+        ogrenciEkran.setOgrenci(ogrenci);
+        Application.Current.MainPage = new NavigationPage(ogrenciEkran);
     }
 }
