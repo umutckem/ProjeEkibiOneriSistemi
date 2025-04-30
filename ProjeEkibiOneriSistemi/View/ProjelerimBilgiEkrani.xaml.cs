@@ -8,6 +8,7 @@ public partial class ProjelerimBilgiEkrani : ContentPage
 {
     private readonly IOgrenciServices _ogrenciServices;
     private readonly IGrupServices _grupServices;
+    private readonly IProjeServices _projeServices;
 	Ogrenci _ogrenci;
     Proje _Proje;
 	public void SetProje(Proje proje)
@@ -29,6 +30,7 @@ public partial class ProjelerimBilgiEkrani : ContentPage
 		InitializeComponent();
         _ogrenciServices = new OgrenciServices();
         _grupServices = new GrupServices();
+        _projeServices = new ProjeServices();
     }
 
 
@@ -38,12 +40,13 @@ public partial class ProjelerimBilgiEkrani : ContentPage
         var gruplar = await _grupServices.getGrups();
         var ogrenciGrup = gruplar.FirstOrDefault(x => x.OgrenciId == _ogrenci.Id);
 
-        if (ogrenciGrup != null)
+        if (ogrenciGrup != null && ogrenciGrup.ProjeId == _Proje.Id)
         {
             var ogrenciler = await _ogrenciServices.GetOgrencis();
-            var ayniGrupUyeleri = gruplar.Where(x => x.GrupNo == ogrenciGrup.GrupNo).ToList();
+            var ayniGrupUyeleri = gruplar
+                .Where(x => x.GrupNo == ogrenciGrup.GrupNo && x.ProjeId == _Proje.Id)
+                .ToList();
 
-            // Grup üyelerinin öðrenci bilgilerini çekiyoruz
             var ayniGrupUyeleriOgrenciler = ayniGrupUyeleri
                 .Join(
                     ogrenciler,
@@ -57,7 +60,6 @@ public partial class ProjelerimBilgiEkrani : ContentPage
                     }
                 ).ToList();
 
-            // CollectionView'a gönderiyoruz
             grupUyeleriCollectionView.ItemsSource = ayniGrupUyeleriOgrenciler;
         }
     }

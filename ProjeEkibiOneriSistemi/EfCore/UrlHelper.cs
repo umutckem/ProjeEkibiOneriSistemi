@@ -32,5 +32,11 @@ namespace ProjeEkibiOneriSistemi.EfCore
 
         public static string GrupUrl = $"{BaseUrl}/grup";
 
+        public static string DestekUrl = $"{BaseUrl}/Destek";
+
+        public static string RolUrl = $"{BaseUrl}/Rol";
+
+        public static string YetkiUrl = $"{BaseUrl}/Yetki";
+
     }
 }

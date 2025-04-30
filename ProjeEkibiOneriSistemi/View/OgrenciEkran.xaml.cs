@@ -65,8 +65,22 @@ public partial class OgrenciEkran : ContentPage
         var button = (Button)sender;
         await button.ScaleTo(0.9, 100); // Küçültme efekti
         await button.ScaleTo(1, 100); // Eski haline getirme
+        bool secim = await DisplayAlert("","Çýkýþ Yapmak Ýstiyor musunuz ?","Evet","Hayýr");
+        if(secim == true)
+        {
+            AnaEkran anaEkran = new AnaEkran();
+            Application.Current.MainPage = new NavigationPage(anaEkran);
+        }
 
-        AnaEkran anaEkran = new AnaEkran();
-        Application.Current.MainPage = new NavigationPage(anaEkran);
+    }
+
+    private async void Button_Clicked_3(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+        DestekEkrani destekEkrani = new DestekEkrani();
+        destekEkrani.setOgrenci(ogrenci);
+        Application.Current.MainPage = new NavigationPage(destekEkrani);
     }
 }

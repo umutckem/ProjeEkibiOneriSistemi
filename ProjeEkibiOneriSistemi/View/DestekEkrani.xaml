@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.DestekEkrani">
+    <Grid>
+        <Image Source="ogrenciekrani.jpg" HeightRequest="999" Aspect="AspectFill"/>
+        <Entry x:Name="Konu" Placeholder="Konu" VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="450"/>
+        <Entry x:Name="Acıklama" Placeholder="Acıklama" VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="450" Margin="0,50" HeightRequest="250"/>
+        
+        <Button Text="Ana Menü" VerticalOptions="End" HorizontalOptions="Center" Margin="0,40" WidthRequest="250" FontAttributes="Bold" Background="AntiqueWhite" Clicked="Button_Clicked_1"/>
+        <Button Text="Kaydet" VerticalOptions="End" HorizontalOptions="Center" Margin="0,100" WidthRequest="250" FontAttributes="Bold" Background="#27AE60" Clicked="Button_Clicked_2"/>
+        <Button Text="Geçmiş Destek Talepleri" VerticalOptions="End" HorizontalOptions="Center" Margin="0,160" WidthRequest="250" FontAttributes="Bold" Background="AntiqueWhite" Clicked="Button_Clicked_3"/>
+
+
+    </Grid>
+</ContentPage>

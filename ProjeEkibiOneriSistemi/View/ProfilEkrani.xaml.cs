@@ -154,8 +154,12 @@ public partial class ProfilEkrani : ContentPage
         await Navigation.PushAsync(mailGuncellemeEkrani);
     }
 
-    private void Button_Clicked_4(object sender, EventArgs e)
+    private async  void Button_Clicked_4(object sender, EventArgs e)
     {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+
         OgrenciEkran ogrenciEkran = new OgrenciEkran();
         ogrenciEkran.setOgrenci(ogrenci);
         Application.Current.MainPage = new NavigationPage(ogrenciEkran);

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.GecmisDestekTalepleriBilgiEkrani"
+             BackgroundColor="#F2F4F8"
+             Loaded="ContentPage_Loaded">
+
+    <Grid>
+        <!-- Arka Plan Resmi -->
+        <Image Source="ogrenciekrani.jpg"
+               Aspect="AspectFill"
+               Opacity="0.15"
+               IsVisible="True" />
+
+        <!-- İçerik Kartı -->
+        <Frame Padding="25"
+               BackgroundColor="White"
+               CornerRadius="16"
+               Margin="30"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               HasShadow="True">
+
+            <VerticalStackLayout Spacing="15">
+                <Label Text="Destek Talebi"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#2E3A59"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Konu:"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#5C677D" />
+                <Label x:Name="Konu"
+                       FontSize="16"
+                       TextColor="#1C1C1C"
+                       LineBreakMode="WordWrap" />
+
+                <Label Text="Açıklama:"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#5C677D" />
+                <Label x:Name="Acıklama"
+                       FontSize="16"
+                       TextColor="#1C1C1C"
+                       LineBreakMode="WordWrap" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Ana Menü Butonu -->
+        <Button Text="Ana Menü"
+                BackgroundColor="#3D5AFE"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="12"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                WidthRequest="200"
+                Margin="0,0,0,30"
+                Clicked="Button_Clicked" />
+        
+        <Button Text="Sil"
+                BackgroundColor="DarkGray"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="12"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                WidthRequest="200"
+                Margin="0,0,0,80"
+                Clicked="Button_Clicked_1" />
+    </Grid>
+</ContentPage>

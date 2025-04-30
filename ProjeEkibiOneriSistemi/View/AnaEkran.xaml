@@ -7,16 +7,7 @@
 
     <!-- Arka Plan Resmi -->
     <Grid>
-        <Image Aspect="AspectFill" Source="anamenu1.jpg" HeightRequest="1000"/>
-        <!-- Başlık -->
-        <Label Text="Proje Ekibi Öneri Sistemi" 
-               FontSize="30" 
-               Margin="0,50" 
-               FontFamily="Segoe UI" 
-               TextColor="DarkMagenta" 
-               VerticalOptions="Start" 
-               HorizontalOptions="Center"/>
-
+        <Image Aspect="AspectFill" Source="anamenu.png" HeightRequest="1000"/>
         <!-- Alt Başlık -->
         <Label Text="Giriş Ekranı" 
                FontSize="24" 
