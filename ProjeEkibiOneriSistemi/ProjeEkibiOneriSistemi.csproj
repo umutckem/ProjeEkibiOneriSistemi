@@ -72,6 +72,9 @@
 	  <MauiXaml Update="View\AdminEkran.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\AdminOgrenciEkrani.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\AnaEkran.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

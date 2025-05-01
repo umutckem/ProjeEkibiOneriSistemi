@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.AdminOgrenciEkrani"
+             Loaded="ContentPage_Loaded">
+
+    <Grid>
+        <Image Source="adminekrani.png" Aspect="AspectFill" />
+
+        <StackLayout Margin="20">
+            <!-- Arama Kutusu -->
+            <SearchBar x:Name="SearchBarOgrenci" 
+                       Placeholder="Öğrenci ara..." 
+                       TextChanged="SearchBarOgrenci_TextChanged"
+                       BackgroundColor="White" 
+                       TextColor="Black"
+                       PlaceholderColor="Gray"/>
+
+            <!-- Öğrenci Listesi -->
+            <CollectionView x:Name="CollectionViewOgrenci" 
+                            SelectionMode="Single" 
+                            SelectionChanged="CollectionViewOgrenci_SelectionChanged"
+                            BackgroundColor="Transparent"
+                            Margin="0,10,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="GreenYellow" CornerRadius="10" Padding="15" Margin="10" BackgroundColor="Black">
+                            <Grid ColumnDefinitions="Auto, *"
+                                  RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                                  RowSpacing="10" ColumnSpacing="10">
+
+                                <Label Text="Ad:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding Ad}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="0" Grid.Column="1"/>
+
+                                <Label Text="Soyad:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="1" Grid.Column="0"/>
+                                <Label Text="{Binding Soyad}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="1" Grid.Column="1"/>
+
+                                <Label Text="ogrenciNo:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="0"/>
+                                <Label Text="{Binding ogrenciNo}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="1"/>
+
+                                <Label Text="Bolum:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="3" Grid.Column="0"/>
+                                <Label Text="{Binding Bolum}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="3" Grid.Column="1"/>
+
+                                <Label Text="Telefon:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="4" Grid.Column="0"/>
+                                <Label Text="{Binding Telefon}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="4" Grid.Column="1"/>
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <Button VerticalOptions="End" HorizontalOptions="Center" WidthRequest="250" Text="Ana Menu" Margin="0,40" BackgroundColor="Green" Opacity="0.8" FontAttributes="Bold" Clicked="Button_Clicked"/>
+        <Label VerticalOptions="End" HorizontalOptions="Start" Text="Kayıtlı Öğrenci Sayisi:" TextColor="Yellow"/>
+        <Label VerticalOptions="End" HorizontalOptions="Start" Text="" x:Name="ogrenciSayisi" Margin="140,0"/>
+    </Grid>
+</ContentPage>

@@ -8,14 +8,6 @@
     <!-- Arka Plan Resmi -->
     <Grid>
         <Image Aspect="AspectFill" Source="anamenu.png" HeightRequest="1000"/>
-        <!-- Alt Başlık -->
-        <Label Text="Giriş Ekranı" 
-               FontSize="24" 
-               Margin="0,100" 
-               FontFamily="Segoe UI" 
-               TextColor="#34495e" 
-               VerticalOptions="Start" 
-               HorizontalOptions="Center"/>
 
         <!-- Giriş Çerçevesi -->
         <Frame VerticalOptions="Start" 

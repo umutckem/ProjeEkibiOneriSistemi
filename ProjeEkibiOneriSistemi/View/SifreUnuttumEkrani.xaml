@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjeEkibiOneriSistemi.View.SifreUnuttumEkrani">
     <Grid>
-        <Image Aspect="AspectFill" Source="anamenu1.jpg" HeightRequest="1000"/>
+        <Image Aspect="AspectFill" Source="adminekrani.png" HeightRequest="1000"/>
         
         <Frame Opacity="0.5"
                BackgroundColor="#2C3E50"
