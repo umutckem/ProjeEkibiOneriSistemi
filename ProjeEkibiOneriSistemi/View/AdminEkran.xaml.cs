@@ -30,6 +30,8 @@ public partial class AdminEkran : ContentPage
         await getOgrenciSayisi();
         await getDestekSayisi();
         await getProjeSayisi();
+        BindingContext = null;
+        BindingContext = _ogrenci;
         
     }
 
@@ -39,8 +41,13 @@ public partial class AdminEkran : ContentPage
         await button.ScaleTo(0.9, 100); // Küçültme efekti
         await button.ScaleTo(1, 100); // Eski haline getirme
 
-        AnaEkran anaEkran = new AnaEkran();
-		Application.Current.MainPage = new NavigationPage(anaEkran);
+        bool secim = await DisplayAlert("", "Çýkmak Ýstediðinize Emin Misiniz ?", "Evet", "Hayýr");
+        if(secim == true)
+        {
+            AnaEkran anaEkran = new AnaEkran();
+            Application.Current.MainPage = new NavigationPage(anaEkran);
+        }
+
     }
 
     private async void Button_Clicked(object sender, EventArgs e)

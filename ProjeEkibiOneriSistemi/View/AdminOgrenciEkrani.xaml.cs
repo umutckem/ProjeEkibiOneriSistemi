@@ -58,7 +58,13 @@ public partial class AdminOgrenciEkrani : ContentPage
         var secilenOgrenci = e.CurrentSelection.FirstOrDefault() as Ogrenci;
         if (secilenOgrenci == null) return;
 
-        await DisplayAlert("Seçilen Öðrenci", $"{secilenOgrenci.Ad} {secilenOgrenci.Soyad}", "Tamam");
+        bool secim = await DisplayAlert("Seçilen Öðrenci", $"{secilenOgrenci.Ad} {secilenOgrenci.Soyad}", "Evet","Hayýr");
+        if(secim == true) { 
+        AdminOgrenciDuzenlemeEkrani adminOgrenciDuzenlemeEkrani = new AdminOgrenciDuzenlemeEkrani();
+        adminOgrenciDuzenlemeEkrani.setOgrenci(_ogrenci);
+        adminOgrenciDuzenlemeEkrani.setDuzenlenecekOgrenci(secilenOgrenci);
+        Application.Current.MainPage = new NavigationPage(adminOgrenciDuzenlemeEkrani);
+        }
     }
 
     private async void Button_Clicked(object sender, EventArgs e)
@@ -79,5 +85,17 @@ public partial class AdminOgrenciEkrani : ContentPage
             var kayitliOgrencilerSayisi = kayitliOgrenciler.Count();
             ogrenciSayisi.Text = Convert.ToString(kayitliOgrencilerSayisi);
         }
+    }
+
+    private async void Button_Clicked_1(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+
+        AdminOgrenciOlustur adminOgrenciOlustur = new AdminOgrenciOlustur();
+        adminOgrenciOlustur.setOgrenci(_ogrenci);
+        Application.Current.MainPage = new NavigationPage(adminOgrenciOlustur);
+
     }
 }
