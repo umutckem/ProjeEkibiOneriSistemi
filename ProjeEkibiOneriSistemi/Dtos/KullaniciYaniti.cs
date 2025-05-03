@@ -12,7 +12,7 @@ namespace ProjeEkibiOneriSistemi.Dtos
         public Guid OgrenciId { get; set; }
         public int KategoriId { get; set; }
         public int SoruId { get; set; }
-        public int Puan { get; set; } // 1-10 arasında verilen puan
+        public int Puan { get; set; } 
 
     }
 }

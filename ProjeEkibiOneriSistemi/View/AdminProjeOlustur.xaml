@@ -1,0 +1,69 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.AdminProjeOlustur"
+             Loaded="ContentPage_Loaded">
+
+    <Grid>
+        <!-- Arka Plan Görseli -->
+        <Image Source="adminekrani.png"
+               Aspect="AspectFill"
+               Opacity="0.3"
+               IsVisible="True" />
+
+        <!-- Üst Katman (form) -->
+        <ScrollView>
+            <Frame BackgroundColor="#F5F5F5CC"
+                   Margin="20"
+                   CornerRadius="15"
+                   HasShadow="True"
+                   Padding="20">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Proje Adı" TextColor="Black"/>
+                    <Entry x:Name="entryAd" Placeholder="Proje adı girin" TextColor="Black"/>
+
+                    <Label Text="Açıklama" TextColor="Black"/>
+                    <Editor x:Name="editorAciklama" Placeholder="Proje açıklaması girin" AutoSize="TextChanges" TextColor="Black"/>
+
+                    <Label Text="Bölüm" TextColor="Black"/>
+                    <Entry x:Name="entryBolum" Placeholder="İlgili bölüm girin" TextColor="Black"/>
+
+                    <Label Text="Zorluk Seviyesi (1-5)" TextColor="Black"/>
+                    <Picker x:Name="pickerZorluk" Title="Seviye Seçin" TextColor="Black">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:Int32}">
+                                <x:Int32>1</x:Int32>
+                                <x:Int32>2</x:Int32>
+                                <x:Int32>3</x:Int32>
+                                <x:Int32>4</x:Int32>
+                                <x:Int32>5</x:Int32>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Label Text="Gereken Kategori Id'leri (virgülle ayırın)" TextColor="Black"/>
+                    <Entry x:Name="entryKategoriler" Placeholder="Örn: 1,2,3" TextColor="Black"/>
+
+                    <Label Text="Başlangıç Tarihi" TextColor="Black"/>
+                    <DatePicker x:Name="datePickerBaslangic" TextColor="Black"/>
+
+                    <Label Text="Bitiş Tarihi (isteğe bağlı)" TextColor="Black"/>
+                    <DatePicker x:Name="datePickerBitis" TextColor="Black"/>
+
+                    <Label Text="Proje Aktif Mi?" TextColor="Black"/>
+                    <Switch x:Name="switchAktif" />
+
+                    <Button Text="Proje Oluştur"
+                            Clicked="OlusturButton_Clicked"
+                            BackgroundColor="#007ACC"
+                            TextColor="White"/>
+                    <Button Text="Ana Menü"
+                            BackgroundColor="SeaGreen"
+                            TextColor="White"
+                            Clicked="Button_Clicked"/>
+                </VerticalStackLayout>
+            </Frame>
+        </ScrollView>
+    </Grid>
+</ContentPage>

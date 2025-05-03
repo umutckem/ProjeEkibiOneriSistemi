@@ -9,10 +9,10 @@ namespace ProjeEkibiOneriSistemi.Dtos
     public class Soru
     {
         public int Id { get; set; }
-        public int KategoriId { get; set; } //İlgili Kategorinin Id'si
-        public string Metin { get; set; } // Sorunun içeriği
+        public int KategoriId { get; set; } 
+        public string Metin { get; set; } 
         public string Cevap { get; set; }
-        public string OnemDerecesi { get; set; } // 1-5 arasında bir OnemDerecesi
+        public string OnemDerecesi { get; set; } 
 
     }
 }

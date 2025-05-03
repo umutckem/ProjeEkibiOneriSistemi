@@ -9,7 +9,7 @@ namespace ProjeEkibiOneriSistemi.Dtos
     public class Kategori
     {
         public int Id { get; set; }
-        public string Ad { get; set; } // Kategorinin adı, örn: "C#", "Veritabanı", "Algoritma"
+        public string Ad { get; set; } 
 
     }
 }

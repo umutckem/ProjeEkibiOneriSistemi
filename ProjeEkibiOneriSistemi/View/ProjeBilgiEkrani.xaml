@@ -10,19 +10,19 @@
                HeightRequest="600"
                Opacity="0.5"
                BackgroundColor="#2C3E50"/>
-        
+
         <Frame WidthRequest="600"
                HeightRequest="1.5"
                VerticalOptions="Start"
                HorizontalOptions="Start"
                Margin="470,100"/>
-        
+
         <Frame WidthRequest="600"
                HeightRequest="1.5"
                VerticalOptions="Start"
                HorizontalOptions="Start"
                Margin="470,55"/>
-        
+
         <Frame WidthRequest="200"
                HeightRequest="50"
                Opacity="0.5"
@@ -31,14 +31,14 @@
                BackgroundColor="SeaGreen"
                VerticalOptions="Start"
                HorizontalOptions="Center"/>
-        
+
         <Label Text="{Binding Ad}"
                VerticalOptions="Start"
                HorizontalOptions="Center"
                Margin="0,65"
                FontSize="15"
                FontAttributes="Italic"/>
-        
+
         <Label Text="PROJE ADI"
                FontSize="20"
                FontFamily="Impact"
@@ -46,7 +46,7 @@
                VerticalOptions="Start"
                HorizontalOptions="Center"
                Margin="700,10"/>
-        
+
         <Label Text="Proje Açıklaması:"
                VerticalOptions="Start"
                HorizontalOptions="Start"
@@ -54,20 +54,20 @@
                FontAttributes="Bold"
                FontFamily="Segoe UI Black"
                TextColor="IndianRed"/>
-        
+
         <Label Text="{Binding Aciklama}"
                VerticalOptions="Start"
                HorizontalOptions="Start"
                Margin="500,140"
                FontAttributes="Italic"
                FontFamily="Segoe UI Black"/>
-        
+
         <Label VerticalOptions="End"
                HorizontalOptions="Start"
                Margin="500,260"
                Text="Başlangıç Tarihi"
                FontAttributes="Italic"/>
-        
+
         <Label VerticalOptions="End"
                HorizontalOptions="End"
                Margin="533,260"
@@ -79,13 +79,13 @@
                HorizontalOptions="Center"
                Margin="0,260"
                FontAttributes="Italic"/>
-        
+
         <Label Text="{Binding AktifMi}"
                VerticalOptions="End"
                HorizontalOptions="Center"
                Margin="0,240"
                TextColor="Red"/>
-        
+
         <Label Text="{Binding BaslangicTarihi}"
                VerticalOptions="End"
                HorizontalOptions="End"
@@ -107,14 +107,48 @@
                VerticalOptions="End"
                HorizontalOptions="Start"
                Margin="470,295"/>
-        <Button Text="Katil"
-                WidthRequest="220"
-                VerticalOptions="End"
-                HorizontalOptions="Center"
-                Margin="0,160"
-                FontAttributes="Bold"
-                Background="YellowGreen"
-                Clicked="Button_Clicked"/>
+
+        <Label Text="Proje Gereksinimleri:"
+               FontAttributes="Bold"
+               FontFamily="Segoe UI Black"
+               TextColor="IndianRed"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               Margin="500,180" />
+
+        <Label x:Name="ProjeGereksinimleriLabel"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               Margin="500,200"
+               FontAttributes="Italic"
+               FontFamily="Segoe UI Black" />
+
+        <Label Text="Öğrencinin Yetkinlikleri:"
+               FontAttributes="Bold"
+               FontFamily="Segoe UI Black"
+               TextColor="IndianRed"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               Margin="500,230" />
+
+        <Label x:Name="OgrenciYetkinlikleriLabel"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               Margin="500,250"
+               FontAttributes="Italic"
+               FontFamily="Segoe UI Black" />
+
+        <Button x:Name="KatilimButton"
+        Text="Katıl"
+        WidthRequest="220"
+        VerticalOptions="End"
+        HorizontalOptions="Center"
+        Margin="0,160"
+        FontAttributes="Bold"
+        BackgroundColor="YellowGreen"
+        IsEnabled="False"
+        Clicked="Button_Clicked"/>
+
 
     </Grid>
 </ContentPage>

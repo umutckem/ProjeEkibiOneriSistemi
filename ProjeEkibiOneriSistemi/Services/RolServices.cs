@@ -13,7 +13,7 @@ namespace ProjeEkibiOneriSistemi.Services
     {
         public async Task ekleRol(Rol rol)
         {
-            Uri uri = new Uri(UrlHelper.RolUrl); // UrlHelper.RolUrl tanımlı olmalı
+            Uri uri = new Uri(UrlHelper.RolUrl); 
             string jsonContent = JsonSerializer.Serialize(rol, _serializerOptions);
             StringContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 

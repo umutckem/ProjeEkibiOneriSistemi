@@ -90,6 +90,9 @@
 	  <MauiXaml Update="View\AdminProjeGuncelleme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\AdminProjeOlustur.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\AnaEkran.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

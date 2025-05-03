@@ -9,14 +9,14 @@ namespace ProjeEkibiOneriSistemi.Dtos
     public class Proje
     {
         public Guid Id { get; set; }
-        public string Ad { get; set; } // Proje adı
-        public string Aciklama { get; set; } // Proje hakkında açıklama
+        public string Ad { get; set; } 
+        public string Aciklama { get; set; } 
         public string Bolum { get; set; }
-        public List<int> GerekenKategoriIdler { get; set; } // Projede ihtiyaç duyulan yetenekler (C#, SQL vb.)
-        public int ZorlukSeviyesi { get; set; } // 1-5 arasında zorluk derecesi
+        public List<int> GerekenKategoriIdler { get; set; } 
+        public int ZorlukSeviyesi { get; set; } 
         public int projeyeKatilimSayisi { get; set; }
-        public DateTime BaslangicTarihi { get; set; } // Projenin başlangıç tarihi
-        public DateTime? BitisTarihi { get; set; } // Proje bitiş tarihi (null ise devam ediyor)
-        public bool AktifMi { get; set; } // Proje devam ediyor mu?
+        public DateTime BaslangicTarihi { get; set; } 
+        public DateTime? BitisTarihi { get; set; } 
+        public bool AktifMi { get; set; } 
     }
 }

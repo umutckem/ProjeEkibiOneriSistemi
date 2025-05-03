@@ -7,6 +7,8 @@
     <Grid>
         <Image Source="ogrenciekrani.jpg" HeightRequest="1400"/>
 
+
+
         <!-- İçerik Bölgesi -->
         <ScrollView>
             <CollectionView x:Name="CollectionViewProje" HeightRequest="500" SelectionMode="Single" SelectionChanged="CollectionViewProje_SelectionChanged"
@@ -46,6 +48,18 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
+        <!-- Arama Kutusu -->
+        <SearchBar x:Name="SearchBarProje" 
+                   Placeholder="Proje ara..."
+                   TextChanged="SearchBarProje_TextChanged"
+                   BackgroundColor="Black" 
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   Margin="20"
+                   HeightRequest="50" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   WidthRequest="450"/>
     </Grid>
 
 </ContentPage>

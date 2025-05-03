@@ -3,69 +3,87 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjeEkibiOneriSistemi.View.AdminEkran"
              Loaded="ContentPage_Loaded">
+
     <Grid>
+
+        <!-- Arka Plan Görseli -->
         <Image Source="adminekrani.png" HeightRequest="1200"/>
+
+        <!-- Sol Sidebar Arka Planı -->
         <Frame HeightRequest="1000" WidthRequest="200" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="SeaGreen" Opacity="0.2"/>
         <Frame HeightRequest="1.5" WidthRequest="200" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,200" BackgroundColor="Wheat" BorderColor="Wheat"/>
 
+        <!-- Köşe Yıldızları -->
         <Label Text="*" Margin="10,20" TextColor="Wheat"/>
         <Label Text="*" Margin="10,170" TextColor="Wheat"/>
         <Label Text="*" Margin="170,20" TextColor="Wheat"/>
         <Label Text="*" Margin="170,170" TextColor="Wheat"/>
 
-        <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,220" WidthRequest="160" Text="Öğrenciler" FontAttributes="Bold" BackgroundColor="AntiqueWhite" Clicked="Button_Clicked"/>
-        <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,280" WidthRequest="160" Text="Projeler" FontAttributes="Bold" BackgroundColor="AntiqueWhite" Clicked="Button_Clicked_1"   />
-        <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,340" WidthRequest="160" Text="Yetki" FontAttributes="Bold" BackgroundColor="AntiqueWhite" />
-        <Button VerticalOptions="End" HorizontalOptions="Start" Margin="20,290" WidthRequest="160" Text="Destek " FontAttributes="Bold" BackgroundColor="AntiqueWhite" />
-        <Button x:Name="Cikis" VerticalOptions="End" HorizontalOptions="Start" Margin="20,40" WidthRequest="160" Text="Çıkış Yap " FontAttributes="Bold" BackgroundColor="AntiqueWhite" Clicked="Cikis_Clicked"/>
+        <!-- Menü Butonları -->
+        <Button Margin="20,220" WidthRequest="160" Text="Öğrenciler" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
+                HorizontalOptions="Start" VerticalOptions="Start" Clicked="Button_Clicked"/>
 
+        <Button Margin="20,280" WidthRequest="160" Text="Projeler" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
+                HorizontalOptions="Start" VerticalOptions="Start" Clicked="Button_Clicked_1"/>
+
+        <Button Margin="20,340" WidthRequest="160" Text="Testler" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
+                HorizontalOptions="Start" VerticalOptions="Start"/>
+
+        <Button Margin="20,290" WidthRequest="160" Text="Destek" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
+                HorizontalOptions="Start" VerticalOptions="End"/>
+
+        <Button x:Name="Cikis" Margin="20,40" WidthRequest="160" Text="Çıkış Yap" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
+                HorizontalOptions="Start" VerticalOptions="End" Clicked="Cikis_Clicked"/>
+
+        <!-- Sidebar Görsel Çerçeveler (Boş Frame'ler) -->
         <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="200" Margin="0"/>
         <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="200" Margin="0,200"/>
         <Frame VerticalOptions="End" HorizontalOptions="Start" WidthRequest="200" Margin="0,260"/>
-        <Label Text="{Binding Bolum}" VerticalOptions="End" HorizontalOptions="Start" Margin="20,230" FontAttributes="Italic" TextColor="Yellow"/>
-        <Label Text="Admin Ekranı" FontAttributes="Italic" VerticalOptions="End" HorizontalOptions="Start" Margin="52,205"/>
 
+        <!-- Kullanıcı Bölüm ve Başlık -->
+        <Label Text="{Binding Bolum}" Margin="20,230" FontAttributes="Italic" TextColor="Yellow"
+               VerticalOptions="End" HorizontalOptions="Start"/>
+        <Label Text="Admin Ekranı" Margin="52,205" FontAttributes="Italic"
+               VerticalOptions="End" HorizontalOptions="Start"/>
 
-        <!-- Profil Resmi Çerçeve İçinde -->
-        <Frame Grid.Row="0" Grid.Column="0"
-           Padding="0"
-           BorderColor="LightGray"
-           CornerRadius="150" 
-        BackgroundColor="Transparent"
-           HorizontalOptions="Start"
-           VerticalOptions="Start"
-           Margin="20">
-            <Image Aspect="AspectFill"
-               Source="{Binding ogrenciResmi}"
-               HeightRequest="150"
-               WidthRequest="150"
-               BackgroundColor="LightGray" 
-            Clip="True">
-
+        <!-- Profil Resmi -->
+        <Frame Padding="0" BorderColor="LightGray" CornerRadius="150" BackgroundColor="Transparent"
+               HeightRequest="150" WidthRequest="150"
+               VerticalOptions="Start" HorizontalOptions="Start" Margin="20">
+            <Image Aspect="AspectFill" Source="{Binding ogrenciResmi}" HeightRequest="150" WidthRequest="150"
+                   BackgroundColor="LightGray" Clip="True">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer/>
                 </Image.GestureRecognizers>
             </Image>
         </Frame>
-        
-        
+
+        <!-- İstatistik Kartları -->
         <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="250" HeightRequest="250" Margin="500,50" BackgroundColor="#0F3D3E"/>
-        <Frame VerticalOptions="Start" HorizontalOptions="End" WidthRequest="250" HeightRequest="250" Margin="500,50" Background="#28C7C7"/>
+        <Frame VerticalOptions="Start" HorizontalOptions="End" WidthRequest="250" HeightRequest="250" Margin="500,50" BackgroundColor="#28C7C7"/>
         <Frame VerticalOptions="End" HorizontalOptions="End" WidthRequest="250" HeightRequest="250" Margin="500,100" BackgroundColor="#E0E0E0"/>
         <Frame VerticalOptions="End" HorizontalOptions="Start" WidthRequest="250" HeightRequest="250" Margin="500,100" BackgroundColor="#C6FF00"/>
 
-        <Label Text="Sisteme Kayitli Öğrenci Sayisi" VerticalOptions="Start" HorizontalOptions="Start" Margin="525,60" FontAttributes="Italic"/>
-        <Label x:Name="KayitliOgrenciSayisi" VerticalOptions="Start" HorizontalOptions="Start" TextColor="Black" Text="" Margin="525,100" />
+        <!-- Sayı Etiketleri ve Başlıklar -->
+        <Label Text="Sisteme Kayıtlı Öğrenci Sayısı" Margin="525,60" FontAttributes="Italic"
+               VerticalOptions="Start" HorizontalOptions="Start"/>
+        <Label x:Name="KayitliOgrenciSayisi" Margin="525,100" TextColor="Black" Text=""
+               VerticalOptions="Start" HorizontalOptions="Start"/>
 
-        <Label Text="Sisteme Kayitli Proje Sayisi" VerticalOptions="Start" HorizontalOptions="End" Margin="540,60" FontAttributes="Italic"/>
-        <Label x:Name="KayitliProjeSayisi" VerticalOptions="Start" HorizontalOptions="End" TextColor="Black" Text="" Margin="525,100" />
+        <Label Text="Sisteme Kayıtlı Proje Sayısı" Margin="540,60" FontAttributes="Italic"
+               VerticalOptions="Start" HorizontalOptions="End"/>
+        <Label x:Name="KayitliProjeSayisi" Margin="525,100" TextColor="Black" Text=""
+               VerticalOptions="Start" HorizontalOptions="End"/>
 
+        <Label Text="Sisteme Kayıtlı Destek Sayısı" Margin="525,320" FontAttributes="Italic" TextColor="DarkGreen"
+               VerticalOptions="End" HorizontalOptions="Start"/>
+        <Label x:Name="KayitliDestekSayisi" Margin="525,280" TextColor="Black" Text=""
+               VerticalOptions="End" HorizontalOptions="Start"/>
 
-        <Label Text="Sisteme Kayitli Destek Sayisi" VerticalOptions="End" HorizontalOptions="Start" Margin="525,320" FontAttributes="Italic" TextColor="DarkGreen"/>
-        <Label x:Name="KayitliDestekSayisi" VerticalOptions="End" HorizontalOptions="Start" TextColor="Black" Text="" Margin="525,280" />
-
-        <Label Text="Sisteme Kayitli Yetkili Sayisi" VerticalOptions="End" HorizontalOptions="End" Margin="539,320" FontAttributes="Italic" TextColor="DarkBlue"/>
-        <Label x:Name="KayitliYetkiliSayisi" VerticalOptions="End" HorizontalOptions="End" TextColor="Black" Text="" Margin="525,280" />
+        <Label Text="Sisteme Kayıtlı Yetkili Sayısı" Margin="539,320" FontAttributes="Italic" TextColor="DarkBlue"
+               VerticalOptions="End" HorizontalOptions="End"/>
+        <Label x:Name="KayitliYetkiliSayisi" Margin="525,280" TextColor="Black" Text=""
+               VerticalOptions="End" HorizontalOptions="End"/>
 
     </Grid>
 </ContentPage>

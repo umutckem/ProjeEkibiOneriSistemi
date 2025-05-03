@@ -4,26 +4,36 @@
              x:Class="ProjeEkibiOneriSistemi.View.AdminProjeErkani"
              Loaded="ContentPage_Loaded">
 
-    <Grid>
+    <Grid RowDefinitions="Auto,*,Auto">
 
-        <Image Source="adminekrani.png" Aspect="AspectFill" />
-        
-        <StackLayout Margin="20" VerticalOptions="Fill">
+        <!-- Arka Plan Görseli -->
+        <Image Source="adminekrani.png"
+               Aspect="AspectFill"
+               Opacity="0.3"
+               IsVisible="True"
+               Grid.RowSpan="3"/>
 
-            
+        <!-- Üst Sabit Arama Alanı -->
+        <StackLayout Grid.Row="0"
+                     Padding="20"
+                     BackgroundColor="#FFFFFFCC"
+                     >
+
             <SearchBar x:Name="SearchBarProje" 
                        Placeholder="Öğrenci ara..." 
                        TextChanged="SearchBarProje_TextChanged"
                        BackgroundColor="White" 
                        TextColor="Black"
                        PlaceholderColor="Gray"/>
+        </StackLayout>
 
-            
-            <CollectionView x:Name="CollectionViewProje" 
-                            SelectionMode="Single" 
+        <!-- Orta Kaydırılabilir Liste -->
+        <ScrollView Grid.Row="1" Padding="10">
+            <CollectionView x:Name="CollectionViewProje"
+                            SelectionMode="Single"
                             SelectionChanged="CollectionViewProje_SelectionChanged"
-                            BackgroundColor="Transparent"
-                            Margin="0,10,0,0">
+                            BackgroundColor="Transparent">
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="GreenYellow" CornerRadius="10" Padding="15" Margin="10" BackgroundColor="Black">
@@ -53,37 +63,39 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </StackLayout>
+        </ScrollView>
 
-        
-        <StackLayout Orientation="Horizontal"
-                     HorizontalOptions="Center"
-                     VerticalOptions="End"
-                     Margin="20"
-                     Spacing="20">
-            <Button Text="Ana Menü" 
-                    WidthRequest="250"
-                    BackgroundColor="Green" 
-                    Opacity="0.9" 
-                    FontAttributes="Bold" 
-                    Clicked="Button_Clicked"/>
+        <!-- Alt Sabit Butonlar ve Sayı -->
+        <StackLayout Grid.Row="2"
+                     Padding="10"
+                     BackgroundColor="#FFFFFFCC"
+                     Orientation="Vertical"
+                     Spacing="5">
 
-            <Button Text="Proje Ekle" 
-                    WidthRequest="250"
-                    BackgroundColor="Yellow" 
-                    Opacity="0.9" 
-                    FontAttributes="Bold" />
-        </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         Spacing="20">
+                <Button Text="Ana Menü" 
+                        WidthRequest="150"
+                        BackgroundColor="Green" 
+                        FontAttributes="Bold" 
+                        Clicked="Button_Clicked"/>
 
-        
-        <StackLayout Orientation="Horizontal"
-                     HorizontalOptions="Start"
-                     VerticalOptions="End"
-                     Margin="20,0,0,20">
-            <Label Text="Kayıtlı Proje Sayısı:" TextColor="Yellow"/>
-            <Label x:Name="ogrenciProje" Text="" TextColor="White" Margin="10,0,0,0"/>
+                <Button Text="Proje Ekle" 
+                        WidthRequest="150"
+                        BackgroundColor="Yellow" 
+                        FontAttributes="Bold" 
+                        Clicked="Button_Clicked_1"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Start"
+                         Padding="10,0,0,0">
+                <Label Text="Kayıtlı Proje Sayısı:" TextColor="Black"/>
+                <Label x:Name="ogrenciProje" Text="" TextColor="Black" Margin="10,0,0,0"/>
+            </StackLayout>
+
         </StackLayout>
 
     </Grid>
-
 </ContentPage>

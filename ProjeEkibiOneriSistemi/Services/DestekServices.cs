@@ -13,7 +13,7 @@ namespace ProjeEkibiOneriSistemi.Services
     {
         public async Task ekleDestek(Destek destek)
         {
-            Uri uri = new Uri(UrlHelper.DestekUrl); // UrlHelper.DestekUrl tanımlı olmalı
+            Uri uri = new Uri(UrlHelper.DestekUrl); 
             string jsonContent = JsonSerializer.Serialize(destek, _serializerOptions);
             StringContent httpContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
