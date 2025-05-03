@@ -14,7 +14,7 @@
         <Label Text="*" Margin="170,170" TextColor="Wheat"/>
 
         <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,220" WidthRequest="160" Text="Öğrenciler" FontAttributes="Bold" BackgroundColor="AntiqueWhite" Clicked="Button_Clicked"/>
-        <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,280" WidthRequest="160" Text="Projeler" FontAttributes="Bold" BackgroundColor="AntiqueWhite"    />
+        <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,280" WidthRequest="160" Text="Projeler" FontAttributes="Bold" BackgroundColor="AntiqueWhite" Clicked="Button_Clicked_1"   />
         <Button VerticalOptions="Start" HorizontalOptions="Start" Margin="20,340" WidthRequest="160" Text="Yetki" FontAttributes="Bold" BackgroundColor="AntiqueWhite" />
         <Button VerticalOptions="End" HorizontalOptions="Start" Margin="20,290" WidthRequest="160" Text="Destek " FontAttributes="Bold" BackgroundColor="AntiqueWhite" />
         <Button x:Name="Cikis" VerticalOptions="End" HorizontalOptions="Start" Margin="20,40" WidthRequest="160" Text="Çıkış Yap " FontAttributes="Bold" BackgroundColor="AntiqueWhite" Clicked="Cikis_Clicked"/>

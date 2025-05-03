@@ -50,8 +50,8 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
-        <Button VerticalOptions="End" HorizontalOptions="End" WidthRequest="250" Text="Ana Menu" Margin="500,40" BackgroundColor="Green" Opacity="0.9" FontAttributes="Bold" Clicked="Button_Clicked"/>
-        <Button VerticalOptions="End" HorizontalOptions="Start" WidthRequest="250" Text="Ogrenci Ekle" Margin="500,40" BackgroundColor="Yellow" Opacity="0.9" FontAttributes="Bold" Clicked="Button_Clicked_1"/>
+        <Button VerticalOptions="End" HorizontalOptions="Start" WidthRequest="250" Text="Ana Menu" Margin="500,40" BackgroundColor="Green" Opacity="0.9" FontAttributes="Bold" Clicked="Button_Clicked"/>
+        <Button VerticalOptions="End" HorizontalOptions="End" WidthRequest="250" Text="Ogrenci Ekle" Margin="500,40" BackgroundColor="Yellow" Opacity="0.9" FontAttributes="Bold" Clicked="Button_Clicked_1"/>
 
         <Label VerticalOptions="End" HorizontalOptions="Start" Text="Kayıtlı Öğrenci Sayisi:" TextColor="Yellow"/>
         <Label VerticalOptions="End" HorizontalOptions="Start" Text="" x:Name="ogrenciSayisi" Margin="140,0"/>

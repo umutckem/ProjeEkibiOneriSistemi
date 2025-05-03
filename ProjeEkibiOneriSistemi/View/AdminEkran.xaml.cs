@@ -79,4 +79,18 @@ public partial class AdminEkran : ContentPage
         var projeSayisi = projeler.Count();
         KayitliProjeSayisi.Text = projeSayisi.ToString();
     }
+
+    private async void Button_Clicked_1(object sender, EventArgs e)
+    {
+        if(_ogrenci is not null)
+        {
+            var button = (Button)sender;
+            await button.ScaleTo(0.9, 100); // Küçültme efekti
+            await button.ScaleTo(1, 100); // Eski haline getirme
+
+            AdminProjeErkani adminProjeErkani = new AdminProjeErkani();
+            adminProjeErkani.setOgrenci(_ogrenci);
+            Application.Current.MainPage = new NavigationPage(adminProjeErkani);
+        }
+    }
 }

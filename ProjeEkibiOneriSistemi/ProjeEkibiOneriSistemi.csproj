@@ -84,6 +84,12 @@
 	  <MauiXaml Update="View\AdminOgrenciOlustur.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\AdminProjeErkani.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AdminProjeGuncelleme.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\AnaEkran.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
