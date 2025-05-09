@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProjeEkibiOneriSistemi.View.AdminProjeErkani"
+             x:Class="ProjeEkibiOneriSistemi.View.AdminProjeDuzenleme"
              BackgroundColor="#121212"
              Loaded="ContentPage_Loaded">
 
@@ -14,7 +14,7 @@
                IsVisible="True"
                Grid.RowSpan="3"/>
 
-        <!-- Üst Arama Alanı -->
+        <!-- Arama Alanı -->
         <Frame Grid.Row="0"
                Margin="10"
                Padding="0"
@@ -39,6 +39,7 @@
                             SelectionMode="Single"
                             SelectionChanged="CollectionViewProje_SelectionChanged"
                             BackgroundColor="Transparent">
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="#03DAC6" CornerRadius="15" Padding="15" Margin="10" BackgroundColor="#1E1E1E">
@@ -70,7 +71,7 @@
             </CollectionView>
         </ScrollView>
 
-        <!-- Alt Menü -->
+        <!-- Alt Panel -->
         <Frame Grid.Row="2"
                CornerRadius="20"
                Margin="10"
@@ -88,22 +89,6 @@
                             FontAttributes="Bold"
                             CornerRadius="10"
                             Clicked="Button_Clicked"/>
-
-                    <Button Text="Proje Ekle" 
-                            WidthRequest="150"
-                            BackgroundColor="#FFEB3B" 
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            CornerRadius="10"
-                            Clicked="Button_Clicked_1"/>
-
-                    <Button Text="Proje Düzenle" 
-                            WidthRequest="150"
-                            BackgroundColor="#FF7043" 
-                            TextColor="White"
-                            FontAttributes="Bold"
-                            CornerRadius="10"
-                            Clicked="Button_Clicked_2"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal"
@@ -117,4 +102,5 @@
         </Frame>
 
     </Grid>
+
 </ContentPage>

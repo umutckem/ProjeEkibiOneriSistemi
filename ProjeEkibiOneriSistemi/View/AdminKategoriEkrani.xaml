@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.AdminKategoriEkrani"
+             Loaded="ContentPage_Loaded">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Arka Plan Görseli -->
+        <Image Source="adminekrani.png"
+               Aspect="AspectFill"
+               Opacity="0.3"
+               IsVisible="True"
+               Grid.RowSpan="3"/>
+
+        <!-- Sabit Arama Kutusu (örnek: kategori veya test araması için) -->
+        <StackLayout Grid.Row="0"
+                     Padding="20"
+                     BackgroundColor="#FFFFFFCC">
+            <SearchBar x:Name="SearchBarTest" 
+                       Placeholder="kategori ara..." 
+                       BackgroundColor="White" 
+                       TextColor="Black"
+                       PlaceholderColor="Gray"
+                       TextChanged="SearchBarTest_TextChanged"/>
+        </StackLayout>
+
+        <!-- Kaydırılabilir Test Listesi -->
+        <ScrollView Grid.Row="1" Padding="10">
+            <CollectionView x:Name="CollectionViewTestler"
+                            SelectionMode="Single"
+                            SelectionChanged="CollectionViewTestler_SelectionChanged"
+                            BackgroundColor="Transparent">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="DodgerBlue" CornerRadius="10" Padding="15" Margin="10" BackgroundColor="Black">
+                            <Grid RowDefinitions="Auto, Auto,Auto" ColumnDefinitions="Auto, *" RowSpacing="10" ColumnSpacing="10">
+                                <Label Text="Id:" TextColor="DodgerBlue" FontFamily="Cambria" FontSize="16" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding Id}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="0" Grid.Column="1"/>
+                                
+                                <Label Text="Kategori:" TextColor="DodgerBlue" FontFamily="Cambria" FontSize="16" Grid.Row="1" Grid.Column="0"/>
+                                <Label Text="{Binding KategoriAdi}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="1" Grid.Column="1"/>
+
+                                <Label Text="Soru Sayısı:" TextColor="DodgerBlue" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="0"/>
+                                <Label Text="{Binding SoruSayisi}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="1"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <!-- Alt Menü -->
+        <StackLayout Grid.Row="2"
+                     Padding="10"
+                     BackgroundColor="#FFFFFFCC"
+                     Spacing="5">
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         Spacing="20">
+                <Button Text="Ana Menü"
+                        WidthRequest="150"
+                        BackgroundColor="Green"
+                        FontAttributes="Bold"
+                        Clicked="Button_Clicked"/>
+
+                <Button Text="Kategori Ekle"
+                        WidthRequest="150"
+                        BackgroundColor="Yellow"
+                        FontAttributes="Bold"
+                        Clicked="Button_TestEkle_Clicked"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Start"
+                         Padding="10,0,0,0">
+                <Label Text="Toplam Test Sayısı:" TextColor="Black"/>
+                <Label x:Name="testSayisi" Text="" TextColor="Black" Margin="10,0,0,0"/>
+            </StackLayout>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

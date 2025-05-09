@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.AdminGrupEkle"
+             BackgroundColor="Transparent">
+
+    <Grid RowDefinitions="*,Auto" Padding="20">
+
+        <!-- Arka Plan Görseli -->
+        <Image Source="adminekrani.png"
+               Aspect="AspectFill"
+               Opacity="0.3"
+               IsVisible="True"
+               Grid.RowSpan="2"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"/>
+
+        <!-- Form Alanı (Frame ile) -->
+        <Frame Grid.Row="0"
+               Margin="0"
+               Padding="30"
+               CornerRadius="20"
+               BackgroundColor="#FFFFFFCC"
+               HasShadow="True"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="FillAndExpand">
+
+            <StackLayout Spacing="20">
+
+                <Label Text="Grup No:" 
+                       TextColor="Black" 
+                       FontSize="20" 
+                       FontAttributes="Bold"
+                       FontFamily="Cambria" />
+
+                <Entry x:Name="grupNoEntry"
+                       Keyboard="Numeric"
+                       Placeholder="Grup numarası girin"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       PlaceholderColor="Gray"
+                       FontSize="16"
+                       FontFamily="Cambria" />
+
+                <Button Text="Grubu Ekle"
+                        BackgroundColor="Green"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontFamily="Cambria"
+                        CornerRadius="10"
+                        Clicked="GrubuEkle_Clicked"/>
+            </StackLayout>
+        </Frame>
+
+        <!-- Geri Dön Butonu -->
+        <StackLayout Grid.Row="1"
+                     Padding="10"
+                     BackgroundColor="#FFFFFFCC"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="EndAndExpand">
+            <Button Text="Ana Menüye Dön"
+                    BackgroundColor="#FF5722"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    WidthRequest="200"
+                    Clicked="GeriDon_Clicked"
+                    HorizontalOptions="Center"/>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

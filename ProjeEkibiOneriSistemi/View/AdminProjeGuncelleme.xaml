@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProjeEkibiOneriSistemi.View.AdminProjeGuncelleme">
+             x:Class="ProjeEkibiOneriSistemi.View.AdminProjeGuncelleme"
+             Loaded="ContentPage_Loaded"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <Grid>
+            <Image Source="adminekrani.png"
+                   Aspect="AspectFill"
+                   Opacity="0.1"
+                   IsVisible="True"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Grid.RowSpan="1" />
+
+            <StackLayout Padding="20" Spacing="15" VerticalOptions="Center">
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Proje Adı:" WidthRequest="120" VerticalTextAlignment="Center" TextColor="Black"/>
+                    <Entry x:Name="projeAd" TextColor="Black" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Açıklama:" WidthRequest="120" VerticalTextAlignment="Center" TextColor="Black"/>
+                    <Entry x:Name="projeAciklama" TextColor="Black" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Bölüm:" WidthRequest="120" VerticalTextAlignment="Center" TextColor="Black"/>
+                    <Entry x:Name="projeBolum" TextColor="Black" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Zorluk Seviyesi:" WidthRequest="120" VerticalTextAlignment="Center" TextColor="Black"/>
+                    <Entry x:Name="projeZorluk" Keyboard="Numeric" TextColor="Black" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Katılım Sayısı:" WidthRequest="120" VerticalTextAlignment="Center" TextColor="Black"/>
+                    <Entry x:Name="projeKatilim" Keyboard="Numeric" TextColor="Black" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Başlangıç Tarihi:" WidthRequest="120" VerticalTextAlignment="Center" TextColor="Black"/>
+                    <DatePicker x:Name="projeBaslangic" TextColor="Black" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Bitiş Tarihi:" WidthRequest="120" VerticalTextAlignment="Center" TextColor="Black"/>
+                    <DatePicker x:Name="projeBitis" TextColor="Black" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Aktif Mi:" WidthRequest="120" VerticalTextAlignment="Center" TextColor="Black"/>
+                    <Switch x:Name="projeAktifMi" />
+                </StackLayout>
+
+                <Button Text="Güncelle"
+                        BackgroundColor="#007aff"
+                        TextColor="White"
+                        CornerRadius="10"
+                        HeightRequest="45"
+                        Clicked="Button_Clicked_Guncelle" />
+
+                <Button Text="AnaMenu"
+                        BackgroundColor="AntiqueWhite"
+                        TextColor="Black"
+                        CornerRadius="10"
+                        HeightRequest="45"
+                        Clicked="Button_Clicked_Anamenu" />
+
+            </StackLayout>
+        </Grid>
+    </ScrollView>
 
 </ContentPage>

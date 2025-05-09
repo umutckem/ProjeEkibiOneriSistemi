@@ -63,6 +63,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\AdminKategoriEkrani.xaml.cs">
+	    <DependentUpon>AdminKategoriEkrani.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\KategoriEkrani.xaml.cs">
 	    <DependentUpon>KategoriEkrani.xaml</DependentUpon>
 	  </Compile>
@@ -70,6 +73,18 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="View\AdminEkran.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AdminGrupBilgisi.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AdminGrupEkle.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AdminGrupOgrenciEkle.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AdminKategoriEkle.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\AdminOgrenciDuzenlemeEkrani.xaml">
@@ -84,13 +99,28 @@
 	  <MauiXaml Update="View\AdminOgrenciOlustur.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\AdminProjeDuzenleme.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\AdminProjeErkani.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\AdminProjeGuncelleme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\AdminProjeOgrenci.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\AdminProjeOlustur.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AdminKategoriEkrani.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AdminTestEkrani.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AdminTestGuncelle.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\AnaEkran.xaml">

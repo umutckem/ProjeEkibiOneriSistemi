@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.AdminTestEkrani"
+             BackgroundColor="White"
+             Loaded="ContentPage_Loaded">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Başlık -->
+        <Label Text="Soru Listesi"
+               Grid.Row="0"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="0,20,0,10"
+               TextColor="Black" />
+
+        <!-- Soru Listesi -->
+        <ScrollView Grid.Row="1" Padding="15">
+            <CollectionView x:Name="SoruCollection"
+                            SelectionMode="Single"
+                            BackgroundColor="Transparent">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="DodgerBlue"
+                               BackgroundColor="#f5f5f5"
+                               CornerRadius="10"
+                               Padding="10"
+                               Margin="5">
+                            <StackLayout Spacing="5">
+                                <Label Text="{Binding Metin}"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       FontSize="16" />
+
+                                <Label Text="Cevap:"
+                                       TextColor="Gray"
+                                       FontSize="14" />
+
+                                <Label Text="{Binding Cevap}"
+                                       TextColor="DarkGreen"
+                                       FontSize="14" />
+
+                                <Label Text="Önem Derecesi:"
+                                       TextColor="Gray"
+                                       FontSize="14" />
+
+                                <Label Text="{Binding OnemDerecesi}"
+                                       TextColor="DarkRed"
+                                       FontSize="14" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+        <!-- Butonlar -->
+        <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" Padding="10" Spacing="20">
+            <Button Text="Ana Menü"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    Clicked="AnaMenu_Clicked" />
+
+            <Button Text="Soru Ekle"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="White"
+                    Clicked="SoruEkle_Clicked" />
+
+            <Button Text="Kategori Sil"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    Clicked="KategoriSil_Clicked" />
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

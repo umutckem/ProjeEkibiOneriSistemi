@@ -10,6 +10,8 @@ public partial class AdminEkran : ContentPage
     private readonly IRolServices _rolServices;
     private readonly IProjeServices _projeServices;
     private readonly IDestekServices _destekServices;
+    private readonly ISoruServices _soruServices;
+    private readonly IKategoriServices _kategori;
     Ogrenci _ogrenci;
 	public void setAdmin(Ogrenci ogrenci)
 	{
@@ -24,12 +26,16 @@ public partial class AdminEkran : ContentPage
         _rolServices = new RolServices();
         _projeServices = new ProjeServices();
         _destekServices = new DestekServices();
+        _soruServices = new SoruServices();
+        _kategori = new KategoriServices();
     }
     private async void ContentPage_Loaded(object sender, EventArgs e)
     {
         await getOgrenciSayisi();
         await getDestekSayisi();
         await getProjeSayisi();
+        await getSoruSayisi();
+        await getKategoriSayisi();
         BindingContext = null;
         BindingContext = _ogrenci;
         
@@ -80,6 +86,21 @@ public partial class AdminEkran : ContentPage
         KayitliProjeSayisi.Text = projeSayisi.ToString();
     }
 
+    private async Task getSoruSayisi()
+    {
+        var sorular = await _soruServices.GetSorus();
+        var soruSayisi = sorular.Count;
+        KayitliSoruSayisi.Text = soruSayisi.ToString();
+    }
+
+    private async Task getKategoriSayisi()
+    {
+        var Kategoriler = await _kategori.GetKategoris();
+        var kategoriSayisi = Kategoriler.Count;
+        KayitliKategoriSayisi.Text = kategoriSayisi.ToString();
+    }
+
+
     private async void Button_Clicked_1(object sender, EventArgs e)
     {
         if(_ogrenci is not null)
@@ -92,5 +113,16 @@ public partial class AdminEkran : ContentPage
             adminProjeErkani.setOgrenci(_ogrenci);
             Application.Current.MainPage = new NavigationPage(adminProjeErkani);
         }
+    }
+
+    private async void Button_Clicked_2(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+
+        AdminKategoriEkrani adminTestlerEkrani = new AdminKategoriEkrani();
+        adminTestlerEkrani.setOgrenci(_ogrenci);
+        Application.Current.MainPage = new NavigationPage(adminTestlerEkrani);
     }
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.AdminProjeOgrenci"
+             >
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Arka Plan Görseli -->
+        <Image Source="adminekrani.png"
+               Aspect="AspectFill"
+               Opacity="0.3"
+               IsVisible="True"
+               Grid.RowSpan="3"/>
+
+        <!-- Başlık -->
+        <Label Text="Proje Grupları" FontSize="22" FontAttributes="Bold"
+               HorizontalOptions="Center" Margin="0,20,0,10" Grid.Row="0" />
+
+        <!-- Grup Listesi -->
+        <ScrollView Grid.Row="1" Padding="10">
+            <CollectionView x:Name="GrupListView"
+                SelectionMode="Single"
+                SelectionChanged="GrupListView_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="DarkGreen" BackgroundColor="#000000AA" CornerRadius="15" Padding="10" Margin="10">
+                            <StackLayout>
+                                <Label Text="{Binding GrupNo, StringFormat='Grup {0}'}"
+                           FontSize="20" FontAttributes="Bold" TextColor="Lime" />
+                                <Label Text="{Binding OgrenciSayisi, StringFormat='Bu grupta {0} öğrenci var'}"
+                           FontSize="14" TextColor="White" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </ScrollView>
+
+        <!-- Butonlar -->
+        <StackLayout Grid.Row="2"
+                     Orientation="Horizontal"
+                     Padding="10"
+                     HorizontalOptions="Center"
+                     Spacing="20">
+            <Button Text="Ana Menü"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    WidthRequest="120"
+                    Clicked="AnaMenuButton_Clicked"/>
+            <Button Text="Grup Ekle"
+                    BackgroundColor="Orange"
+                    TextColor="White"
+                    WidthRequest="120"
+                    Clicked="GrupEkleButton_Clicked"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

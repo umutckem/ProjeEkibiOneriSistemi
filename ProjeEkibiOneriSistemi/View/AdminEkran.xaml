@@ -27,7 +27,7 @@
                 HorizontalOptions="Start" VerticalOptions="Start" Clicked="Button_Clicked_1"/>
 
         <Button Margin="20,340" WidthRequest="160" Text="Testler" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
-                HorizontalOptions="Start" VerticalOptions="Start"/>
+                HorizontalOptions="Start" VerticalOptions="Start" Clicked="Button_Clicked_2"/>
 
         <Button Margin="20,290" WidthRequest="160" Text="Destek" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
                 HorizontalOptions="Start" VerticalOptions="End"/>
@@ -63,6 +63,7 @@
         <Frame VerticalOptions="Start" HorizontalOptions="End" WidthRequest="250" HeightRequest="250" Margin="500,50" BackgroundColor="#28C7C7"/>
         <Frame VerticalOptions="End" HorizontalOptions="End" WidthRequest="250" HeightRequest="250" Margin="500,100" BackgroundColor="#E0E0E0"/>
         <Frame VerticalOptions="End" HorizontalOptions="Start" WidthRequest="250" HeightRequest="250" Margin="500,100" BackgroundColor="#C6FF00"/>
+        <Frame VerticalOptions="Start" HorizontalOptions="End" WidthRequest="250" HeightRequest="250" Margin="220,50" BackgroundColor="#C6FF00"/>
 
         <!-- Sayı Etiketleri ve Başlıklar -->
         <Label Text="Sisteme Kayıtlı Öğrenci Sayısı" Margin="525,60" FontAttributes="Italic"
@@ -80,10 +81,15 @@
         <Label x:Name="KayitliDestekSayisi" Margin="525,280" TextColor="Black" Text=""
                VerticalOptions="End" HorizontalOptions="Start"/>
 
-        <Label Text="Sisteme Kayıtlı Yetkili Sayısı" Margin="539,320" FontAttributes="Italic" TextColor="DarkBlue"
+        <Label Text="Sisteme Kayıtlı Soru Sayısı" Margin="539,320" FontAttributes="Italic" TextColor="DarkBlue"
                VerticalOptions="End" HorizontalOptions="End"/>
-        <Label x:Name="KayitliYetkiliSayisi" Margin="525,280" TextColor="Black" Text=""
+        <Label x:Name="KayitliSoruSayisi" Margin="525,280" TextColor="Black" Text=""
                VerticalOptions="End" HorizontalOptions="End"/>
+
+        <Label Text="Sisteme Kayıtlı Kategori Sayısı" Margin="250,60" FontAttributes="Italic" TextColor="DarkBlue"
+               VerticalOptions="Start" HorizontalOptions="End"/>
+        <Label x:Name="KayitliKategoriSayisi" Margin="250,100" TextColor="Black" Text=""
+               VerticalOptions="Start" HorizontalOptions="End"/>
 
     </Grid>
 </ContentPage>

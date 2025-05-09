@@ -53,18 +53,13 @@ public partial class AdminProjeErkani : ContentPage
         {
             if (secilenProje is not null)
             {
-                bool secim = await DisplayAlert("Proje Seçildi", $"{secilenProje.Ad} projesini güncellemek ister misiniz?", "Evet", "Hayýr");
-                if (secim == true)
+                bool secim = await DisplayAlert("","Secilen Projeyi Görüntülemek Ýster Misiniz ?","Evet","Hayir");
+                if(secim == true)
                 {
-                    AdminProjeGuncelleme adminProjeGuncelleme = new AdminProjeGuncelleme();
-                    adminProjeGuncelleme.SetOgrenci(_ogrenci);
-                    adminProjeGuncelleme.SetProje(secilenProje);
-                    Application.Current.MainPage = new NavigationPage(adminProjeGuncelleme);
-
-                }
-                else
-                {
-                    CollectionViewProje.SelectedItem = null; // Seçimi kaldýr
+                    AdminProjeOgrenci adminProjeOgrenci = new AdminProjeOgrenci();
+                    adminProjeOgrenci.setOgrenci(_ogrenci);
+                    adminProjeOgrenci.setProje(secilenProje);
+                    Application.Current.MainPage = new NavigationPage(adminProjeOgrenci);
                 }
             }
         }
@@ -107,5 +102,16 @@ public partial class AdminProjeErkani : ContentPage
         AdminProjeOlustur adminProjeOlustur = new AdminProjeOlustur();
         adminProjeOlustur.setOgrenci(_ogrenci);
         Application.Current.MainPage = new NavigationPage(adminProjeOlustur);
+    }
+
+    private async void Button_Clicked_2(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100);   // Eski haline getirme
+
+        AdminProjeDuzenleme adminProjeDuzenleme = new AdminProjeDuzenleme();
+        adminProjeDuzenleme.setOgrenci(_ogrenci);
+        Application.Current.MainPage = new NavigationPage(adminProjeDuzenleme);
     }
 }

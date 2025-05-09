@@ -58,7 +58,7 @@ public partial class AdminOgrenciEkrani : ContentPage
         var secilenOgrenci = e.CurrentSelection.FirstOrDefault() as Ogrenci;
         if (secilenOgrenci == null) return;
 
-        bool secim = await DisplayAlert("Seçilen Öðrenci", $"{secilenOgrenci.Ad} {secilenOgrenci.Soyad}", "Evet","Hayýr");
+        bool secim = await DisplayAlert("Seçilen Öðrenci", $"{secilenOgrenci.Ad} {secilenOgrenci.Soyad} Güncellemek Ýster Misiniz?", "Evet","Hayýr");
         if(secim == true) { 
         AdminOgrenciDuzenlemeEkrani adminOgrenciDuzenlemeEkrani = new AdminOgrenciDuzenlemeEkrani();
         adminOgrenciDuzenlemeEkrani.setOgrenci(_ogrenci);
