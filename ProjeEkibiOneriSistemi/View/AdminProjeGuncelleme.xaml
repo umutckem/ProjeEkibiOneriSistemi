@@ -70,6 +70,14 @@
                         CornerRadius="10"
                         HeightRequest="45"
                         Clicked="Button_Clicked_Anamenu" />
+                
+                <Button Text="Sil"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        CornerRadius="10"
+                        HeightRequest="45"
+                        Clicked="Button_Clicked_Sil" />
+
 
             </StackLayout>
         </Grid>

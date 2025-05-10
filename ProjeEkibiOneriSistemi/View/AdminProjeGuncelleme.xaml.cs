@@ -92,6 +92,38 @@ public partial class AdminProjeGuncelleme : ContentPage
         Application.Current.MainPage = new NavigationPage(adminEkran);
     }
 
+    private async void Button_Clicked_Sil(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100); // Küçültme efekti
+        await button.ScaleTo(1, 100); // Eski haline getirme
+
+        if (_proje == null) return;
+
+        // Kullanýcýya silme iþlemi için onay soralým
+        bool onay = await DisplayAlert("Silme Onayý", $"{_proje.Ad} projesini silmek istediðinize emin misiniz?", "Evet", "Hayýr");
+
+        if (onay)
+        {
+            try
+            {
+                // Proje silme iþlemi
+                await _projeServices.projeSil(_proje.Id);
+                await DisplayAlert("Baþarýlý", "Proje baþarýyla silindi.", "Tamam");
+
+                // Silme iþleminden sonra ana ekraný yeniden yükleyelim
+                AdminEkran adminEkran = new AdminEkran();
+                adminEkran.setAdmin(_ogrenci);
+                Application.Current.MainPage = new NavigationPage(adminEkran);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Hata", $"Silme sýrasýnda bir hata oluþtu: {ex.Message}", "Tamam");
+            }
+        }
+    }
+
+
     private void ContentPage_Loaded(object sender, EventArgs e)
     {
         // Sayfa yüklendiðinde yapýlacak iþlemler

@@ -68,8 +68,10 @@ namespace ProjeEkibiOneriSistemi.View
             await button.ScaleTo(0.9, 100); // Küçültme efekti
             await button.ScaleTo(1, 100); // Eski haline getirme
 
-            await DisplayAlert("Bilgi", "Öðrenci ekleme iþlemi burada yapýlacak.", "Tamam");
-            // Gruba öðrenci ekleme sayfasýna yönlendirme yapýlabilir
+            // Öðrenci ekleme sayfasýna yönlendirme
+            AdminGrupOgrenciEkle adminGrupOgrenciEkle = new AdminGrupOgrenciEkle();
+            adminGrupOgrenciEkle.setGrup(_Grup); // Grup bilgisi
+            await Navigation.PushAsync(adminGrupOgrenciEkle); // Sayfaya yönlendirme
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -98,8 +100,7 @@ namespace ProjeEkibiOneriSistemi.View
             {
                 await _grupServices.silGrup(_Grup.Id);
                 await DisplayAlert("Baþarýlý", $"Grup {_Grup.GrupNo} baþarýyla silindi.", "Tamam");
-                // Grubu sildikten sonra, sayfayý veya listeyi güncelleyebilirsiniz.
-                // Örneðin, admin ekranýna geri yönlendirme yapýlabilir.
+
                 AdminEkran adminEkran = new AdminEkran();
                 adminEkran.setAdmin(_Ogrenci);
                 Application.Current.MainPage = new NavigationPage(adminEkran);

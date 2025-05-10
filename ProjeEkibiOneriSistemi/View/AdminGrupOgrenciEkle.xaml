@@ -1,12 +1,114 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjeEkibiOneriSistemi.View.AdminGrupOgrenciEkle"
-             Title="AdminGrupOgrenciEkle">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             BackgroundColor="#F5F9FA"
+             Title="Grup Öğrenci Ekleme">
+
+    <ContentPage.Resources>
+        <DataTemplate x:Key="OgrenciListItemTemplate">
+            <ViewCell>
+                <Frame CornerRadius="12" 
+                       Margin="10,5"
+                       Padding="0"
+                       BackgroundColor="White"
+                       BorderColor="#E0E0E0"
+                       HasShadow="True">
+                    <Grid ColumnDefinitions="*,Auto" 
+                          RowDefinitions="Auto,Auto"
+                          Padding="15"
+                          RowSpacing="5"
+                          ColumnSpacing="10">
+
+                        <!-- Name and Surname -->
+                        <Label Grid.Column="0" Grid.Row="0"
+                               Text="{Binding Ad}"
+                               FontSize="16"
+                               TextColor="#2D3A3D"
+                               FontAttributes="Bold"/>
+
+                        <Label Grid.Column="0" Grid.Row="1"
+                               Text="{Binding Soyad}"
+                               FontSize="14"
+                               TextColor="#607D8B"/>
+
+                        <!-- Student Number and Class -->
+                        <StackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+                                     HorizontalOptions="End"
+                                     VerticalOptions="Center"
+                                     Spacing="5">
+
+                            <Label Text="{Binding ogrenciNo}"
+                                   FontSize="14"
+                                   TextColor="#78909C"
+                                   HorizontalOptions="End"/>
+
+                            <Frame CornerRadius="8"
+                                   Padding="6,2"
+                                   BackgroundColor="#E3F2FD"
+                                   BorderColor="#BBDEFB"
+                                   HorizontalOptions="End">
+                                <Label Text="{Binding Sinif}"
+                                       FontSize="12"
+                                       TextColor="#1976D2"
+                                       FontAttributes="Bold"/>
+                            </Frame>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="10">
+
+        <!-- Page Header -->
+        <Frame Grid.Row="0"
+               CornerRadius="14"
+               BackgroundColor="#2D3A3D"
+               Padding="20,15"
+               Margin="10"
+               HasShadow="True">
+            <Label Text="Gruba Katılmamış Öğrenciler"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="White"/>
+        </Frame>
+
+        <!-- Student List -->
+        <RefreshView Grid.Row="1"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshCommand}">
+            <ListView x:Name="OgrenciListView"
+                      ItemTapped="OgrenciListView_ItemTapped"
+                      SelectionMode="None"
+                      HasUnevenRows="True"
+                      BackgroundColor="Transparent"
+                      ItemTemplate="{StaticResource OgrenciListItemTemplate}"
+                      SeparatorVisibility="None"
+                      CachingStrategy="RecycleElement">
+                <ListView.Footer>
+                    <BoxView HeightRequest="10" Color="Transparent"/>
+                </ListView.Footer>
+            </ListView>
+        </RefreshView>
+
+        <!-- Back Button -->
+        <Frame Grid.Row="2"
+               CornerRadius="0"
+               BackgroundColor="Transparent"
+               BorderColor="Transparent"
+               Padding="20,10"
+               HasShadow="False">
+            <Button Text="Geri Dön"
+                    BackgroundColor="#2D3A3D"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="12"
+                    HeightRequest="50"
+                    FontSize="16"
+                    Clicked="GeriDon_Clicked"
+                    HorizontalOptions="Fill"/>
+        </Frame>
+    </Grid>
 </ContentPage>
