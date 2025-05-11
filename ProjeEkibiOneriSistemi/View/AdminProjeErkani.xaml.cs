@@ -59,7 +59,7 @@ public partial class AdminProjeErkani : ContentPage
                     AdminProjeOgrenci adminProjeOgrenci = new AdminProjeOgrenci();
                     adminProjeOgrenci.setOgrenci(_ogrenci);
                     adminProjeOgrenci.setProje(secilenProje);
-                    Application.Current.MainPage = new NavigationPage(adminProjeOgrenci);
+                    await Navigation.PushAsync(adminProjeOgrenci);
                 }
             }
         }
@@ -76,39 +76,31 @@ public partial class AdminProjeErkani : ContentPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100);   // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100);   
 
         AdminEkran adminEkran = new AdminEkran();
         adminEkran.setAdmin(_ogrenci);
         Application.Current.MainPage = new NavigationPage(adminEkran);
     }
 
-    private async void ProjeEkleButton_Clicked(object sender, EventArgs e)
-    {
-        var button = (Button)sender;
-        await button.ScaleTo(0.9, 100);
-        await button.ScaleTo(1, 100);
-
-        // Proje ekleme sayfasýna yönlendirme
-    }
 
     private async void Button_Clicked_1(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100);   // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100);   
 
         AdminProjeOlustur adminProjeOlustur = new AdminProjeOlustur();
         adminProjeOlustur.setOgrenci(_ogrenci);
-        Application.Current.MainPage = new NavigationPage(adminProjeOlustur);
+        await Navigation.PushAsync(adminProjeOlustur);
     }
 
     private async void Button_Clicked_2(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100);   // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100);   
 
         AdminProjeDuzenleme adminProjeDuzenleme = new AdminProjeDuzenleme();
         adminProjeDuzenleme.setOgrenci(_ogrenci);

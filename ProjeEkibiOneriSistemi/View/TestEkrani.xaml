@@ -5,7 +5,7 @@
 
     <StackLayout Padding="20">
 
-        <!-- Soru Başlığı -->
+       
         <Label x:Name="lblSoruMetni"
                Text="Soru Yükleniyor..."
                FontSize="20"
@@ -13,7 +13,7 @@
                HorizontalOptions="Center"
                Margin="10"/>
 
-        <!-- Seçim Butonları -->
+        
         <StackLayout x:Name="RadioGroup" Padding="10">
             <RadioButton Content="Hiç Bilmiyorum" Value="1" GroupName="cevapGroup" CheckedChanged="RadioButton_CheckedChanged"/>
             <RadioButton Content="Az Biliyorum" Value="3" GroupName="cevapGroup" CheckedChanged="RadioButton_CheckedChanged"/>
@@ -22,7 +22,7 @@
             <RadioButton Content="Çok İyi Biliyorum" Value="10" GroupName="cevapGroup" CheckedChanged="RadioButton_CheckedChanged"/>
         </StackLayout>
 
-        <!-- Sonraki Soru Butonu -->
+      
         <Button Text="Sonraki Soru"
                 Clicked="BtnSonrakiSoru_Clicked"
                 BackgroundColor="DarkSlateGray"

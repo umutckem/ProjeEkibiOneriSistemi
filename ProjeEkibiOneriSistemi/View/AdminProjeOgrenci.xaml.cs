@@ -34,7 +34,7 @@ public partial class AdminProjeOgrenci : ContentPage
         {
             _tumGruplar = await _grupServices.getGrups();
 
-            // Ayný grup numarasýna sahip ilk grup nesnesini alýyoruz
+            
             var projeGruplari = _tumGruplar
                 .Where(g => g.ProjeId == _proje.Id)
                 .GroupBy(g => g.GrupNo)
@@ -58,8 +58,9 @@ public partial class AdminProjeOgrenci : ContentPage
             AdminGrupBilgisi adminGrupBilgisi = new AdminGrupBilgisi();
             adminGrupBilgisi.setGrup(secilenGrup);
             adminGrupBilgisi.setOgrenci(_Ogrenci);
-            adminGrupBilgisi.setTumGruplar(_tumGruplar); // Tüm gruplarý da gönderiyoruz
-            Application.Current.MainPage = new NavigationPage(adminGrupBilgisi);
+            adminGrupBilgisi.setProje(_proje);
+            adminGrupBilgisi.setTumGruplar(_tumGruplar); 
+            await Navigation.PushAsync(adminGrupBilgisi);   
         }
     }
 
@@ -79,13 +80,14 @@ public partial class AdminProjeOgrenci : ContentPage
         var button = (Button)sender;
         await button.ScaleTo(0.9, 100);
         await button.ScaleTo(1, 100);
+
         AdminGrupEkle adminGrupEkle = new AdminGrupEkle();
         adminGrupEkle.setProje(_proje);
         adminGrupEkle.setOgrenci(_Ogrenci);
-        Application.Current.MainPage = new NavigationPage(adminGrupEkle);
+        await Navigation.PushAsync(adminGrupEkle);
     }
 
-    // XAML tarafýnda Binding yapabilmek için bu fonksiyon yardýmcý olabilir
+    
     public int GetGrupOgrenciSayisi(int grupNo)
     {
         return _tumGruplar

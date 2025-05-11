@@ -2,94 +2,118 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjeEkibiOneriSistemi.View.AdminEkran"
-             Loaded="ContentPage_Loaded">
+             Loaded="ContentPage_Loaded"
+             Title="Admin Paneli">
 
-    <Grid>
+    <Grid ColumnDefinitions="220,*" RowDefinitions="80,*">
 
-        <!-- Arka Plan Görseli -->
-        <Image Source="adminekrani.png" HeightRequest="1200"/>
+        
+        <Frame Grid.Column="0" Grid.RowSpan="2" BackgroundColor="#2E4053" CornerRadius="0" HasShadow="True">
+            <StackLayout Spacing="15" Padding="10,40,10,20">
+                
+                <Frame CornerRadius="100" HeightRequest="100" WidthRequest="100" 
+                       HorizontalOptions="Center" Padding="0" HasShadow="True">
+                    <Image Source="{Binding ogrenciResmi}" Aspect="AspectFill" 
+                           HeightRequest="100" WidthRequest="100"/>
+                </Frame>
 
-        <!-- Sol Sidebar Arka Planı -->
-        <Frame HeightRequest="1000" WidthRequest="200" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="SeaGreen" Opacity="0.2"/>
-        <Frame HeightRequest="1.5" WidthRequest="200" HorizontalOptions="Start" VerticalOptions="Start" Margin="0,200" BackgroundColor="Wheat" BorderColor="Wheat"/>
+                <Label Text="Admin Paneli" FontSize="18" TextColor="White" 
+                       HorizontalOptions="Center" FontAttributes="Bold"/>
 
-        <!-- Köşe Yıldızları -->
-        <Label Text="*" Margin="10,20" TextColor="Wheat"/>
-        <Label Text="*" Margin="10,170" TextColor="Wheat"/>
-        <Label Text="*" Margin="170,20" TextColor="Wheat"/>
-        <Label Text="*" Margin="170,170" TextColor="Wheat"/>
+                <Label Text="{Binding Bolum}" FontSize="14" TextColor="#AED6F1" 
+                       HorizontalOptions="Center" FontAttributes="Italic"/>
 
-        <!-- Menü Butonları -->
-        <Button Margin="20,220" WidthRequest="160" Text="Öğrenciler" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
-                HorizontalOptions="Start" VerticalOptions="Start" Clicked="Button_Clicked"/>
+                <BoxView HeightRequest="1" Color="#566573" Margin="0,10"/>
 
-        <Button Margin="20,280" WidthRequest="160" Text="Projeler" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
-                HorizontalOptions="Start" VerticalOptions="Start" Clicked="Button_Clicked_1"/>
+                
+                <Button Text="Öğrenciler" Clicked="Button_Clicked" 
+                        BackgroundColor="#3498DB" TextColor="White" 
+                        CornerRadius="10" FontAttributes="Bold" HeightRequest="45"/>
 
-        <Button Margin="20,340" WidthRequest="160" Text="Testler" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
-                HorizontalOptions="Start" VerticalOptions="Start" Clicked="Button_Clicked_2"/>
+                <Button Text="Projeler" Clicked="Button_Clicked_1" 
+                        BackgroundColor="#3498DB" TextColor="White" 
+                        CornerRadius="10" FontAttributes="Bold" HeightRequest="45"/>
 
-        <Button Margin="20,290" WidthRequest="160" Text="Destek" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
-                HorizontalOptions="Start" VerticalOptions="End"/>
+                <Button Text="Testler" Clicked="Button_Clicked_2" 
+                        BackgroundColor="#3498DB" TextColor="White" 
+                        CornerRadius="10" FontAttributes="Bold" HeightRequest="45"/>
 
-        <Button x:Name="Cikis" Margin="20,40" WidthRequest="160" Text="Çıkış Yap" FontAttributes="Bold" BackgroundColor="AntiqueWhite"
-                HorizontalOptions="Start" VerticalOptions="End" Clicked="Cikis_Clicked"/>
+                <Button Text="Destek" 
+                        BackgroundColor="#3498DB" TextColor="White" 
+                        CornerRadius="10" FontAttributes="Bold" HeightRequest="45"/>
 
-        <!-- Sidebar Görsel Çerçeveler (Boş Frame'ler) -->
-        <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="200" Margin="0"/>
-        <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="200" Margin="0,200"/>
-        <Frame VerticalOptions="End" HorizontalOptions="Start" WidthRequest="200" Margin="0,260"/>
+                <BoxView HeightRequest="1" Color="#566573" Margin="0,10"/>
 
-        <!-- Kullanıcı Bölüm ve Başlık -->
-        <Label Text="{Binding Bolum}" Margin="20,230" FontAttributes="Italic" TextColor="Yellow"
-               VerticalOptions="End" HorizontalOptions="Start"/>
-        <Label Text="Admin Ekranı" Margin="52,205" FontAttributes="Italic"
-               VerticalOptions="End" HorizontalOptions="Start"/>
-
-        <!-- Profil Resmi -->
-        <Frame Padding="0" BorderColor="LightGray" CornerRadius="150" BackgroundColor="Transparent"
-               HeightRequest="150" WidthRequest="150"
-               VerticalOptions="Start" HorizontalOptions="Start" Margin="20">
-            <Image Aspect="AspectFill" Source="{Binding ogrenciResmi}" HeightRequest="150" WidthRequest="150"
-                   BackgroundColor="LightGray" Clip="True">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer/>
-                </Image.GestureRecognizers>
-            </Image>
+                <Button x:Name="Cikis" Text="Çıkış Yap" Clicked="Cikis_Clicked" 
+                        BackgroundColor="#E74C3C" TextColor="White" 
+                        CornerRadius="10" FontAttributes="Bold" HeightRequest="45"/>
+            </StackLayout>
         </Frame>
 
-        <!-- İstatistik Kartları -->
-        <Frame VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="250" HeightRequest="250" Margin="500,50" BackgroundColor="#0F3D3E"/>
-        <Frame VerticalOptions="Start" HorizontalOptions="End" WidthRequest="250" HeightRequest="250" Margin="500,50" BackgroundColor="#28C7C7"/>
-        <Frame VerticalOptions="End" HorizontalOptions="End" WidthRequest="250" HeightRequest="250" Margin="500,100" BackgroundColor="#E0E0E0"/>
-        <Frame VerticalOptions="End" HorizontalOptions="Start" WidthRequest="250" HeightRequest="250" Margin="500,100" BackgroundColor="#C6FF00"/>
-        <Frame VerticalOptions="Start" HorizontalOptions="End" WidthRequest="250" HeightRequest="250" Margin="220,50" BackgroundColor="#C6FF00"/>
+       
+        <Frame Grid.Column="1" Grid.Row="0" BackgroundColor="#F8F9F9" 
+               CornerRadius="0" HasShadow="False" Padding="20">
+            <Label Text="Yönetim Paneli" FontSize="24" FontAttributes="Bold" 
+                   TextColor="#2C3E50" VerticalOptions="Center"/>
+        </Frame>
 
-        <!-- Sayı Etiketleri ve Başlıklar -->
-        <Label Text="Sisteme Kayıtlı Öğrenci Sayısı" Margin="525,60" FontAttributes="Italic"
-               VerticalOptions="Start" HorizontalOptions="Start"/>
-        <Label x:Name="KayitliOgrenciSayisi" Margin="525,100" TextColor="Black" Text=""
-               VerticalOptions="Start" HorizontalOptions="Start"/>
+        <Grid Grid.Column="1" Grid.Row="1" Padding="20" ColumnDefinitions="*,*,*" RowDefinitions="*,*" 
+              RowSpacing="20" ColumnSpacing="20">
 
-        <Label Text="Sisteme Kayıtlı Proje Sayısı" Margin="540,60" FontAttributes="Italic"
-               VerticalOptions="Start" HorizontalOptions="End"/>
-        <Label x:Name="KayitliProjeSayisi" Margin="525,100" TextColor="Black" Text=""
-               VerticalOptions="Start" HorizontalOptions="End"/>
+            
+            <Frame Grid.Column="0" Grid.Row="0" BackgroundColor="#FFFFFF" CornerRadius="15" HasShadow="True" Padding="0">
+                <StackLayout Spacing="10" Padding="15">
+                    <Label Text="Öğrenci Sayısı" FontSize="16" TextColor="#7F8C8D" FontAttributes="Bold"/>
+                    <Label x:Name="KayitliOgrenciSayisi" FontSize="28" TextColor="#2C3E50" FontAttributes="Bold"/>
+                    <BoxView HeightRequest="3" Color="#3498DB" HorizontalOptions="Fill"/>
+                    <Label Text="Sisteme kayıtlı toplam öğrenci" FontSize="12" TextColor="#95A5A6"/>
+                </StackLayout>
+            </Frame>
 
-        <Label Text="Sisteme Kayıtlı Destek Sayısı" Margin="525,320" FontAttributes="Italic" TextColor="DarkGreen"
-               VerticalOptions="End" HorizontalOptions="Start"/>
-        <Label x:Name="KayitliDestekSayisi" Margin="525,280" TextColor="Black" Text=""
-               VerticalOptions="End" HorizontalOptions="Start"/>
+            <Frame Grid.Column="1" Grid.Row="0" BackgroundColor="#FFFFFF" CornerRadius="15" HasShadow="True" Padding="0">
+                <StackLayout Spacing="10" Padding="15">
+                    <Label Text="Proje Sayısı" FontSize="16" TextColor="#7F8C8D" FontAttributes="Bold"/>
+                    <Label x:Name="KayitliProjeSayisi" FontSize="28" TextColor="#2C3E50" FontAttributes="Bold"/>
+                    <BoxView HeightRequest="3" Color="#2ECC71" HorizontalOptions="Fill"/>
+                    <Label Text="Sisteme kayıtlı toplam proje" FontSize="12" TextColor="#95A5A6"/>
+                </StackLayout>
+            </Frame>
 
-        <Label Text="Sisteme Kayıtlı Soru Sayısı" Margin="539,320" FontAttributes="Italic" TextColor="DarkBlue"
-               VerticalOptions="End" HorizontalOptions="End"/>
-        <Label x:Name="KayitliSoruSayisi" Margin="525,280" TextColor="Black" Text=""
-               VerticalOptions="End" HorizontalOptions="End"/>
+            <Frame Grid.Column="2" Grid.Row="0" BackgroundColor="#FFFFFF" CornerRadius="15" HasShadow="True" Padding="0">
+                <StackLayout Spacing="10" Padding="15">
+                    <Label Text="Kategori Sayısı" FontSize="16" TextColor="#7F8C8D" FontAttributes="Bold"/>
+                    <Label x:Name="KayitliKategoriSayisi" FontSize="28" TextColor="#2C3E50" FontAttributes="Bold"/>
+                    <BoxView HeightRequest="3" Color="#9B59B6" HorizontalOptions="Fill"/>
+                    <Label Text="Sisteme kayıtlı toplam kategori" FontSize="12" TextColor="#95A5A6"/>
+                </StackLayout>
+            </Frame>
 
-        <Label Text="Sisteme Kayıtlı Kategori Sayısı" Margin="250,60" FontAttributes="Italic" TextColor="DarkBlue"
-               VerticalOptions="Start" HorizontalOptions="End"/>
-        <Label x:Name="KayitliKategoriSayisi" Margin="250,100" TextColor="Black" Text=""
-               VerticalOptions="Start" HorizontalOptions="End"/>
+            <Frame Grid.Column="0" Grid.Row="1" BackgroundColor="#FFFFFF" CornerRadius="15" HasShadow="True" Padding="0">
+                <StackLayout Spacing="10" Padding="15">
+                    <Label Text="Destek Talebi" FontSize="16" TextColor="#7F8C8D" FontAttributes="Bold"/>
+                    <Label x:Name="KayitliDestekSayisi" FontSize="28" TextColor="#2C3E50" FontAttributes="Bold"/>
+                    <BoxView HeightRequest="3" Color="#E74C3C" HorizontalOptions="Fill"/>
+                    <Label Text="Bekleyen destek talepleri" FontSize="12" TextColor="#95A5A6"/>
+                </StackLayout>
+            </Frame>
 
+            <Frame Grid.Column="1" Grid.Row="1" BackgroundColor="#FFFFFF" CornerRadius="15" HasShadow="True" Padding="0">
+                <StackLayout Spacing="10" Padding="15">
+                    <Label Text="Soru Sayısı" FontSize="16" TextColor="#7F8C8D" FontAttributes="Bold"/>
+                    <Label x:Name="KayitliSoruSayisi" FontSize="28" TextColor="#2C3E50" FontAttributes="Bold"/>
+                    <BoxView HeightRequest="3" Color="#F39C12" HorizontalOptions="Fill"/>
+                    <Label Text="Sistemdeki toplam soru" FontSize="12" TextColor="#95A5A6"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame Grid.Column="2" Grid.Row="1" BackgroundColor="#FFFFFF" CornerRadius="15" HasShadow="True" Padding="0">
+                <StackLayout Spacing="10" Padding="15">
+                    <Label Text="Son Aktivite" FontSize="16" TextColor="#7F8C8D" FontAttributes="Bold"/>
+                    <Label Text="" FontSize="18" TextColor="#2C3E50"/>
+                    <BoxView HeightRequest="3" Color="#1ABC9C" HorizontalOptions="Fill"/>
+                    <Label Text="Son güncelleme: 10 dakika önce" FontSize="12" TextColor="#95A5A6"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
     </Grid>
 </ContentPage>

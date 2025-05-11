@@ -5,11 +5,11 @@
              Title=""
              BackgroundColor="Transparent">
 
-    <!-- Arka Plan Resmi -->
+    
     <Grid>
         <Image Aspect="AspectFill" Source="anamenu.png" HeightRequest="1000"/>
 
-        <!-- Giriş Çerçevesi -->
+        
         <Frame VerticalOptions="Start" 
                HorizontalOptions="Center" 
                WidthRequest="400" 
@@ -20,7 +20,7 @@
                HasShadow="True" 
                Opacity="0.9">
             
-            <!-- Giriş Formu -->
+            
             <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20">
                 <Entry Placeholder="Ogrenci No"
                        x:Name="ogrenciNo"

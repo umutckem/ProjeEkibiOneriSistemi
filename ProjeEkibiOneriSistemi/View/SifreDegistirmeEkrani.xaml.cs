@@ -22,8 +22,8 @@ public partial class SifreDegistirmeEkrani : ContentPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         var ogrenciler = await _ogrenciServices.GetOgrencis();
 		var guncelOgrenciBilgileri = ogrenciler.FirstOrDefault(x => x.Id == _ogrenci.Id);

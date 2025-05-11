@@ -23,7 +23,7 @@ public partial class OgrenciSoruGecmisEkrani : ContentPage
 
     private async void CollectionViewSoruGecmisi_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var secilenYanit = e.CurrentSelection[0] as KullaniciYaniti; // Seçilen kategoriyi al
+        var secilenYanit = e.CurrentSelection[0] as KullaniciYaniti; 
         if (secilenYanit != null)
         {
             bool secim = await DisplayAlert("Seçilen Kullanici Yaniti", $"ID: {secilenYanit.Id}\nKategori Id: {secilenYanit.KategoriId} \nBu soruyu silerseniz bu soruya ait bütün ilgili kategori'nin soru cevaplarýda silenecektir. ", "Tamam", "Hayýr");

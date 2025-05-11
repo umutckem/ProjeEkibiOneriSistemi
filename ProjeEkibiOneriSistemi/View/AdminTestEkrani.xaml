@@ -2,53 +2,100 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjeEkibiOneriSistemi.View.AdminTestEkrani"
-             BackgroundColor="White"
+             BackgroundColor="#181818"
              Loaded="ContentPage_Loaded">
 
     <Grid RowDefinitions="Auto,*,Auto">
+        
+        <Image Source="adminekrani.png"
+               Aspect="AspectFill"
+               Opacity="0.1"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand"
+               Grid.RowSpan="3"/>
 
-        <!-- Başlık -->
+        
         <Label Text="Soru Listesi"
                Grid.Row="0"
-               FontSize="24"
+               FontSize="28"
                FontAttributes="Bold"
                HorizontalOptions="Center"
-               Margin="0,20,0,10"
-               TextColor="Black" />
+               Margin="0,30,0,20"
+               TextColor="#26A69A" />
 
-        <!-- Soru Listesi -->
-        <ScrollView Grid.Row="1" Padding="15">
+        
+        <ScrollView Grid.Row="1" Padding="20">
             <CollectionView x:Name="SoruCollection"
                             SelectionMode="Single"
                             BackgroundColor="Transparent">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="DodgerBlue"
-                               BackgroundColor="#f5f5f5"
-                               CornerRadius="10"
-                               Padding="10"
-                               Margin="5">
-                            <StackLayout Spacing="5">
+                        <Frame BorderColor="#26A69A"
+                               BackgroundColor="#252525"
+                               CornerRadius="15"
+                               Padding="15"
+                               Margin="10"
+                               HasShadow="True">
+                            <StackLayout Spacing="10">
                                 <Label Text="{Binding Metin}"
                                        FontAttributes="Bold"
-                                       TextColor="Black"
-                                       FontSize="16" />
+                                       TextColor="White"
+                                       FontSize="18" />
 
                                 <Label Text="Cevap:"
-                                       TextColor="Gray"
-                                       FontSize="14" />
+                                       TextColor="#BBBBBB"
+                                       FontSize="16" />
 
                                 <Label Text="{Binding Cevap}"
                                        TextColor="DarkGreen"
-                                       FontSize="14" />
+                                       FontSize="16" />
 
                                 <Label Text="Önem Derecesi:"
-                                       TextColor="Gray"
-                                       FontSize="14" />
+                                       TextColor="#BBBBBB"
+                                       FontSize="16" />
 
                                 <Label Text="{Binding OnemDerecesi}"
-                                       TextColor="DarkRed"
-                                       FontSize="14" />
+                                       FontSize="16">
+                                    <Label.TextColor>
+                                        <OnIdiom x:TypeArguments="Color">
+                                            <OnIdiom.Phone>
+                                                <OnPlatform x:TypeArguments="Color">
+                                                    <On Platform="Android, iOS" Value="Yellow" />
+                                                    <On Platform="WinUI" Value="Yellow" />
+                                                </OnPlatform>
+                                            </OnIdiom.Phone>
+                                            <OnIdiom.Tablet>
+                                                <OnPlatform x:TypeArguments="Color">
+                                                    <On Platform="Android, iOS" Value="Orange" />
+                                                    <On Platform="WinUI" Value="Orange" />
+                                                </OnPlatform>
+                                            </OnIdiom.Tablet>
+                                            <OnIdiom.Desktop>
+                                                <OnPlatform x:TypeArguments="Color">
+                                                    <On Platform="Android, iOS" Value="Red" />
+                                                    <On Platform="WinUI" Value="Red" />
+                                                </OnPlatform>
+                                            </OnIdiom.Desktop>
+                                        </OnIdiom>
+                                    </Label.TextColor>
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                     Binding="{Binding OnemDerecesi}"
+                                                     Value="Düşük">
+                                            <Setter Property="TextColor" Value="Green" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label"
+                                                     Binding="{Binding OnemDerecesi}"
+                                                     Value="Orta">
+                                            <Setter Property="TextColor" Value="Yellow" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label"
+                                                     Binding="{Binding OnemDerecesi}"
+                                                     Value="Yüksek">
+                                            <Setter Property="TextColor" Value="Red" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>
@@ -56,23 +103,30 @@
             </CollectionView>
         </ScrollView>
 
-        <!-- Butonlar -->
-        <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" Padding="10" Spacing="20">
-            <Button Text="Ana Menü"
-                    BackgroundColor="Green"
-                    TextColor="White"
-                    Clicked="AnaMenu_Clicked" />
+        
+        <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" Padding="20" Spacing="25">
 
             <Button Text="Soru Ekle"
-                    BackgroundColor="DodgerBlue"
+                    BackgroundColor="#007aff"
                     TextColor="White"
-                    Clicked="SoruEkle_Clicked" />
+                    CornerRadius="15"
+                    HeightRequest="50"
+                    Clicked="SoruEkle_Clicked">
+                <Button.Shadow>
+                    <Shadow Brush="#000000" Opacity="0.3" Radius="5" Offset="2,2"/>
+                </Button.Shadow>
+            </Button>
 
             <Button Text="Kategori Sil"
-                    BackgroundColor="Red"
+                    BackgroundColor="#F44336"
                     TextColor="White"
-                    Clicked="KategoriSil_Clicked" />
+                    CornerRadius="15"
+                    HeightRequest="50"
+                    Clicked="KategoriSil_Clicked">
+                <Button.Shadow>
+                    <Shadow Brush="#000000" Opacity="0.3" Radius="5" Offset="2,2"/>
+                </Button.Shadow>
+            </Button>
         </StackLayout>
-
     </Grid>
 </ContentPage>

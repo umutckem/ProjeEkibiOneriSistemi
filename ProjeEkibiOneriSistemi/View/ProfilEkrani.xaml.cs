@@ -15,8 +15,8 @@ public partial class ProfilEkrani : ContentPage
         var guncelOgrenciBilgileri = ogrenciBilgileri.FirstOrDefault(x => x.Id == ogrenci.Id);
         if(guncelOgrenciBilgileri is not null)
         {
-            BindingContext = null;  // Önce BindingContext'i temizliyoruz
-            BindingContext = guncelOgrenciBilgileri;  // Sonra tekrar atýyoruz
+            BindingContext = null;  
+            BindingContext = guncelOgrenciBilgileri;  
         }
 
     }
@@ -30,17 +30,17 @@ public partial class ProfilEkrani : ContentPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         var OgrenciBilgileri = await _ogrenciServices.GetOgrencis();
         var guncelOgrenciBilgileri = OgrenciBilgileri.FirstOrDefault(x => x.Id == ogrenci.Id);
 
         if (guncelOgrenciBilgileri is not null)
         {
-            await GuncelSoruSayisi(ogrenci.Id); // Metodu await ile çaðýr
+            await GuncelSoruSayisi(ogrenci.Id); 
             ogrenci = guncelOgrenciBilgileri;
-            await puanHesapla(ogrenci.Id); // Burada da await ekledik
+            await puanHesapla(ogrenci.Id); 
             await DisplayAlert("Baþarýlý", "Bilgileriniz Güncellenmiþtir!", "Tamam");
             ProfilEkrani profilEkrani = new ProfilEkrani();
             profilEkrani.setOgrenci(guncelOgrenciBilgileri);
@@ -100,7 +100,7 @@ public partial class ProfilEkrani : ContentPage
 
             float ortalamaPuan = ogrencininKullaniciYanitlari.Count > 0
                 ? (float)puan / ogrencininKullaniciYanitlari.Count
-                : 0; // Eðer cevap yoksa 0 atýyoruz.
+                : 0; 
 
             await _ogrenciServices.guncelleOgrenci(new Ogrenci
             {
@@ -126,8 +126,8 @@ public partial class ProfilEkrani : ContentPage
     private async void Button_Clicked_1(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         OgrenciSoruGecmisEkrani ogrenciSoruGecmisEkrani = new OgrenciSoruGecmisEkrani();
         ogrenciSoruGecmisEkrani.setOgrenci(ogrenci);
@@ -137,8 +137,8 @@ public partial class ProfilEkrani : ContentPage
     private async void Button_Clicked_2(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
         SifreDegistirmeEkrani sifreDegistirmeEkrani = new SifreDegistirmeEkrani();
         sifreDegistirmeEkrani.SetOgrenci(ogrenci);
         await Navigation.PushAsync(sifreDegistirmeEkrani);
@@ -147,8 +147,8 @@ public partial class ProfilEkrani : ContentPage
     private async void Button_Clicked_3(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
         MailGuncellemeEkrani mailGuncellemeEkrani = new MailGuncellemeEkrani();
         mailGuncellemeEkrani.setOgrenci(ogrenci);
         await Navigation.PushAsync(mailGuncellemeEkrani);
@@ -157,8 +157,8 @@ public partial class ProfilEkrani : ContentPage
     private async  void Button_Clicked_4(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         OgrenciEkran ogrenciEkran = new OgrenciEkran();
         ogrenciEkran.setOgrenci(ogrenci);

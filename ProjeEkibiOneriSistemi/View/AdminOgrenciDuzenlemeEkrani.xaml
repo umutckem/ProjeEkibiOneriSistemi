@@ -4,7 +4,7 @@
              x:Class="ProjeEkibiOneriSistemi.View.AdminOgrenciDuzenlemeEkrani"
              Loaded="ContentPage_Loaded">
     <Grid>
-        <!-- Background Image with overlay -->
+        
         <Image Source="adminekrani.png" Aspect="AspectFill" Opacity="0.3" HeightRequest="999"/>
 
         <Frame Margin="20"

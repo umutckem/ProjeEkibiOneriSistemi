@@ -29,11 +29,11 @@ public partial class ProjelerimEkrani : ContentPage
         var katilimcilar = await _katilimciServices.GetKatilimcis();
         var katilimciList = katilimcilar.Where(x => x.OgrenciId == _Ogrenci.Id).ToList();
 
-        if (katilimciList.Any()) // Koleksiyon boþ mu kontrolü
+        if (katilimciList.Any()) 
         {
             var projeler = await _projeServices.GetProjes();
 
-            // Sadece ilgili öðrencinin katýldýðý projeleri listele
+            
             var ogrenciProjeleri = projeler
                 .Where(p => katilimciList.Any(k => k.ProjeId == p.Id))
                 .ToList();

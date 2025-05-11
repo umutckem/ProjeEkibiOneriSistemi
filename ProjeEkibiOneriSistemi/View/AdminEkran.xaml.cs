@@ -44,8 +44,8 @@ public partial class AdminEkran : ContentPage
     private async void Cikis_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         bool secim = await DisplayAlert("", "Çýkmak Ýstediðinize Emin Misiniz ?", "Evet", "Hayýr");
         if(secim == true)
@@ -59,8 +59,8 @@ public partial class AdminEkran : ContentPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         AdminOgrenciEkrani adminOgrenciEkrani = new AdminOgrenciEkrani();
         adminOgrenciEkrani.setOgrenci(_ogrenci);
@@ -106,8 +106,8 @@ public partial class AdminEkran : ContentPage
         if(_ogrenci is not null)
         {
             var button = (Button)sender;
-            await button.ScaleTo(0.9, 100); // Küçültme efekti
-            await button.ScaleTo(1, 100); // Eski haline getirme
+            await button.ScaleTo(0.9, 100); 
+            await button.ScaleTo(1, 100); 
 
             AdminProjeErkani adminProjeErkani = new AdminProjeErkani();
             adminProjeErkani.setOgrenci(_ogrenci);
@@ -118,8 +118,8 @@ public partial class AdminEkran : ContentPage
     private async void Button_Clicked_2(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         AdminKategoriEkrani adminTestlerEkrani = new AdminKategoriEkrani();
         adminTestlerEkrani.setOgrenci(_ogrenci);

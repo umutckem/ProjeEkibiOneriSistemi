@@ -14,14 +14,16 @@ namespace ProjeEkibiOneriSistemi.View
         private readonly IOgrenciServices _ogrenciServices;
         private readonly IKatilimciServices _katilimciServices;
 
+        private Ogrenci _Ogrenci;
         private Grup _grup;
+        private Proje _proje;
 
         public AdminGrupOgrenciEkle()
         {
             InitializeComponent();
             _grupServices = new GrupServices();
             _ogrenciServices = new OgrenciServices();
-            _katilimciServices = new KatilimciServices(); // Katýlýmcý servisi
+            _katilimciServices = new KatilimciServices(); 
         }
 
         public void setGrup(Grup grup)
@@ -29,6 +31,15 @@ namespace ProjeEkibiOneriSistemi.View
             _grup = grup;
         }
 
+        public void setProje(Proje proje)
+        {
+            _proje = proje;
+        }
+
+        public void setOgrenci(Ogrenci ogrenci)
+        {
+            _Ogrenci = ogrenci;
+        }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -43,24 +54,24 @@ namespace ProjeEkibiOneriSistemi.View
                 var tumKatilimcilar = await _katilimciServices.GetKatilimcis();
                 var tumGruplar = await _grupServices.getGrups();
 
-                // Bu projeye ait gruba eklenmiþ öðrenci ID'leri
+                
                 var grubaEklenenOgrenciIdleri = tumGruplar
                     .Where(g => g.ProjeId == _grup.ProjeId)
                     .Select(g => g.OgrenciId)
                     .ToList();
 
-                // Katýlýmcýlardaki öðrenci ID'leri (bu projeye baþvuran öðrenciler)
+                
                 var katilimciOgrenciIdleri = tumKatilimcilar
                     .Where(k => k.ProjeId == _grup.ProjeId)
                     .Select(k => k.OgrenciId)
                     .ToList();
 
-                // Sadece bu projeye baþvuran ve grupta olmayan öðrencileri filtrele
+               
                 var gruptaOlmayanOgrenciler = tumOgrenciler
                     .Where(o => katilimciOgrenciIdleri.Contains(o.Id) && !grubaEklenenOgrenciIdleri.Contains(o.Id))
                     .ToList();
 
-                // Öðrencileri ListView'e baðla
+                
                 OgrenciListView.ItemsSource = gruptaOlmayanOgrenciler;
             }
             catch (Exception ex)
@@ -87,10 +98,11 @@ namespace ProjeEkibiOneriSistemi.View
 
             try
             {
-                // Öðrenciyi gruba ekle
+                
                 await _grupServices.ekleGrup(yeniGrupKaydi);
                 await DisplayAlert("Baþarýlý", $"{selectedOgrenci.Ad} gruba eklendi.", "Tamam");
-                await LoadOgrenciler(); // Listeyi güncelle
+                await LoadOgrenciler(); 
+
             }
             catch (Exception ex)
             {

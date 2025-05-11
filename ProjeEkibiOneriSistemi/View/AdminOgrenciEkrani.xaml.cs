@@ -9,7 +9,7 @@ namespace ProjeEkibiOneriSistemi.View;
 public partial class AdminOgrenciEkrani : ContentPage
 {
     private readonly IOgrenciServices _ogrenciServices;
-    private List<Ogrenci> _tumOgrenciler; // Tüm öðrenciler burada tutulur
+    private List<Ogrenci> _tumOgrenciler; 
     Ogrenci _ogrenci;
 
     public void setOgrenci(Ogrenci ogrenci)
@@ -54,7 +54,7 @@ public partial class AdminOgrenciEkrani : ContentPage
 
     private async void CollectionViewOgrenci_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        // Ýstersen seçilen öðrenci ile iþlem yapabilirsin.
+        
         var secilenOgrenci = e.CurrentSelection.FirstOrDefault() as Ogrenci;
         if (secilenOgrenci == null) return;
 
@@ -70,8 +70,8 @@ public partial class AdminOgrenciEkrani : ContentPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         AdminEkran adminEkran = new AdminEkran();
         adminEkran.setAdmin(_ogrenci);
@@ -90,12 +90,12 @@ public partial class AdminOgrenciEkrani : ContentPage
     private async void Button_Clicked_1(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         AdminOgrenciOlustur adminOgrenciOlustur = new AdminOgrenciOlustur();
         adminOgrenciOlustur.setOgrenci(_ogrenci);
-        Application.Current.MainPage = new NavigationPage(adminOgrenciOlustur);
+        await Navigation.PushAsync(adminOgrenciOlustur);
 
     }
 }

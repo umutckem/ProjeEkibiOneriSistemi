@@ -20,8 +20,8 @@ namespace ProjeEkibiOneriSistemi.View
         private async void Button_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            await button.ScaleTo(0.9, 100); // Küçültme efekti
-            await button.ScaleTo(1, 100); // Eski haline getirme
+            await button.ScaleTo(0.9, 100); 
+            await button.ScaleTo(1, 100); 
 
             if (string.IsNullOrWhiteSpace(ogrenciNo.Text) || string.IsNullOrWhiteSpace(Sifre.Text))
             {
@@ -87,8 +87,8 @@ namespace ProjeEkibiOneriSistemi.View
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            await button.ScaleTo(0.9, 100); // Küçültme efekti
-            await button.ScaleTo(1, 100); // Eski haline getirme
+            await button.ScaleTo(0.9, 100); 
+            await button.ScaleTo(1, 100); 
 
             SifreUnuttumEkrani sifreUnuttumEkrani = new SifreUnuttumEkrani();
             await Navigation.PushAsync(sifreUnuttumEkrani);

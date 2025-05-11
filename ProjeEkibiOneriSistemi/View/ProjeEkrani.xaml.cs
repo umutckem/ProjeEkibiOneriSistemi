@@ -27,23 +27,23 @@ public partial class ProjeEkrani : ContentPage
 
     private async Task GetProjeler()
     {
-        // Projeleri çekiyoruz
+        
         _projeler = await _projeServices.GetProjes();
-        CollectionViewProje.ItemsSource = _projeler; // Ýlk baþta tüm projeleri gösteriyoruz
+        CollectionViewProje.ItemsSource = _projeler; 
     }
 
     private async void SearchBarProje_TextChanged(object sender, TextChangedEventArgs e)
     {
-        var searchText = e.NewTextValue?.ToLower(); // Arama metni küçük harfe dönüþtürülür
+        var searchText = e.NewTextValue?.ToLower(); 
 
         if (string.IsNullOrEmpty(searchText))
         {
-            CollectionViewProje.ItemsSource = _projeler; // Arama metni boþsa tüm projeleri göster
+            CollectionViewProje.ItemsSource = _projeler; 
         }
         else
         {
             var filteredProjeler = _projeler.Where(p => p.Ad.ToLower().Contains(searchText) || p.Aciklama.ToLower().Contains(searchText)).ToList();
-            CollectionViewProje.ItemsSource = filteredProjeler; // Arama metnine uyan projeleri göster
+            CollectionViewProje.ItemsSource = filteredProjeler; 
         }
     }
 
@@ -51,7 +51,7 @@ public partial class ProjeEkrani : ContentPage
     {
         if (e.CurrentSelection.Count > 0)
         {
-            var secilenProje = e.CurrentSelection[0] as Proje; // Seçilen projeyi al
+            var secilenProje = e.CurrentSelection[0] as Proje; 
             if (secilenProje != null)
             {
                 bool secim = await DisplayAlert("Seçilen Proje", $"Ad: {secilenProje.Ad}\nAçýklama: {secilenProje.Aciklama}", "Tamam", "Hayýr");

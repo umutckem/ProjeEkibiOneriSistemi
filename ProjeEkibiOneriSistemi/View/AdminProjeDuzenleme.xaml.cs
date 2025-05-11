@@ -1,3 +1,4 @@
+
 using ProjeEkibiOneriSistemi.Dtos;
 using ProjeEkibiOneriSistemi.Services;
 
@@ -30,8 +31,8 @@ public partial class AdminProjeDuzenleme : ContentPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100);   // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100);   
 
         AdminEkran adminEkran = new AdminEkran();
         adminEkran.setAdmin(_ogrenci);
@@ -50,12 +51,12 @@ public partial class AdminProjeDuzenleme : ContentPage
                     AdminProjeGuncelleme adminProjeGuncelleme = new AdminProjeGuncelleme();
                     adminProjeGuncelleme.SetOgrenci(_ogrenci);
                     adminProjeGuncelleme.SetProje(secilenProje);
-                    Application.Current.MainPage = new NavigationPage(adminProjeGuncelleme);
+                    await Navigation.PushAsync(adminProjeGuncelleme);
 
                 }
                 else
                 {
-                    CollectionViewProje.SelectedItem = null; // Seçimi kaldýr
+                    CollectionViewProje.SelectedItem = null; 
                 }
             }
         }

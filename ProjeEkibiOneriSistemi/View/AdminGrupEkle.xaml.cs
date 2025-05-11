@@ -36,10 +36,10 @@ namespace ProjeEkibiOneriSistemi.View
 
             if (int.TryParse(grupNoEntry.Text, out int grupNo))
             {
-                // Mevcut gruplarý al
+                
                 List<Grup> gruplar = await _grupServices.getGrups();
 
-                // Grup numarasýnýn bu projede daha önce olup olmadýðýný kontrol et
+                
                 bool grupVarMi = gruplar.Any(grup => grup.GrupNo == grupNo && grup.ProjeId == _proje.Id);
 
                 if (grupVarMi)
@@ -52,13 +52,17 @@ namespace ProjeEkibiOneriSistemi.View
                 {
                     Id = Guid.NewGuid(),
                     ProjeId = _proje.Id,
-                    OgrenciId = Guid.Empty, // Ýlgili öðrenci daha sonra atanabilir
+                    OgrenciId = Guid.Empty, 
                     GrupNo = grupNo
                 };
 
                 await _grupServices.ekleGrup(yeniGrup);
                 await DisplayAlert("Baþarýlý", $"Grup {grupNo} baþarýyla eklendi.", "Tamam");
                 grupNoEntry.Text = string.Empty;
+                AdminProjeOgrenci adminProjeOgrenci = new AdminProjeOgrenci();
+                adminProjeOgrenci.setOgrenci(_ogrenci);
+                adminProjeOgrenci.setProje(_proje);
+                Application.Current.MainPage = new NavigationPage(adminProjeOgrenci);
             }
             else
             {

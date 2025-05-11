@@ -25,8 +25,8 @@ public partial class AdminOgrenciOlustur : ContentPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         AdminEkran adminEkran = new AdminEkran();
         adminEkran.setAdmin(_ogrenci);
@@ -39,7 +39,7 @@ public partial class AdminOgrenciOlustur : ContentPage
         await button.ScaleTo(0.9, 100);
         await button.ScaleTo(1, 100);
 
-        // Boþ alan kontrolü
+        
         if (string.IsNullOrWhiteSpace(ogrenciAd.Text) ||
             string.IsNullOrWhiteSpace(ogrenciSoyad.Text) ||
             string.IsNullOrWhiteSpace(ogrenciBabaAdi.Text) ||
@@ -56,21 +56,21 @@ public partial class AdminOgrenciOlustur : ContentPage
             return;
         }
 
-        // Sýnýf deðeri geçerli mi?
+        
         if (!int.TryParse(ogrenciSinif.Text, out int sinifDegeri))
         {
             await DisplayAlert("Hatalý Giriþ", "Sýnýf alanýna yalnýzca sayý giriniz.", "Tamam");
             return;
         }
 
-        // Kullanýcý onayý
+        
         bool secim = await DisplayAlert("Onay", "Öðrenciyi oluþturmak istiyor musunuz?", "Evet", "Hayýr");
         if (!secim)
             return;
 
         try
         {
-            // Yeni öðrenci nesnesi oluþtur
+            
             var yeniOgrenci = new Ogrenci
             {
                 Id = Guid.NewGuid(),
@@ -111,7 +111,7 @@ public partial class AdminOgrenciOlustur : ContentPage
 
             await DisplayAlert("Baþarýlý", "Öðrenci baþarýyla oluþturuldu.", "Tamam");
 
-            // Ana ekrana yönlendir
+            
             var adminEkran = new AdminEkran();
             adminEkran.setAdmin(_ogrenci);
             Application.Current.MainPage = new NavigationPage(adminEkran);

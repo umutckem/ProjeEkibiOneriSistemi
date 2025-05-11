@@ -8,7 +8,7 @@ public partial class AdminKategoriEkrani : ContentPage
 {
     private readonly ISoruServices _soruServices;
     private readonly IKategoriServices _kategoriServices;
-    private List<object> _tumTestler = new(); // Anonymous nesneler için object listesi
+    private List<object> _tumTestler = new(); 
     private Ogrenci _ogrenci;
 
     public void setOgrenci(Ogrenci ogrenci)
@@ -28,12 +28,12 @@ public partial class AdminKategoriEkrani : ContentPage
         var tumKategoriler = await _kategoriServices.GetKategoris();
         var tumSorular = await _soruServices.GetSorus();
 
-        // Kategori baþýna soru sayýsýný hesapla
+        
         _tumTestler = tumKategoriler
             .Select(kat => new
             {
                 Id = kat.Id,
-                Kategori = kat,  // Kategori nesnesini anonim nesne içinde taþýyoruz
+                Kategori = kat,  
                 KategoriAdi = kat.Ad,
                 SoruSayisi = tumSorular.Count(s => s.KategoriId == kat.Id)
             })
@@ -75,7 +75,7 @@ public partial class AdminKategoriEkrani : ContentPage
         var secilenItem = e.CurrentSelection.FirstOrDefault();
         if (secilenItem == null) return;
 
-        // Anonim nesne içindeki "Kategori" bilgisine doðrudan eriþim saðla
+        
         var kategori = (secilenItem as dynamic).Kategori as Kategori;
         if (kategori == null) return;
 
@@ -84,8 +84,8 @@ public partial class AdminKategoriEkrani : ContentPage
         {
             var adminTestEkrani = new AdminTestEkrani();
             adminTestEkrani.setOgrenci(_ogrenci);
-            adminTestEkrani.setKategori(kategori);  // Seçilen kategori bilgisi aktarýlýyor
-            Application.Current.MainPage = new NavigationPage(adminTestEkrani);
+            adminTestEkrani.setKategori(kategori);  
+            await Navigation.PushAsync(adminTestEkrani);
         }
     }
 

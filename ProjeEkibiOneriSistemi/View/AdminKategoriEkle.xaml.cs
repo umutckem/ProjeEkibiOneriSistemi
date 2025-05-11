@@ -23,8 +23,8 @@ namespace ProjeEkibiOneriSistemi.View
         private async void Button_Ekle_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            await button.ScaleTo(0.9, 100); // Küçültme efekti
-            await button.ScaleTo(1, 100); // Eski haline getirme
+            await button.ScaleTo(0.9, 100); 
+            await button.ScaleTo(1, 100); 
 
             string girilenAd = kategoriAd.Text?.Trim();
 
@@ -42,15 +42,15 @@ namespace ProjeEkibiOneriSistemi.View
             await _kategoriServices.ekleKategori(yeniKategori);
             await DisplayAlert("Baþarýlý", "Kategori baþarýyla eklendi.", "Tamam");
 
-            kategoriAd.Text = string.Empty; // temizle
+            kategoriAd.Text = string.Empty; 
 
         }
 
         private async void Button_AnaMenu_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            await button.ScaleTo(0.9, 100); // Küçültme efekti
-            await button.ScaleTo(1, 100); // Eski haline getirme
+            await button.ScaleTo(0.9, 100); 
+            await button.ScaleTo(1, 100); 
 
             AdminEkran ekran = new AdminEkran();
             ekran.setAdmin(_ogrenci);

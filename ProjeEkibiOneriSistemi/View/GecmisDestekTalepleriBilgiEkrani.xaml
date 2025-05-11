@@ -6,13 +6,13 @@
              Loaded="ContentPage_Loaded">
 
     <Grid>
-        <!-- Arka Plan Resmi -->
+        
         <Image Source="ogrenciekrani.jpg"
                Aspect="AspectFill"
                Opacity="0.15"
                IsVisible="True" />
 
-        <!-- İçerik Kartı -->
+        
         <Frame Padding="25"
                BackgroundColor="White"
                CornerRadius="16"
@@ -48,7 +48,7 @@
             </VerticalStackLayout>
         </Frame>
 
-        <!-- Ana Menü Butonu -->
+        
         <Button Text="Ana Menü"
                 BackgroundColor="#3D5AFE"
                 TextColor="White"

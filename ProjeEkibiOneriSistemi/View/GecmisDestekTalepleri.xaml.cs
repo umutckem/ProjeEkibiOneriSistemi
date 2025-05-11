@@ -40,8 +40,8 @@ public partial class GecmisDestekTalepleri : ContentPage
     private async void Button_Clicked_1(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
         OgrenciEkran ogrenciEkran = new OgrenciEkran();
         ogrenciEkran.setOgrenci(_ogrenci);
         Application.Current.MainPage = new NavigationPage(ogrenciEkran);

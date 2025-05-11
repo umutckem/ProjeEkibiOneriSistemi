@@ -37,7 +37,7 @@ public partial class ProjeBilgiEkrani : ContentPage
     {
         base.OnAppearing();
 
-        // Öðrenci ve proje bilgilerini alýp, gereksinimlerini ve yetkinliklerini göster
+        
         var ogrenciBilgileri = await _ogrenciServices.GetOgrencis();
         var ogrenci = ogrenciBilgileri.FirstOrDefault(x => x.Id == _Ogrenci.Id);
 
@@ -51,30 +51,30 @@ public partial class ProjeBilgiEkrani : ContentPage
                 var kullaniciYanitiListesi = await _kullaniciYanitiSerives.GetKullaniciYanitis();
                 var kullaniciYaniti = kullaniciYanitiListesi
                     .Where(x => x.OgrenciId == ogrenci.Id)
-                    .Select(x => x.KategoriId) // Öðrencinin kategori ID'lerini al
-                    .Distinct() // Tekrarlarý engelle
+                    .Select(x => x.KategoriId) 
+                    .Distinct() 
                     .ToList();
 
-                // Öðrencinin yetkinliklerini ekranda göster
+                
                 var ogrenciYetkinlikleri = string.Join(", ", kullaniciYaniti);
                 OgrenciYetkinlikleriLabel.Text = ogrenciYetkinlikleri;
 
-                // Proje gereksinimlerini ekranda göster
+                
                 var projeGereksinimleri = string.Join(", ", proje.GerekenKategoriIdler);
                 ProjeGereksinimleriLabel.Text = projeGereksinimleri;
 
-                // Öðrencinin yetkinliklerinin projeye uygunluðunu kontrol et
+                
                 bool uygunMu = proje.GerekenKategoriIdler.All(kategoriId => kullaniciYaniti.Contains(kategoriId));
 
                 if (uygunMu)
                 {
-                    KatilimButton.IsEnabled = true; // Butonu aktif hale getir
-                    KatilimButton.Text = "Katýl"; // Buton metnini deðiþtir
+                    KatilimButton.IsEnabled = true; 
+                    KatilimButton.Text = "Katýl";
                 }
                 else
                 {
-                    KatilimButton.IsEnabled = false; // Öðrenci uygun deðilse butonu devre dýþý býrak
-                    KatilimButton.Text = "Uygun Deðil"; // Buton metnini deðiþtir
+                    KatilimButton.IsEnabled = false; 
+                    KatilimButton.Text = "Uygun Deðil"; 
                 }
             }
         }
@@ -88,8 +88,8 @@ public partial class ProjeBilgiEkrani : ContentPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         var ogrenciBilgileri = await _ogrenciServices.GetOgrencis();
         var ogrenci = ogrenciBilgileri.FirstOrDefault(x => x.Id == _Ogrenci.Id);
@@ -104,7 +104,7 @@ public partial class ProjeBilgiEkrani : ContentPage
                 var kullaniciYanitiListesi = await _kullaniciYanitiSerives.GetKullaniciYanitis();
                 var kullaniciYaniti = kullaniciYanitiListesi
                     .Where(x => x.OgrenciId == ogrenci.Id)
-                    .Select(x => x.KategoriId) // Öðrencinin kategori ID'lerini al
+                    .Select(x => x.KategoriId) 
                     .ToList();
 
                 bool uygunMu = proje.GerekenKategoriIdler.All(kategoriId => kullaniciYaniti.Contains(kategoriId));

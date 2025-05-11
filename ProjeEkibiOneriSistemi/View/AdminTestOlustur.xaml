@@ -1,0 +1,44 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.AdminTestOlustur"
+             Title="Soru Oluştur"
+             BackgroundColor="#F0F4F8">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <Label Text="Soru Ekle" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#2C3E50"/>
+
+            <Frame BackgroundColor="White" CornerRadius="20" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+
+                    <Label Text="Soru Metni:" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Entry x:Name="entryMetin" Placeholder="Soru metnini girin" BackgroundColor="#ECF0F1" TextColor="Black"/>
+
+                    <Label Text="Cevap:" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Entry x:Name="entryCevap" Placeholder="Cevabı girin" BackgroundColor="#ECF0F1" TextColor="Black"/>
+
+                    <Label Text="Önem Derecesi:" TextColor="#34495E" FontAttributes="Bold"/>
+                    <Picker x:Name="pickerOnem" Title="Seçiniz" BackgroundColor="#ECF0F1" TextColor="Black" >
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Yüksek</x:String>
+                                <x:String>Orta</x:String>
+                                <x:String>Düşük</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Button Text="Soru Oluştur"
+                            Clicked="OnSoruOlusturClicked"
+                            BackgroundColor="#3498DB"
+                            TextColor="White"
+                            CornerRadius="15"
+                            FontAttributes="Bold"
+                            HeightRequest="50"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -6,13 +6,13 @@
              Loaded="ContentPage_Loaded_1">
 
     <Grid>
-        <!-- Arka Plan Görseli -->
+        
         <Image Source="ogrenciekrani.jpg" Aspect="AspectFill" Opacity="0.2" />
 
-        <!-- İçerik -->
+        
         <ScrollView>
             <VerticalStackLayout Padding="20" Spacing="20">
-                <!-- Proje Bilgileri Kartı -->
+                
                 <Frame CornerRadius="20" BackgroundColor="White" HasShadow="True" Padding="20">
                     <VerticalStackLayout Spacing="15">
                         <HorizontalStackLayout Spacing="20">
@@ -42,10 +42,10 @@
                     </VerticalStackLayout>
                 </Frame>
 
-                <!-- Grup Üyeleri Başlığı -->
+                
                 <Label Text="Grup Üyeleri" TextColor="DarkBlue" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
 
-                <!-- Grup Üyeleri Listesi -->
+                
                 <Frame BackgroundColor="White" CornerRadius="15" HasShadow="True" Padding="10">
                     <CollectionView x:Name="grupUyeleriCollectionView">
                         <CollectionView.ItemTemplate>

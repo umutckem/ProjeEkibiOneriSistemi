@@ -37,12 +37,12 @@ public partial class AdminProjeGuncelleme : ContentPage
     private async void Button_Clicked_Guncelle(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         if (_proje == null) return;
 
-        // Entry ve picker'lardan gelen verileri _proje nesnesine aktar
+        
         _proje.Ad = projeAd.Text;
         _proje.Aciklama = projeAciklama.Text;
         _proje.Bolum = projeBolum.Text;
@@ -71,9 +71,9 @@ public partial class AdminProjeGuncelleme : ContentPage
         {
             await _projeServices.projeGuncelle(_proje);
             await DisplayAlert("Baþarýlý", "Proje bilgileri güncellendi.", "Tamam");
-            AdminEkran adminEkran = new AdminEkran();
-            adminEkran.setAdmin(_ogrenci);
-            Application.Current.MainPage = new NavigationPage(adminEkran);
+            AdminProjeDuzenleme adminProjeDuzenleme = new AdminProjeDuzenleme();
+            adminProjeDuzenleme.setOgrenci(_ogrenci);
+            Application.Current.MainPage = new NavigationPage(adminProjeDuzenleme);
         }
         catch (Exception ex)
         {
@@ -84,8 +84,8 @@ public partial class AdminProjeGuncelleme : ContentPage
     private async void Button_Clicked_Anamenu(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         AdminEkran adminEkran = new AdminEkran();
         adminEkran.setAdmin(_ogrenci);
@@ -95,26 +95,26 @@ public partial class AdminProjeGuncelleme : ContentPage
     private async void Button_Clicked_Sil(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         if (_proje == null) return;
 
-        // Kullanýcýya silme iþlemi için onay soralým
+        
         bool onay = await DisplayAlert("Silme Onayý", $"{_proje.Ad} projesini silmek istediðinize emin misiniz?", "Evet", "Hayýr");
 
         if (onay)
         {
             try
             {
-                // Proje silme iþlemi
+                
                 await _projeServices.projeSil(_proje.Id);
                 await DisplayAlert("Baþarýlý", "Proje baþarýyla silindi.", "Tamam");
 
-                // Silme iþleminden sonra ana ekraný yeniden yükleyelim
-                AdminEkran adminEkran = new AdminEkran();
-                adminEkran.setAdmin(_ogrenci);
-                Application.Current.MainPage = new NavigationPage(adminEkran);
+                
+                AdminProjeErkani adminProjeErkani = new AdminProjeErkani();
+                adminProjeErkani.setOgrenci(_ogrenci);
+                Application.Current.MainPage = new NavigationPage(adminProjeErkani);
             }
             catch (Exception ex)
             {
@@ -126,6 +126,6 @@ public partial class AdminProjeGuncelleme : ContentPage
 
     private void ContentPage_Loaded(object sender, EventArgs e)
     {
-        // Sayfa yüklendiðinde yapýlacak iþlemler
+        
     }
 }

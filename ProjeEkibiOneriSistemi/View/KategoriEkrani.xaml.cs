@@ -37,7 +37,7 @@ public partial class KategoriEkrani : ContentPage
     {
         if (e.CurrentSelection.Count > 0)
         {
-            var secilenKategori = e.CurrentSelection[0] as Kategori; // Seçilen kategoriyi al
+            var secilenKategori = e.CurrentSelection[0] as Kategori; 
 
             if (secilenKategori != null)
             {
@@ -61,7 +61,7 @@ public partial class KategoriEkrani : ContentPage
                         return;
                     }
 
-                    // Test ekranýný baþlat
+                    
                     TestEkrani testEkrani = new TestEkrani();
                     testEkrani.setKategori(secilenKategori);
                     testEkrani.setOgrenci(ogrenci);

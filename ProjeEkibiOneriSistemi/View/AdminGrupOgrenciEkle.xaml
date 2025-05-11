@@ -19,7 +19,7 @@
                           RowSpacing="5"
                           ColumnSpacing="10">
 
-                        <!-- Name and Surname -->
+                        
                         <Label Grid.Column="0" Grid.Row="0"
                                Text="{Binding Ad}"
                                FontSize="16"
@@ -31,7 +31,7 @@
                                FontSize="14"
                                TextColor="#607D8B"/>
 
-                        <!-- Student Number and Class -->
+                        
                         <StackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
                                      HorizontalOptions="End"
                                      VerticalOptions="Center"
@@ -61,7 +61,7 @@
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="10">
 
-        <!-- Page Header -->
+        
         <Frame Grid.Row="0"
                CornerRadius="14"
                BackgroundColor="#2D3A3D"
@@ -75,7 +75,7 @@
                    TextColor="White"/>
         </Frame>
 
-        <!-- Student List -->
+        
         <RefreshView Grid.Row="1"
                      IsRefreshing="{Binding IsRefreshing}"
                      Command="{Binding RefreshCommand}">
@@ -93,7 +93,7 @@
             </ListView>
         </RefreshView>
 
-        <!-- Back Button -->
+        
         <Frame Grid.Row="2"
                CornerRadius="0"
                BackgroundColor="Transparent"

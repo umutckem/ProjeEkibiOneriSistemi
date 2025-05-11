@@ -17,8 +17,8 @@ public partial class OgrenciEkran : ContentPage
 	public void setOgrenci(Ogrenci _ogrenci)
 	{
 		ogrenci = _ogrenci;
-        BindingContext = null;  // Önce BindingContext'i temizliyoruz
-        BindingContext = ogrenci;  // Sonra tekrar atýyoruz
+        BindingContext = null;  
+        BindingContext = ogrenci;  
     }
     private async void OnImageTapped(object sender, EventArgs e)
     {
@@ -31,8 +31,8 @@ public partial class OgrenciEkran : ContentPage
     private async void Button_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
         KategoriEkrani testEkrani = new KategoriEkrani();
         testEkrani.setOgrenci(ogrenci);
         await Navigation.PushAsync(testEkrani);
@@ -41,8 +41,8 @@ public partial class OgrenciEkran : ContentPage
     private async void Button_Clicked_1(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100);
+        await button.ScaleTo(1, 100); 
         ProjeEkrani projeEkrani = new ProjeEkrani();
         projeEkrani.setOgrenci(ogrenci);
         await Navigation.PushAsync(projeEkrani);
@@ -52,8 +52,8 @@ public partial class OgrenciEkran : ContentPage
     private async void Button_Clicked_2(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
         ProjelerimEkrani projelerimEkrani = new ProjelerimEkrani();
         projelerimEkrani.setOgrenci(ogrenci);
@@ -63,8 +63,8 @@ public partial class OgrenciEkran : ContentPage
     private async void Cikis_Clicked(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100);
+        await button.ScaleTo(1, 100); 
         bool secim = await DisplayAlert("","Çýkýþ Yapmak Ýstiyor musunuz ?","Evet","Hayýr");
         if(secim == true)
         {
@@ -77,8 +77,8 @@ public partial class OgrenciEkran : ContentPage
     private async void Button_Clicked_3(object sender, EventArgs e)
     {
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
         DestekEkrani destekEkrani = new DestekEkrani();
         destekEkrani.setOgrenci(ogrenci);
         Application.Current.MainPage = new NavigationPage(destekEkrani);

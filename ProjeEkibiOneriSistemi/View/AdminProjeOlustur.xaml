@@ -4,13 +4,13 @@
              Loaded="ContentPage_Loaded">
 
     <Grid>
-        <!-- Arka Plan Görseli -->
+        
         <Image Source="adminekrani.png"
                Aspect="AspectFill"
                Opacity="0.3"
                IsVisible="True" />
 
-        <!-- Üst Katman (form) -->
+        
         <ScrollView>
             <Frame BackgroundColor="#F5F5F5CC"
                    Margin="20"

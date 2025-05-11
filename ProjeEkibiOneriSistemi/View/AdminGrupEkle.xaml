@@ -6,7 +6,7 @@
 
     <Grid RowDefinitions="*,Auto" Padding="20">
 
-        <!-- Arka Plan Görseli -->
+        
         <Image Source="adminekrani.png"
                Aspect="AspectFill"
                Opacity="0.3"
@@ -15,7 +15,7 @@
                HorizontalOptions="FillAndExpand"
                VerticalOptions="FillAndExpand"/>
 
-        <!-- Form Alanı (Frame ile) -->
+        
         <Frame Grid.Row="0"
                Margin="0"
                Padding="30"
@@ -52,7 +52,7 @@
             </StackLayout>
         </Frame>
 
-        <!-- Geri Dön Butonu -->
+        
         <StackLayout Grid.Row="1"
                      Padding="10"
                      BackgroundColor="#FFFFFFCC"

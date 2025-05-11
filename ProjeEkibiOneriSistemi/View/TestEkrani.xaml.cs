@@ -12,7 +12,7 @@
             public Ogrenci ogrenci;
             private List<Soru> Sorular;
             private int MevcutSoruIndex = 0;
-            private int SecilenPuan = 0; // Kullanýcýnýn seçtiði puaný tutar
+            private int SecilenPuan = 0; 
 
             public TestEkrani()
             {
@@ -36,7 +36,7 @@
                 await GetSorular();
             }
 
-            // Sorularý API'den Getir
+           
             public async Task GetSorular()
             {
                 if (Kategori == null)
@@ -54,26 +54,26 @@
                     return;
                 }
 
-                // Ýlk Soruyu Göster
+                
                 GosterSoru();
             }
 
-            // Mevcut Soruyu Göster
+            
             private void GosterSoru()
             {
                 if (MevcutSoruIndex < Sorular.Count)
                 {
                     lblSoruMetni.Text = Sorular[MevcutSoruIndex].Metin;
-                    SecilenPuan = 0; // Yeni soru için sýfýrla
+                    SecilenPuan = 0; 
                 }
                 else
                 {
                     DisplayAlert("Tamamlandý", "Tüm sorular cevaplandý!", "Tamam");
-                    Navigation.PopAsync(); // Sayfayý Kapat
+                    Navigation.PopAsync();
                 }
             }
 
-            // RadioButton Seçildiðinde Çalýþýr
+           
             private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
             {
                 if (sender is RadioButton radioButton && radioButton.IsChecked)
@@ -82,13 +82,13 @@
                 }
             }
 
-            // Kullanýcý Yanýtýný Kaydet ve Sonraki Soruyu Göster
+            
             private async void BtnSonrakiSoru_Clicked(object sender, EventArgs e)
             {
 
         var button = (Button)sender;
-        await button.ScaleTo(0.9, 100); // Küçültme efekti
-        await button.ScaleTo(1, 100); // Eski haline getirme
+        await button.ScaleTo(0.9, 100); 
+        await button.ScaleTo(1, 100); 
 
 
         if (MevcutSoruIndex >= Sorular.Count)
@@ -96,7 +96,7 @@
 
                 var seciliSoru = Sorular[MevcutSoruIndex];
 
-                // Eðer kullanýcý cevap seçmediyse
+                
                 if (SecilenPuan == 0)
                 {
                     await DisplayAlert("Uyarý", "Lütfen bir seçenek seçiniz.", "Tamam");
@@ -111,7 +111,7 @@
 
         var yanit = new KullaniciYaniti
                 {
-                    OgrenciId = ogrenci.Id, // Öðrencinin gerçek ID'sini al
+                    OgrenciId = ogrenci.Id, 
                     SoruId = seciliSoru.Id,
                     KategoriId = seciliSoru.KategoriId,
                     Puan = SecilenPuan
@@ -119,7 +119,7 @@
 
         await _yanitServices.ekleKullaniciYaniti(yanit);
 
-                // Sonraki Soruya Geç
+                
                 MevcutSoruIndex++;
                 GosterSoru();
             }

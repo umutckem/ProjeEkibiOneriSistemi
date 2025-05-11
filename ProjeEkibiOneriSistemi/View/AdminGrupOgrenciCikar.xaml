@@ -1,0 +1,41 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.AdminGrupOgrenciCikar"
+             Title="Grup Öğrenci Çıkar"
+             BackgroundColor="#F8F9FA">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Grup Öğrencileri" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
+
+        <CollectionView x:Name="ogrenciListesi" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="White" Padding="10" Margin="5" CornerRadius="12" HasShadow="True">
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+
+                            <Label Text="{Binding Ad}" 
+                                   FontSize="16" 
+                                   TextColor="Black" 
+                                   Grid.Row="0" 
+                                   Grid.Column="0" />
+                            <Label Text="{Binding Soyad}" 
+                                   FontSize="16" 
+                                   TextColor="Black" 
+                                   Grid.Row="1" 
+                                   Grid.Column="0" />
+                            <Button Text="Çıkar"
+                                    BackgroundColor="#E74C3C"
+                                    TextColor="White"
+                                    CornerRadius="8"
+                                    Clicked="OnOgrenciCikarClicked"
+                                    CommandParameter="{Binding .}"
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

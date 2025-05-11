@@ -5,18 +5,18 @@
              >
 
     <Grid RowDefinitions="Auto,*,Auto">
-        <!-- Arka Plan Görseli -->
+        
         <Image Source="adminekrani.png"
                Aspect="AspectFill"
                Opacity="0.3"
                IsVisible="True"
                Grid.RowSpan="3"/>
 
-        <!-- Başlık -->
+        
         <Label Text="Proje Grupları" FontSize="22" FontAttributes="Bold"
                HorizontalOptions="Center" Margin="0,20,0,10" Grid.Row="0" />
 
-        <!-- Grup Listesi -->
+        
         <ScrollView Grid.Row="1" Padding="10">
             <CollectionView x:Name="GrupListView"
                 SelectionMode="Single"
@@ -27,7 +27,7 @@
                             <StackLayout>
                                 <Label Text="{Binding GrupNo, StringFormat='Grup {0}'}"
                            FontSize="20" FontAttributes="Bold" TextColor="Lime" />
-                                <Label Text="{Binding OgrenciSayisi, StringFormat='Bu grupta {0} öğrenci var'}"
+                                <Label Text="{Binding ogrenciSayisi, StringFormat='Bu grupta {0} öğrenci var'}"
                            FontSize="14" TextColor="White" />
                             </StackLayout>
                         </Frame>
@@ -37,7 +37,7 @@
 
         </ScrollView>
 
-        <!-- Butonlar -->
+        
         <StackLayout Grid.Row="2"
                      Orientation="Horizontal"
                      Padding="10"

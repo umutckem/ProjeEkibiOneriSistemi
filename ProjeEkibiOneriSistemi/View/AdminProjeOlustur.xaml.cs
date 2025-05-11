@@ -49,6 +49,9 @@ public partial class AdminProjeOlustur : ContentPage
 
             await _projeServices.projeEkle(yeniProje); // async servis metodu varsayýmý
             await DisplayAlert("Baþarýlý", "Proje baþarýyla oluþturuldu.", "Tamam");
+            AdminProjeErkani adminProjeErkani = new AdminProjeErkani();
+            adminProjeErkani.setOgrenci(_ogrenci);
+            Application.Current.MainPage = new NavigationPage(adminProjeErkani);
         }
         catch (Exception ex)
         {

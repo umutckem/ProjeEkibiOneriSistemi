@@ -27,7 +27,7 @@
         <Label Text="Öğrenci Ekranı" FontAttributes="Italic" VerticalOptions="End" HorizontalOptions="Start" Margin="42,205"/>
 
 
-        <!-- Profil Resmi Çerçeve İçinde -->
+        
         <Frame Grid.Row="0" Grid.Column="0"
                Padding="0"
                BorderColor="LightGray"

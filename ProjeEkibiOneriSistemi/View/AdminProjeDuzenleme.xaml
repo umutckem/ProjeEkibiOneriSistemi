@@ -7,14 +7,14 @@
 
     <Grid RowDefinitions="Auto,*,Auto">
 
-        <!-- Arka Plan Görseli -->
+        
         <Image Source="adminekrani.png"
                Aspect="AspectFill"
                Opacity="0.2"
                IsVisible="True"
                Grid.RowSpan="3"/>
 
-        <!-- Arama Alanı -->
+        
         <Frame Grid.Row="0"
                Margin="10"
                Padding="0"
@@ -33,7 +33,7 @@
             </StackLayout>
         </Frame>
 
-        <!-- Proje Listesi -->
+        
         <ScrollView Grid.Row="1" Padding="10">
             <CollectionView x:Name="CollectionViewProje"
                             SelectionMode="Single"
@@ -71,7 +71,7 @@
             </CollectionView>
         </ScrollView>
 
-        <!-- Alt Panel -->
+        
         <Frame Grid.Row="2"
                CornerRadius="20"
                Margin="10"
