@@ -1,154 +1,151 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProjeEkibiOneriSistemi.View.ProjeBilgiEkrani">
-    <Grid>
-        <Image Source="ogrenciekrani.jpg" HeightRequest="1200"/>
-        <Frame VerticalOptions="Start"
-               HorizontalOptions="Center"
-               WidthRequest="600"
-               HeightRequest="600"
-               Opacity="0.5"
-               BackgroundColor="#2C3E50"/>
+             x:Class="ProjeEkibiOneriSistemi.View.ProjeBilgiEkrani"
+             BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#121212}">
 
-        <Frame WidthRequest="600"
-               HeightRequest="1.5"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
-               Margin="470,100"/>
+    <Grid RowDefinitions="Auto,*,Auto">
+        
+        <Image Source="ogrenciekrani.jpg" Aspect="AspectFill" Opacity="0.35" Grid.RowSpan="3"/>
 
-        <Frame WidthRequest="600"
-               HeightRequest="1.5"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
-               Margin="470,55"/>
-
-        <Frame WidthRequest="200"
-               HeightRequest="50"
-               Opacity="0.5"
-               Margin="0,2"
+       
+        <Frame Grid.Row="0"
                CornerRadius="0"
-               BackgroundColor="SeaGreen"
-               VerticalOptions="Start"
-               HorizontalOptions="Center"/>
+               Padding="20"
+               Margin="0"
+               BackgroundColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}"
+               HasShadow="True">
+            <Label Text="{Binding Ad}"
+                   FontSize="24"
+                   FontFamily="OpenSansBold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Frame>
 
-        <Label Text="{Binding Ad}"
-               VerticalOptions="Start"
-               HorizontalOptions="Center"
-               Margin="0,65"
-               FontSize="15"
-               FontAttributes="Italic"/>
+        
+        <ScrollView Grid.Row="1" Padding="20">
+            <Frame CornerRadius="20"
+                   Padding="20"
+                   BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+                   BorderColor="{AppThemeBinding Light=#E0E0E0, Dark=#333333}"
+                   HasShadow="True">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" 
+                      RowSpacing="15"
+                      ColumnDefinitions="Auto,*"
+                      ColumnSpacing="15">
 
-        <Label Text="PROJE ADI"
-               FontSize="20"
-               FontFamily="Impact"
-               FontAttributes="Italic"
-               VerticalOptions="Start"
-               HorizontalOptions="Center"
-               Margin="700,10"/>
+                    <Label Text="Açıklama:"
+                           Grid.Row="0" Grid.Column="0"
+                           TextColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}"
+                           FontFamily="OpenSansSemiBold"
+                           FontSize="16"/>
+                    <Label Text="{Binding Aciklama}"
+                           Grid.Row="0" Grid.Column="1"
+                           TextColor="{AppThemeBinding Light=#212121, Dark=White}"
+                           FontFamily="OpenSansRegular"
+                           FontSize="14"
+                           LineBreakMode="WordWrap"/>
 
-        <Label Text="Proje Açıklaması:"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
-               Margin="500,120"
-               FontAttributes="Bold"
-               FontFamily="Segoe UI Black"
-               TextColor="IndianRed"/>
+                    
+                    <Label Text="Süre:"
+                           Grid.Row="1" Grid.Column="0"
+                           TextColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}"
+                           FontFamily="OpenSansSemiBold"
+                           FontSize="16"/>
+                    <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Spacing="20">
+                        <StackLayout Orientation="Vertical" Spacing="5">
+                            <Label Text="Başlangıç"
+                                   TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}"
+                                   FontFamily="OpenSansSemiBold"
+                                   FontSize="12"/>
+                            <Label Text="{Binding BaslangicTarihi}"
+                                   TextColor="{AppThemeBinding Light=#424242, Dark=#E0E0E0}"
+                                   FontFamily="OpenSansRegular"
+                                   FontSize="14"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Spacing="5">
+                            <Label Text="Bitiş"
+                                   TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}"
+                                   FontFamily="OpenSansSemiBold"
+                                   FontSize="12"/>
+                            <Label Text="{Binding BitisTarihi}"
+                                   TextColor="{AppThemeBinding Light=#424242, Dark=#E0E0E0}"
+                                   FontFamily="OpenSansRegular"
+                                   FontSize="14"/>
+                        </StackLayout>
+                    </StackLayout>
 
-        <Label Text="{Binding Aciklama}"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
-               Margin="500,140"
-               FontAttributes="Italic"
-               FontFamily="Segoe UI Black"/>
+                    
+                    <Label Text="Durum:"
+                           Grid.Row="2" Grid.Column="0"
+                           TextColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}"
+                           FontFamily="OpenSansSemiBold"
+                           FontSize="16"/>
+                    <Label Text="{Binding AktifMi, Converter={StaticResource BoolToStatusConverter}}"
+                           Grid.Row="2" Grid.Column="1"
+                           TextColor="{Binding AktifMi, Converter={StaticResource StatusToColorConverter}}"
+                           FontFamily="OpenSansSemiBold"
+                           FontSize="14"/>
 
-        <Label VerticalOptions="End"
-               HorizontalOptions="Start"
-               Margin="500,260"
-               Text="Başlangıç Tarihi"
-               FontAttributes="Italic"/>
+                    
+                    <Label Text="Gereksinimler:"
+                           Grid.Row="3" Grid.Column="0"
+                           TextColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}"
+                           FontFamily="OpenSansSemiBold"
+                           FontSize="16"/>
+                    <Label x:Name="ProjeGereksinimleriLabel"
+                           Grid.Row="3" Grid.Column="1"
+                           TextColor="{AppThemeBinding Light=#424242, Dark=#E0E0E0}"
+                           FontFamily="OpenSansRegular"
+                           FontSize="14"
+                           LineBreakMode="WordWrap"/>
 
-        <Label VerticalOptions="End"
-               HorizontalOptions="End"
-               Margin="533,260"
-               Text="Bitiş Tarihi"
-               FontAttributes="Italic"/>
+                    
+                    <Label Text="Gerekli Yetkinlikler:"
+                           Grid.Row="4" Grid.Column="0"
+                           TextColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}"
+                           FontFamily="OpenSansSemiBold"
+                           FontSize="16"/>
+                    <Label x:Name="OgrenciYetkinlikleriLabel"
+                           Grid.Row="4" Grid.Column="1"
+                           TextColor="{AppThemeBinding Light=#424242, Dark=#E0E0E0}"
+                           FontFamily="OpenSansRegular"
+                           FontSize="14"
+                           LineBreakMode="WordWrap"/>
 
-        <Label Text="Proje Durumu"
-               VerticalOptions="End"
-               HorizontalOptions="Center"
-               Margin="0,260"
-               FontAttributes="Italic"/>
+                    
+                    <Label Text="Eşleşme Oranı:"
+                           Grid.Row="5" Grid.Column="0"
+                           TextColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}"
+                           FontFamily="OpenSansSemiBold"
+                           FontSize="16"/>
+                    <ProgressBar Progress="{Binding EslesmeOrani}"
+                                 Grid.Row="5" Grid.Column="1"
+                                 ProgressColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}"
+                                 VerticalOptions="Center"/>
+                    <Label Text="{Binding EslesmeOrani, StringFormat='{0:P0}'}"
+                           Grid.Row="5" Grid.Column="1"
+                           HorizontalOptions="End"
+                           TextColor="{AppThemeBinding Light=#424242, Dark=#E0E0E0}"
+                           FontFamily="OpenSansSemiBold"
+                           FontSize="14"/>
+                </Grid>
+            </Frame>
+        </ScrollView>
 
-        <Label Text="{Binding AktifMi}"
-               VerticalOptions="End"
-               HorizontalOptions="Center"
-               Margin="0,240"
-               TextColor="Red"/>
-
-        <Label Text="{Binding BaslangicTarihi}"
-               VerticalOptions="End"
-               HorizontalOptions="End"
-               Margin="500,240"
-               FontAttributes="Italic"/>
-
-        <Label Text="{Binding BitisTarihi}"
-               VerticalOptions="End"
-               HorizontalOptions="Start"
-               Margin="500,240"/>
-
-        <Frame WidthRequest="600"
-               HeightRequest="1.5"
-               VerticalOptions="End"
-               HorizontalOptions="Start"
-               Margin="470,225"/>
-        <Frame WidthRequest="600"
-               HeightRequest="1.5"
-               VerticalOptions="End"
-               HorizontalOptions="Start"
-               Margin="470,295"/>
-
-        <Label Text="Proje Gereksinimleri:"
-               FontAttributes="Bold"
-               FontFamily="Segoe UI Black"
-               TextColor="IndianRed"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
-               Margin="500,180" />
-
-        <Label x:Name="ProjeGereksinimleriLabel"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
-               Margin="500,200"
-               FontAttributes="Italic"
-               FontFamily="Segoe UI Black" />
-
-        <Label Text="Öğrencinin Yetkinlikleri:"
-               FontAttributes="Bold"
-               FontFamily="Segoe UI Black"
-               TextColor="IndianRed"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
-               Margin="500,230" />
-
-        <Label x:Name="OgrenciYetkinlikleriLabel"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
-               Margin="500,250"
-               FontAttributes="Italic"
-               FontFamily="Segoe UI Black" />
-
+        
         <Button x:Name="KatilimButton"
-        Text="Katıl"
-        WidthRequest="220"
-        VerticalOptions="End"
-        HorizontalOptions="Center"
-        Margin="0,160"
-        FontAttributes="Bold"
-        BackgroundColor="YellowGreen"
-        IsEnabled="False"
-        Clicked="Button_Clicked"/>
-
-
+                Grid.Row="2"
+                Text="PROJEYE KATIL"
+                CornerRadius="25"
+                Margin="20"
+                HeightRequest="50"
+                FontSize="16"
+                FontFamily="OpenSansBold"
+                BackgroundColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}"
+                TextColor="White"
+                IsEnabled="{Binding KatilimIzinli}"
+                Clicked="Button_Clicked"/>
     </Grid>
 </ContentPage>

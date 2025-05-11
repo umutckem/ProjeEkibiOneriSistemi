@@ -2,64 +2,137 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjeEkibiOneriSistemi.View.ProjeEkrani"
-             Loaded="ContentPage_Loaded">
+             Loaded="ContentPage_Loaded"
+             BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#121212}">
 
-    <Grid>
-        <Image Source="ogrenciekrani.jpg" HeightRequest="1400"/>
-
-
+    <Grid RowDefinitions="Auto,*,Auto" Padding="10">
+        
+        <Image Source="ogrenciekrani.jpg" Aspect="AspectFill" Opacity="0.2" Grid.RowSpan="3"/>
 
         
-        <ScrollView>
-            <CollectionView x:Name="CollectionViewProje" HeightRequest="500" SelectionMode="Single" SelectionChanged="CollectionViewProje_SelectionChanged"
-                            Margin="20" BackgroundColor="Transparent">
+        <Frame Grid.Row="0" 
+               CornerRadius="20" 
+               Padding="0" 
+               Margin="0,0,0,10"
+               BorderColor="{AppThemeBinding Light=#E0E0E0, Dark=#333333}"
+               BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+               HasShadow="True">
+            <SearchBar x:Name="SearchBarProje" 
+                      Placeholder="Proje ara..."
+                      TextChanged="SearchBarProje_TextChanged"
+                      BackgroundColor="Transparent" 
+                      TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                      PlaceholderColor="{AppThemeBinding Light=Gray, Dark=#AAAAAA}"
+                      CancelButtonColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}"
+                      HeightRequest="50"/>
+        </Frame>
+
+       
+        <RefreshView Grid.Row="1"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    Command="{Binding RefreshCommand}">
+            <CollectionView x:Name="CollectionViewProje" 
+                          SelectionMode="Single" 
+                          SelectionChanged="CollectionViewProje_SelectionChanged"
+                          BackgroundColor="Transparent">
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="Proje bulunamadı" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}"
+                               FontSize="16"
+                               HorizontalOptions="Center"/>
+                        <Label Text=":(" 
+                               TextColor="{AppThemeBinding Light=#888888, Dark=#888888}"
+                               FontSize="14"
+                               HorizontalOptions="Center"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <VerticalStackLayout>
-                            <Frame BorderColor="GreenYellow" CornerRadius="10" Padding="15" Margin="10" BackgroundColor="Black" >
-                                <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="10" >
+                        <Frame CornerRadius="15" 
+                               Padding="20" 
+                               Margin="0,0,0,15"
+                               HasShadow="True"
+                               BorderColor="{AppThemeBinding Light=#E0E0E0, Dark=#333333}"
+                               BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}">
+                            <Grid ColumnDefinitions="Auto,*" 
+                                  RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
+                                  RowSpacing="8"
+                                  ColumnSpacing="15">
 
-                                   
-                                    <Label Text="Ad:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="0" Grid.Column="0"/>
-                                    <Label Text="{Binding Ad}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="0" Grid.Column="1"
-                                           LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>
+                               
+                                <Label Text="Ad:" 
+                                       TextColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}" 
+                                       FontFamily="OpenSansSemiBold" 
+                                       FontSize="16" 
+                                       Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding Ad}" 
+                                       TextColor="{AppThemeBinding Light=#212121, Dark=White}" 
+                                       FontFamily="OpenSansRegular" 
+                                       FontSize="16" 
+                                       Grid.Row="0" Grid.Column="1"
+                                       LineBreakMode="TailTruncation"/>
 
-                                    
-                                    <Label Text="Aciklama:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="1" Grid.Column="0"/>
-                                    <Label Text="{Binding Aciklama}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="1" Grid.Column="1"
-                                           LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>
+                                
+                                <Label Text="Açıklama:" 
+                                       TextColor="{AppThemeBinding Light=#6200EE, Dark=#BB86FC}" 
+                                       FontFamily="OpenSansSemiBold" 
+                                       FontSize="16" 
+                                       Grid.Row="1" Grid.Column="0"/>
+                                <Label Text="{Binding Aciklama}" 
+                                       TextColor="{AppThemeBinding Light=#424242, Dark=#E0E0E0}" 
+                                       FontFamily="OpenSansRegular" 
+                                       FontSize="14" 
+                                       Grid.Row="1" Grid.Column="1"
+                                       LineBreakMode="WordWrap"
+                                       MaxLines="3"/>
 
-                                    
-                                    <Label Text="Başlangıç Tarihi:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="0"/>
-                                    <Label Text="{Binding BaslangicTarihi}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="1"/>
+                               
+                                <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="20">
+                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                        <Label Text="Başlangıç:" 
+                                               TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}" 
+                                               FontFamily="OpenSansSemiBold" 
+                                               FontSize="14"/>
+                                        <Label Text="{Binding BaslangicTarihi}" 
+                                               TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}" 
+                                               FontFamily="OpenSansRegular" 
+                                               FontSize="12"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="5" >
+                                        <Label Text="Bitiş:" 
+                                               TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}" 
+                                               FontFamily="OpenSansSemiBold" 
+                                               FontSize="14"/>
+                                        <Label Text="{Binding BitisTarihi}" 
+                                               TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}" 
+                                               FontFamily="OpenSansRegular" 
+                                               FontSize="12"/>
+                                    </StackLayout>
+                                </StackLayout>
 
-                                    
-                                    <Label Text="Bitiş Tarihi:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="3" Grid.Column="0"/>
-                                    <Label Text="{Binding BitisTarihi}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="3" Grid.Column="1"/>
+                                
+                                <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                    <Label Text="Durum:" 
+                                           TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}" 
+                                           FontFamily="OpenSansSemiBold" 
+                                           FontSize="12"/>
+                                    <Label Text="{Binding AktifMi, Converter={StaticResource BoolToStatusConverter}}" 
+                                           TextColor="{Binding AktifMi, Converter={StaticResource StatusToColorConverter}}"
+                                           FontFamily="OpenSansSemiBold" 
+                                           FontSize="12"
+                                           Margin="5,0,0,0"/>
+                                </StackLayout>
 
-                                    
-                                    <Label Text="Aktif Mi:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="4" Grid.Column="0"/>
-                                    <Label Text="{Binding AktifMi}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="4" Grid.Column="1"/>
 
-                                </Grid>
-                            </Frame>
-                        </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </ScrollView>
-        
-        <SearchBar x:Name="SearchBarProje" 
-                   Placeholder="Proje ara..."
-                   TextChanged="SearchBarProje_TextChanged"
-                   BackgroundColor="Black" 
-                   TextColor="White"
-                   PlaceholderColor="Gray"
-                   Margin="20"
-                   HeightRequest="50" 
-                   HorizontalOptions="Center"
-                   VerticalOptions="Start"
-                   WidthRequest="450"/>
-    </Grid>
+        </RefreshView>
 
+       
+    </Grid>
 </ContentPage>

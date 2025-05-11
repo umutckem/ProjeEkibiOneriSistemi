@@ -71,6 +71,6 @@ public partial class DestekEkrani : ContentPage
 
         GecmisDestekTalepleri gecmisDestekTalepleri = new GecmisDestekTalepleri();
         gecmisDestekTalepleri.setOgrenci(_ogrenci);
-        Application.Current.MainPage = new NavigationPage(gecmisDestekTalepleri);
+        await Navigation.PushAsync(gecmisDestekTalepleri);
     }
 }

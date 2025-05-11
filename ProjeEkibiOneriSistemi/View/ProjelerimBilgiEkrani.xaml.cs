@@ -9,6 +9,7 @@ public partial class ProjelerimBilgiEkrani : ContentPage
     private readonly IOgrenciServices _ogrenciServices;
     private readonly IGrupServices _grupServices;
     private readonly IProjeServices _projeServices;
+    private readonly IKatilimciServices _katilimciServices;
 	Ogrenci _ogrenci;
     Proje _Proje;
 	public void SetProje(Proje proje)
@@ -31,6 +32,7 @@ public partial class ProjelerimBilgiEkrani : ContentPage
         _ogrenciServices = new OgrenciServices();
         _grupServices = new GrupServices();
         _projeServices = new ProjeServices();
+        _katilimciServices = new KatilimciServices();
     }
 
 
@@ -61,6 +63,18 @@ public partial class ProjelerimBilgiEkrani : ContentPage
                 ).ToList();
 
             grupUyeleriCollectionView.ItemsSource = ayniGrupUyeleriOgrenciler;
+        }
+        await getKatilimciSayisi();
+    }
+
+    private async Task getKatilimciSayisi()
+    {
+        var katilimcilar = await _katilimciServices.GetKatilimcis();
+
+        if(katilimcilar is not null)
+        {
+            var projeyeKatilimciSayisi = katilimcilar.Where(x => x.ProjeId == _Proje.Id);
+            projeyeKatilimSayisi.Text = projeyeKatilimciSayisi.Count().ToString();
         }
     }
 }

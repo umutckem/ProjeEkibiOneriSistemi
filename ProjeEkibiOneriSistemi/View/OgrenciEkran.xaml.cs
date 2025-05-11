@@ -81,6 +81,6 @@ public partial class OgrenciEkran : ContentPage
         await button.ScaleTo(1, 100); 
         DestekEkrani destekEkrani = new DestekEkrani();
         destekEkrani.setOgrenci(ogrenci);
-        Application.Current.MainPage = new NavigationPage(destekEkrani);
+        await Navigation.PushAsync(destekEkrani);
     }
 }

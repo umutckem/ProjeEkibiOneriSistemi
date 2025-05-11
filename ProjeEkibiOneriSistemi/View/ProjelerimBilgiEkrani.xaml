@@ -56,6 +56,8 @@
                                         <Label Text="{Binding Ad}" TextColor="#2c3e50" FontSize="14" />
                                         <Label Text="Ogrenci Soyadi" TextColor="#7f8c8d" FontSize="12" />
                                         <Label Text="{Binding Soyad}" TextColor="#2c3e50" FontSize="14" />
+                                        <Label Text="Ogrenci GrupNo" TextColor="#7f8c8d" FontSize="12" />
+                                        <Label Text="{Binding GrupNo}" TextColor="#2c3e50" FontSize="14" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </DataTemplate>
