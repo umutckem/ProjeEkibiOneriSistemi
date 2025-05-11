@@ -24,22 +24,28 @@
                         <VerticalStackLayout>
                         <Frame BorderColor="#00ADB5" CornerRadius="10" Padding="15" Margin="5"
                                BackgroundColor="#222831" >
-                            <Grid ColumnDefinitions="100, *" RowDefinitions="Auto, Auto" RowSpacing="8">
+                                <Grid ColumnDefinitions="100, *" RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="8">
+                                    
+                                    <Label Text="ID:" TextColor="#00ADB5" Grid.Row="0" Grid.Column="0"/>
+                                    <Label Text="{Binding Id}" TextColor="White" Grid.Row="0" Grid.Column="1"/>
 
-                              
-                                <Label Text="ID:" TextColor="#00ADB5" FontFamily="Arial" FontSize="16" FontAttributes="Bold"
-                                       Grid.Row="0" Grid.Column="0"/>
-                                <Label Text="{Binding Id}" TextColor="White" FontFamily="Arial" FontSize="16"
-                                       Grid.Row="0" Grid.Column="1"/>
+                                    
+                                    <Label Text="Kategori:" TextColor="#00ADB5" Grid.Row="1" Grid.Column="0"/>
+                                    <Label Text="{Binding Ad}" TextColor="White" Grid.Row="1" Grid.Column="1"/>
 
-                                
-                                <Label Text="Kategori:" TextColor="#00ADB5" FontFamily="Arial" FontSize="16" FontAttributes="Bold"
-                                       Grid.Row="1" Grid.Column="0"/>
-                                <Label Text="{Binding Ad}" TextColor="White" FontFamily="Arial" FontSize="16"
-                                       Grid.Row="1" Grid.Column="1"/>
+                                    
+                                    <Label Text="Soru:" TextColor="#00ADB5" Grid.Row="2" Grid.Column="0"/>
+                                    <Label x:Name="lblSoruSayisi" Text="-" TextColor="White" Grid.Row="2" Grid.Column="1"/>
 
-                            </Grid>
-                        </Frame>
+                                    
+                                    <Label Text="Yanıt:" TextColor="#00ADB5" Grid.Row="3" Grid.Column="0"/>
+                                    <Label x:Name="lblYanıtSayisi" Text="-" TextColor="White" Grid.Row="3" Grid.Column="1"/>
+
+                                    
+                                    <Label Text="Durum:" TextColor="#00ADB5" Grid.Row="4" Grid.Column="0"/>
+                                    <Label x:Name="lblDurum" Text="-" TextColor="White" Grid.Row="4" Grid.Column="1"/>
+                                </Grid>
+                            </Frame>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

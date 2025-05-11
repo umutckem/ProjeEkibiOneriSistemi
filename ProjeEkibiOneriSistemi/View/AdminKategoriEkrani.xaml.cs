@@ -98,6 +98,6 @@ public partial class AdminKategoriEkrani : ContentPage
 
         AdminKategoriEkle adminKategoriEkle = new AdminKategoriEkle();
         adminKategoriEkle.setOgrenci(_ogrenci);
-        Application.Current.MainPage = new NavigationPage(adminKategoriEkle);
+        await Navigation.PushAsync(adminKategoriEkle);
     }
 }

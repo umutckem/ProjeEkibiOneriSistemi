@@ -27,6 +27,10 @@ public partial class AdminTestOlustur : ContentPage
 
     private async void OnSoruOlusturClicked(object sender, EventArgs e)
     {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100);
+        await button.ScaleTo(1, 100);
+
         if (string.IsNullOrWhiteSpace(entryMetin.Text) ||
             string.IsNullOrWhiteSpace(entryCevap.Text) ||
             pickerOnem.SelectedItem == null)
