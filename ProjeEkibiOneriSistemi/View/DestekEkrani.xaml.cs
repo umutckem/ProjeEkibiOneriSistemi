@@ -46,7 +46,8 @@ public partial class DestekEkrani : ContentPage
             {
                 await _destekServices.ekleDestek(new Destek
                 {
-
+                    AdminId = new Guid(),
+                    AdminCevap = "Beklemede",
                     Konu = Konu.Text,
                     Açýklama = Acýklama.Text,
                     OgrenciId = _ogrenci.Id,

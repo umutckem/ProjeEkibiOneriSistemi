@@ -41,6 +41,7 @@ public partial class GecmisDestekTalepleriBilgiEkrani : ContentPage
         {
 			Konu.Text = _destek.Konu.ToString();
 			Acýklama.Text = _destek.Açýklama.ToString();
+            AdminCevap.Text = _destek.AdminCevap.ToString();
         }
     }
 

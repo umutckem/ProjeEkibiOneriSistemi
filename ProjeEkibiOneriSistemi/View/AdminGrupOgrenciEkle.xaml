@@ -14,7 +14,7 @@
                        BorderColor="#E0E0E0"
                        HasShadow="True">
                     <Grid ColumnDefinitions="*,Auto" 
-                          RowDefinitions="Auto,Auto"
+                          RowDefinitions="Auto,Auto,Auto"
                           Padding="15"
                           RowSpacing="5"
                           ColumnSpacing="10">
@@ -30,8 +30,13 @@
                                Text="{Binding Soyad}"
                                FontSize="14"
                                TextColor="#607D8B"/>
-
                         
+                        <Label Grid.Column="0" Grid.Row="2"
+                               Text="{Binding OrtalamaPuan}"
+                               FontSize="14"
+                               TextColor="#607D8B"/>
+
+
                         <StackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
                                      HorizontalOptions="End"
                                      VerticalOptions="Center"

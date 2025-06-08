@@ -45,6 +45,15 @@
                        FontSize="16"
                        TextColor="#1C1C1C"
                        LineBreakMode="WordWrap" />
+
+                <Label Text="AdminCevap:"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#5C677D" />
+                <Label x:Name="AdminCevap"
+                       FontSize="16"
+                       TextColor="#1C1C1C"
+                       LineBreakMode="WordWrap" />
             </VerticalStackLayout>
         </Frame>
 

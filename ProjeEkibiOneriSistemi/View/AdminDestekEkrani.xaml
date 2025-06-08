@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjeEkibiOneriSistemi.View.AdminDestekEkrani"
+             Title="Destek Talepleri"
+             BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#2C2C2C}">
+
+    <Grid>
+        <!-- Arka plan görseli -->
+        <Image Source="adminekrani.png" Aspect="AspectFill" Opacity="0.2" />
+
+        <!-- Başlık alanı -->
+        <VerticalStackLayout Margin="20,10,20,0" VerticalOptions="Start">
+            <Label Text="Destek Talepleri" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   TextColor="{AppThemeBinding Light=#2C3E50, Dark=White}"
+                   HorizontalOptions="Center" />
+
+            <BoxView HeightRequest="2" 
+                     WidthRequest="100" 
+                     Color="{AppThemeBinding Light=#3498db, Dark=#2980b9}" 
+                     HorizontalOptions="Center"
+                     Margin="0,5,0,15"/>
+        </VerticalStackLayout>
+
+        <!-- Talep listesi -->
+        <RefreshView VerticalOptions="FillAndExpand"
+                      Margin="0,70,0,0"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      Command="{Binding RefreshCommand}">
+            <CollectionView x:Name="DestekListesi" 
+                            SelectionMode="None"
+                            ItemsUpdatingScrollMode="KeepScrollOffset">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
+                        <Label Text="Gösterilecek destek talebi bulunamadı" 
+                               TextColor="{AppThemeBinding Light=#7F8C8D, Dark=#BDC3C7}"
+                               HorizontalOptions="Center"
+                               FontSize="Medium"/>
+                        <Button Text="Yenile" 
+                                Command="{Binding RefreshCommand}"
+                                BackgroundColor="{AppThemeBinding Light=#3498db, Dark=#2980b9}"
+                                TextColor="White"
+                                WidthRequest="120"
+                                Margin="0,10,0,0"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle 12"
+                Stroke="Transparent"
+                BackgroundColor="{AppThemeBinding Light=White, Dark=#424242}"
+                Padding="0"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center">
+                            <Border.Shadow>
+                                <Shadow Brush="{AppThemeBinding Light=#20000000, Dark=#20FFFFFF}"
+                        Offset="2,2"
+                        Radius="5"
+                        Opacity="0.5"/>
+                            </Border.Shadow>
+
+                            <Frame BorderColor="{AppThemeBinding Light=#E0E0E0, Dark=#424242}"
+                   BackgroundColor="Transparent"
+                   CornerRadius="12" 
+                   Padding="15"
+                   HasShadow="False">
+                                <VerticalStackLayout Spacing="8">
+                                    <!-- Konu başlığı -->
+                                    <Label Text="Konu:" FontAttributes="Bold" TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+                                    <Label Text="{Binding Konu}" 
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#2C3E50, Dark=White}"/>
+
+                                    <!-- Açıklama -->
+                                    <Label Text="Talep Açıklaması:" FontAttributes="Bold" TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+                                    <Label Text="{Binding Açıklama}" 
+                           FontSize="14"
+                           TextColor="{AppThemeBinding Light=#34495E, Dark=#ECF0F1}"
+                           MaxLines="4"
+                           LineBreakMode="TailTruncation"/>
+
+                                    <!-- Admin cevabı -->
+                                    <Label Text="Admin Cevabı:" FontAttributes="Bold" TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+                                    <Label Text="{Binding AdminCevap}" 
+                           FontSize="14"
+                           TextColor="{AppThemeBinding Light=#27AE60, Dark=#2ECC71}"
+                           MaxLines="4"
+                           LineBreakMode="TailTruncation"/>
+
+                                    <!-- Tarih ve durum bilgisi -->
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="{Binding OlusturmaTarihi, StringFormat='Oluşturulma: {0:dd.MM.yyyy HH:mm}'}" 
+                               FontSize="12" 
+                               TextColor="{AppThemeBinding Light=#7F8C8D, Dark=#BDC3C7}"/>
+
+                                        <BoxView Color="{Binding Durum, Converter={StaticResource DurumRenkConverter}}"
+                                 WidthRequest="10"
+                                 HeightRequest="10"
+                                 VerticalOptions="Center"
+                                 CornerRadius="5"/>
+                                    </HorizontalStackLayout>
+
+                                    <!-- İşlem butonları -->
+                                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,10,0,0">
+                                        <Button Text="Sil" 
+                                BackgroundColor="#E74C3C" 
+                                TextColor="White"
+                                CornerRadius="8"
+                                FontAttributes="Bold"
+                                Clicked="Sil_Clicked" 
+                                CommandParameter="{Binding Id}"/>
+
+                                        <Button Grid.Column="1"
+                                Text="Cevapla" 
+                                BackgroundColor="{AppThemeBinding Light=#2ECC71, Dark=#27AE60}" 
+                                TextColor="White"
+                                CornerRadius="8"
+                                FontAttributes="Bold"
+                                Clicked="Cevapla_Clicked" 
+                                CommandParameter="{Binding}"/>
+                                    </Grid>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </RefreshView>
+
+        <!-- Yükleme göstergesi -->
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}"
+                           Color="{AppThemeBinding Light=#3498db, Dark=#2980b9}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           BackgroundColor="#80000000"
+                           WidthRequest="50"
+                           HeightRequest="50"/>
+    </Grid>
+</ContentPage>

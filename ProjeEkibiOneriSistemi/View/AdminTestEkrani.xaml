@@ -6,7 +6,7 @@
              Loaded="ContentPage_Loaded">
 
     <Grid RowDefinitions="Auto,*,Auto">
-        
+
         <Image Source="adminekrani.png"
                Aspect="AspectFill"
                Opacity="0.1"
@@ -14,7 +14,6 @@
                HorizontalOptions="FillAndExpand"
                Grid.RowSpan="3"/>
 
-        
         <Label Text="Soru Listesi"
                Grid.Row="0"
                FontSize="28"
@@ -23,7 +22,6 @@
                Margin="0,30,0,20"
                TextColor="#26A69A" />
 
-        
         <ScrollView Grid.Row="1" Padding="20">
             <CollectionView x:Name="SoruCollection"
                             SelectionMode="Single"
@@ -36,6 +34,20 @@
                                Padding="15"
                                Margin="10"
                                HasShadow="True">
+
+                            
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="#2E2E50" />
+                                            <Setter Property="BorderColor" Value="#00FFAA" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
                             <StackLayout Spacing="10">
                                 <Label Text="{Binding Metin}"
                                        FontAttributes="Bold"
@@ -103,11 +115,10 @@
             </CollectionView>
         </ScrollView>
 
-        
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" Padding="20" Spacing="25">
-
             <Button Text="Soru Ekle"
                     BackgroundColor="#007aff"
+                    WidthRequest="150"
                     TextColor="White"
                     CornerRadius="15"
                     HeightRequest="50"
@@ -117,7 +128,20 @@
                 </Button.Shadow>
             </Button>
 
-            <Button Text="Kategori Sil"
+            <Button Text="Soru Sil"
+                    BackgroundColor="YellowGreen"
+                    WidthRequest="150"
+                    TextColor="White"
+                    CornerRadius="15"
+                    HeightRequest="50"
+                    Clicked="Button_Clicked">
+                <Button.Shadow>
+                    <Shadow Brush="#000000" Opacity="0.3" Radius="5" Offset="2,2"/>
+                </Button.Shadow>
+            </Button>
+
+            <Button Text="Kategoriyi Sil"
+                    WidthRequest="150"
                     BackgroundColor="#F44336"
                     TextColor="White"
                     CornerRadius="15"

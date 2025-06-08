@@ -99,5 +99,37 @@ public partial class AdminTestEkrani : ContentPage
         }
     }
 
+    private async void Button_Clicked(object sender, EventArgs e)
+    {
+        var secilenSoru = SoruCollection.SelectedItem as Soru;
+
+        if (secilenSoru == null)
+        {
+            await DisplayAlert("Uyarý", "Lütfen silmek istediðiniz bir soruyu seçin.", "Tamam");
+            return;
+        }
+
+        bool onay = await DisplayAlert("Soru Sil", "Seçilen soruyu silmek istediðinize emin misiniz?", "Evet", "Hayýr");
+
+        if (onay)
+        {
+            try
+            {
+                await _soruServices.silSoru(secilenSoru.Id);
+
+                
+                var guncelListe = (SoruCollection.ItemsSource as List<Soru>).ToList();
+                guncelListe.Remove(secilenSoru);
+                SoruCollection.ItemsSource = null; 
+                SoruCollection.ItemsSource = guncelListe;
+
+                await DisplayAlert("Baþarýlý", "Soru baþarýyla silindi.", "Tamam");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Hata", $"Soru silinirken hata oluþtu: {ex.Message}", "Tamam");
+            }
+        }
+    }
 
 }

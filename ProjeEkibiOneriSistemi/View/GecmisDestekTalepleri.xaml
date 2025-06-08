@@ -12,7 +12,7 @@
                     <DataTemplate>
                         <VerticalStackLayout>
                             <Frame BorderColor="GreenYellow" CornerRadius="10" Padding="15" Margin="10" BackgroundColor="Black" >
-                                <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto" RowSpacing="10" >
+                                <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="10" >
 
                                     <Label Text="Konu:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="0" Grid.Column="0"/>
                                     <Label Text="{Binding Konu}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="0" Grid.Column="1"
@@ -22,8 +22,12 @@
                                     <Label Text="{Binding Açıklama}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="1" Grid.Column="1"
                                    LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>
 
-                                    <Label Text="OlusturmaTarihi:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="0"/>
-                                    <Label Text="{Binding OlusturmaTarihi}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="1"/>
+                                    <Label Text="AdminCevap:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="0"/>
+                                    <Label Text="{Binding AdminCevap}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="2" Grid.Column="1"
+                                   LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>
+
+                                    <Label Text="OlusturmaTarihi:" TextColor="GreenYellow" FontFamily="Cambria" FontSize="16" Grid.Row="3" Grid.Column="0"/>
+                                    <Label Text="{Binding OlusturmaTarihi}" TextColor="White" FontFamily="Cambria" FontSize="16" Grid.Row="3" Grid.Column="1"/>
 
                                 </Grid>
                             </Frame>

@@ -43,6 +43,7 @@ public partial class AdminProjeOgrenci : ContentPage
                 .ToList();
 
             GrupListView.ItemsSource = projeGruplari;
+
         }
         catch (Exception ex)
         {

@@ -125,4 +125,15 @@ public partial class AdminEkran : ContentPage
         adminTestlerEkrani.setOgrenci(_ogrenci);
         Application.Current.MainPage = new NavigationPage(adminTestlerEkrani);
     }
+
+    private async void Button_Clicked_3(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        await button.ScaleTo(0.9, 100);
+        await button.ScaleTo(1, 100);
+
+        AdminDestekEkrani adminDestekEkrani = new AdminDestekEkrani();
+        adminDestekEkrani.setAdmin(_ogrenci);
+        await Navigation.PushAsync(adminDestekEkrani);
+    }
 }

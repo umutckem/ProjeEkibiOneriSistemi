@@ -38,7 +38,7 @@
                         BackgroundColor="#3498DB" TextColor="White" 
                         CornerRadius="10" FontAttributes="Bold" HeightRequest="45"/>
 
-                <Button Text="Destek" 
+                <Button Text="Destek" Clicked="Button_Clicked_3" 
                         BackgroundColor="#3498DB" TextColor="White" 
                         CornerRadius="10" FontAttributes="Bold" HeightRequest="45"/>
 

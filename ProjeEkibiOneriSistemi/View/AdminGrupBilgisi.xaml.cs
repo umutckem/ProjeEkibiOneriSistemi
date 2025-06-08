@@ -10,6 +10,7 @@ namespace ProjeEkibiOneriSistemi.View
 {
     public partial class AdminGrupBilgisi : ContentPage
     {
+        double ortalamapuan;
         private readonly IGrupServices _grupServices;
         private readonly IOgrenciServices _ogrenciServices;
         Ogrenci _Ogrenci;
@@ -58,19 +59,29 @@ namespace ProjeEkibiOneriSistemi.View
         {
             try
             {
-                
                 var tumOgrenciler = await _ogrenciServices.GetOgrencis();
                 _tumGruplar = await _grupServices.getGrups();
 
+                // Önce sadece bu grubun öðrenci ID'lerini al
+                var grupOgrenciIdleri = _tumGruplar
+                    .Where(g => g.GrupNo == _Grup.GrupNo && g.ProjeId == _Grup.ProjeId)
+                    .Select(g => g.OgrenciId)
+                    .ToList();
+
+                // Bu ID'lere sahip öðrencileri filtrele
                 var grupOgrencileri = tumOgrenciler
-                    .Where(o => _tumGruplar.Any(g =>
-                        g.GrupNo == _Grup.GrupNo &&
-                        g.ProjeId == _Grup.ProjeId &&
-                        g.OgrenciId == o.Id))
+                    .Where(o => grupOgrenciIdleri.Contains(o.Id))
                     .ToList();
 
                 GrupNoLabel.Text = $"Grup No: {_Grup.GrupNo}";
-                ProjeAdLabel.Text = $"Proje Adý: {_Grup.ProjeId}"; 
+                ProjeAdLabel.Text = $"Proje Adý: {_Proje?.Ad ?? _Grup.ProjeId.ToString()}";
+
+                // Ortalama puaný güvenli þekilde hesapla
+                ortalamapuan = grupOgrencileri.Any()
+                    ? grupOgrencileri.Average(o => o.OrtalamaPuan)
+                    : 0;
+
+                ProjeOrtPuaný.Text = $"Proje Ortalamasý: {ortalamapuan:F2}";
 
                 OgrenciListView.ItemsSource = grupOgrencileri;
             }
@@ -80,6 +91,7 @@ namespace ProjeEkibiOneriSistemi.View
             }
         }
 
+        
         private async void EkleButton_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;

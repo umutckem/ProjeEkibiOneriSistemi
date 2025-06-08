@@ -23,6 +23,9 @@
             <Label x:Name="ProjeAdLabel"
                    FontSize="16"
                    TextColor="DimGray"/>
+            <Label x:Name="ProjeOrtPuanı"
+                   FontSize="16"
+                   TextColor="DimGray"/>
         </StackLayout>
 
         
@@ -38,6 +41,7 @@
                             <Label Text="{Binding Ad}" FontAttributes="Bold" TextColor="Black"/>
                             <Label Text="{Binding ogrenciNo}" TextColor="Gray"/>
                             <Label Text="{Binding Bolum}" TextColor="DimGray"/>
+                            <Label Text="{Binding OrtalamaPuan}" TextColor="DimGray"/>
                         </StackLayout>
                     </Frame>
                 </DataTemplate>
