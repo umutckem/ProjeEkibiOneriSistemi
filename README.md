@@ -7,6 +7,8 @@ Bu proje, veri odaklı analiz ile öğrenci profillerini değerlendirerek, dinam
 ASP.NET API kullanılarak geliştirilmiştir.
 #Admin Paneli
 
+# Admin Paneli
+
 ![Ekran görüntüsü 2025-06-09 163618](https://github.com/user-attachments/assets/d16ad06e-f11f-4e2c-b12a-d3d2a30ed6d8)
 
 
