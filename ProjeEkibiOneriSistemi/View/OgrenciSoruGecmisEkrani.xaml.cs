@@ -7,6 +7,7 @@ public partial class OgrenciSoruGecmisEkrani : ContentPage
 {
     private readonly IOgrenciServices _ogrenciServices;
     private readonly IKullaniciYanitiSerives _kullaniciYanitServices;
+    
 	Ogrenci _ogrenci;
 	public OgrenciSoruGecmisEkrani()
 	{
@@ -23,16 +24,31 @@ public partial class OgrenciSoruGecmisEkrani : ContentPage
 
     private async void CollectionViewSoruGecmisi_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var secilenYanit = e.CurrentSelection[0] as KullaniciYaniti; 
-        if (secilenYanit != null)
-        {
-            bool secim = await DisplayAlert("Seçilen Kullanici Yaniti", $"ID: {secilenYanit.Id}\nKategori Id: {secilenYanit.KategoriId} \nBu soruyu silerseniz bu soruya ait bütün ilgili kategori'nin soru cevaplarýda silenecektir. ", "Tamam", "Hayýr");
-            if (secim)
-            {
+        var secilenYanit = e.CurrentSelection.FirstOrDefault() as KullaniciYaniti;
+        if (secilenYanit == null || _ogrenci == null)
+            return;
 
+        bool secim = await DisplayAlert(
+            "Kategoriye Ait Tüm Yanýtlarý Sil",
+            $"Kategori ID: {secilenYanit.KategoriId}\nBu kategoriye ait tüm yanýtlar silinecektir. Emin misiniz?",
+            "Evet", "Hayýr");
+
+        if (secim)
+        {
+            var tumYanitlar = await _kullaniciYanitServices.GetKullaniciYanitis();
+            var silinecekler = tumYanitlar
+                .Where(y => y.KategoriId == secilenYanit.KategoriId && y.OgrenciId == _ogrenci.Id)
+                .ToList();
+
+            foreach (var y in silinecekler)
+            {
+                await _kullaniciYanitServices.silKullaniciYaniti(y.Id);
             }
+
+            await DisplayAlert("Silindi", $"{silinecekler.Count} adet yanýt silindi.", "Tamam");
         }
     }
+
 
     private async void ContentPage_Loaded(object sender, EventArgs e)
     {

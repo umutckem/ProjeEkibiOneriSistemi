@@ -27,16 +27,43 @@ namespace ProjeEkibiOneriSistemi.View
             await button.ScaleTo(1, 100); 
 
             string girilenAd = kategoriAd.Text?.Trim();
+            string girilenBolum = ilgiliBolum.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(girilenAd))
             {
                 await DisplayAlert("Uyarý", "Lütfen bir kategori adý giriniz.", "Tamam");
                 return;
             }
+            if (girilenAd.Length < 3)
+            {
+                await DisplayAlert("Uyarý", "Kategori adý en az 3 karakter olmalýdýr.", "Tamam");
+                return;
+            }
+            if (girilenAd.Length > 50)
+            {
+                await DisplayAlert("Uyarý", "Kategori adý en fazla 50 karakter olmalýdýr.", "Tamam");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(girilenBolum))
+            {
+                await DisplayAlert("Uyarý", "Lütfen bir bölüm adý giriniz.", "Tamam");
+                return;
+            }
+            if (girilenBolum.Length < 3)
+            {
+                await DisplayAlert("Uyarý", "Bölüm adý en az 3 karakter olmalýdýr.", "Tamam");
+                return;
+            }
+            if (girilenBolum.Length > 50)
+            {
+                await DisplayAlert("Uyarý", "Bölüm adý en fazla 50 karakter olmalýdýr.", "Tamam");
+                return;
+            }
 
             Kategori yeniKategori = new Kategori
             {
-                Ad = girilenAd
+                Ad = girilenAd,
+                IlgiliBolum = girilenBolum
             };
 
             await _kategoriServices.ekleKategori(yeniKategori);

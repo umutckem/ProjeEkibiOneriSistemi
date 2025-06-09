@@ -8,7 +8,7 @@ public partial class AdminKategoriEkrani : ContentPage
 {
     private readonly ISoruServices _soruServices;
     private readonly IKategoriServices _kategoriServices;
-    private List<object> _tumTestler = new(); 
+    private List<object> _tumTestler = new();
     private Ogrenci _ogrenci;
 
     public void setOgrenci(Ogrenci ogrenci)
@@ -28,13 +28,13 @@ public partial class AdminKategoriEkrani : ContentPage
         var tumKategoriler = await _kategoriServices.GetKategoris();
         var tumSorular = await _soruServices.GetSorus();
 
-        
         _tumTestler = tumKategoriler
             .Select(kat => new
             {
                 Id = kat.Id,
-                Kategori = kat,  
+                Kategori = kat,
                 KategoriAdi = kat.Ad,
+                IlgiliBolum = kat.IlgiliBolum,
                 SoruSayisi = tumSorular.Count(s => s.KategoriId == kat.Id)
             })
             .Cast<object>()
@@ -43,7 +43,6 @@ public partial class AdminKategoriEkrani : ContentPage
         CollectionViewTestler.ItemsSource = _tumTestler;
         testSayisi.Text = _tumTestler.Count.ToString();
     }
-
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
@@ -64,6 +63,7 @@ public partial class AdminKategoriEkrani : ContentPage
             .Where(t =>
                 t.GetType().GetProperty("KategoriAdi")?.GetValue(t)?.ToString()?.ToLower().Contains(query) == true
                 || t.GetType().GetProperty("SoruSayisi")?.GetValue(t)?.ToString()?.Contains(query) == true
+                || t.GetType().GetProperty("IlgiliBolum")?.GetValue(t)?.ToString()?.ToLower().Contains(query) == true
             )
             .ToList();
 
@@ -75,7 +75,6 @@ public partial class AdminKategoriEkrani : ContentPage
         var secilenItem = e.CurrentSelection.FirstOrDefault();
         if (secilenItem == null) return;
 
-        
         var kategori = (secilenItem as dynamic).Kategori as Kategori;
         if (kategori == null) return;
 
@@ -84,11 +83,10 @@ public partial class AdminKategoriEkrani : ContentPage
         {
             var adminTestEkrani = new AdminTestEkrani();
             adminTestEkrani.setOgrenci(_ogrenci);
-            adminTestEkrani.setKategori(kategori);  
+            adminTestEkrani.setKategori(kategori);
             await Navigation.PushAsync(adminTestEkrani);
         }
     }
-
 
     private async void Button_TestEkle_Clicked(object sender, EventArgs e)
     {

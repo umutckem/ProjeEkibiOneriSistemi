@@ -18,6 +18,10 @@
                     <Label Text="Kategori Adı:" WidthRequest="120" VerticalTextAlignment="Center" TextColor="#333"/>
                     <Entry x:Name="kategoriAd" Placeholder="Kategori adını girin..." BackgroundColor="#f0f0f0" TextColor="Black"/>
                 </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Label Text="Bölüm Adı:" WidthRequest="120" VerticalTextAlignment="Center" TextColor="#333"/>
+                    <Entry x:Name="ilgiliBolum" Placeholder="Bölümü girin..." BackgroundColor="#f0f0f0" TextColor="Black"/>
+                </StackLayout>
 
                 <Button Text="Kategori Ekle"
                         BackgroundColor="#007aff"

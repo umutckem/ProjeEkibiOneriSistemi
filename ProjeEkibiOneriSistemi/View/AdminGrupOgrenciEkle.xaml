@@ -19,28 +19,31 @@
                           RowSpacing="5"
                           ColumnSpacing="10">
 
-                        
-                        <Label Grid.Column="0" Grid.Row="0"
-                               Text="{Binding Ad}"
-                               FontSize="16"
-                               TextColor="#2D3A3D"
-                               FontAttributes="Bold"/>
+                        <!-- Sol taraf: İsim, soyisim, ortalama -->
+                        <StackLayout Grid.Column="0" Grid.RowSpan="3" VerticalOptions="Center">
+                            <Label Text="{Binding Ad}"
+                                   FontSize="16"
+                                   TextColor="#2D3A3D"
+                                   FontAttributes="Bold"/>
 
-                        <Label Grid.Column="0" Grid.Row="1"
-                               Text="{Binding Soyad}"
-                               FontSize="14"
-                               TextColor="#607D8B"/>
-                        
-                        <Label Grid.Column="0" Grid.Row="2"
-                               Text="{Binding OrtalamaPuan}"
-                               FontSize="14"
-                               TextColor="#607D8B"/>
+                            <Label Text="{Binding Soyad}"
+                                   FontSize="14"
+                                   TextColor="#607D8B"/>
 
+                            <Label Text="Puan: "
+                                   FontSize="13"
+                                   TextColor="#607D8B"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding OrtalamaPuan}"
+                                   FontSize="14"
+                                   TextColor="#607D8B"/>
+                        </StackLayout>
 
-                        <StackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+                        <!-- Sağ taraf: No, Sınıf ve Etiket -->
+                        <StackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"
                                      HorizontalOptions="End"
                                      VerticalOptions="Center"
-                                     Spacing="5">
+                                     Spacing="6">
 
                             <Label Text="{Binding ogrenciNo}"
                                    FontSize="14"
@@ -57,6 +60,24 @@
                                        TextColor="#1976D2"
                                        FontAttributes="Bold"/>
                             </Frame>
+
+                            <!-- Etiket Gösterimi -->
+                            <Frame CornerRadius="8"
+                                   Padding="6,2"
+                                   BackgroundColor="{Binding EtiketRenk}"
+                                   HorizontalOptions="End">
+                                <Label Text="{Binding Etiket}"
+                                       FontSize="12"
+                                       TextColor="White"
+                                       FontAttributes="Bold"/>
+                            </Frame>
+
+                            <!-- 🔍 Önerilen Öğrenci Etiketi -->
+                            <Label Text="✔ Önerilen Öğrenci"
+                                   FontSize="11"
+                                   TextColor="Green"
+                                   FontAttributes="Bold"
+                                   IsVisible="{Binding OneriMi}"/>
                         </StackLayout>
                     </Grid>
                 </Frame>
@@ -66,7 +87,7 @@
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="10">
 
-        
+        <!-- Başlık -->
         <Frame Grid.Row="0"
                CornerRadius="14"
                BackgroundColor="#2D3A3D"
@@ -80,7 +101,7 @@
                    TextColor="White"/>
         </Frame>
 
-        
+        <!-- Liste -->
         <RefreshView Grid.Row="1"
                      IsRefreshing="{Binding IsRefreshing}"
                      Command="{Binding RefreshCommand}">
@@ -98,7 +119,7 @@
             </ListView>
         </RefreshView>
 
-        
+        <!-- Geri Dön Butonu -->
         <Frame Grid.Row="2"
                CornerRadius="0"
                BackgroundColor="Transparent"

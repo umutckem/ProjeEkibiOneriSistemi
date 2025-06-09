@@ -33,7 +33,12 @@ public partial class KategoriEkrani : ContentPage
         var sorular = await _soruServices.GetSorus();
         var yanitlar = await _kullaniciYanitiSerives.GetKullaniciYanitis();
 
-        
+        // Sadece öðrenciye uygun olan kategoriler
+        var uygunKategoriler = kategoriler
+            .Where(k => string.Equals(k.IlgiliBolum?.Trim(), ogrenci?.Bolum?.Trim(), StringComparison.OrdinalIgnoreCase))
+            .ToList();
+
+        // Artýk anonymous object deðil, doðrudan kategori nesneleri atanýyor
         CollectionViewKategori.ItemTemplate = new DataTemplate(() =>
         {
             var frame = new Frame
@@ -43,20 +48,19 @@ public partial class KategoriEkrani : ContentPage
                 CornerRadius = 10,
                 Padding = 15,
                 Margin = 5,
-                Content = new Grid
-                {
-                    ColumnDefinitions = new ColumnDefinitionCollection {
-                    new ColumnDefinition { Width = new GridLength(100) },
-                    new ColumnDefinition { Width = GridLength.Star }
-                },
-                    RowDefinitions = new RowDefinitionCollection {
-                    new RowDefinition(), new RowDefinition(), new RowDefinition(),
-                    new RowDefinition(), new RowDefinition()
-                }
-                }
             };
 
-            var grid = (Grid)frame.Content;
+            var grid = new Grid
+            {
+                ColumnDefinitions = new ColumnDefinitionCollection {
+                new ColumnDefinition { Width = new GridLength(100) },
+                new ColumnDefinition { Width = GridLength.Star }
+            },
+                RowDefinitions = new RowDefinitionCollection {
+                new RowDefinition(), new RowDefinition(), new RowDefinition(),
+                new RowDefinition(), new RowDefinition()
+            }
+            };
 
             var lblId = new Label { TextColor = Colors.White };
             lblId.SetBinding(Label.TextProperty, "Id");
@@ -66,7 +70,23 @@ public partial class KategoriEkrani : ContentPage
 
             var lblSoru = new Label { TextColor = Colors.White };
             var lblYanýt = new Label { TextColor = Colors.White };
-            var lblDurum = new Label { TextColor = Colors.White };
+            var lblDurum = new Label();
+
+            frame.BindingContextChanged += async (s, e) =>
+            {
+                var kategori = frame.BindingContext as Kategori;
+                if (kategori == null) return;
+
+                var soruSayisi = sorular.Count(s => s.KategoriId == kategori.Id);
+                var yanitSayisi = yanitlar.Count(y => y.KategoriId == kategori.Id && y.OgrenciId == ogrenci.Id);
+                var durum = (soruSayisi > 0 && soruSayisi == yanitSayisi) ? "Tamamlandý" : "Eksik";
+                var renk = (soruSayisi == yanitSayisi) ? Colors.LimeGreen : Colors.OrangeRed;
+
+                lblSoru.Text = soruSayisi.ToString();
+                lblYanýt.Text = yanitSayisi.ToString();
+                lblDurum.Text = durum;
+                lblDurum.TextColor = renk;
+            };
 
             grid.Add(new Label { Text = "ID:", TextColor = Color.FromArgb("#00ADB5") }, 0, 0);
             grid.Add(lblId, 1, 0);
@@ -83,26 +103,14 @@ public partial class KategoriEkrani : ContentPage
             grid.Add(new Label { Text = "Durum:", TextColor = Color.FromArgb("#00ADB5") }, 0, 4);
             grid.Add(lblDurum, 1, 4);
 
-            
-            frame.BindingContextChanged += async (s, e) =>
-            {
-                var kategori = frame.BindingContext as Kategori;
-                if (kategori == null || ogrenci == null) return;
-
-                var soruSayisi = sorular.Count(x => x.KategoriId == kategori.Id);
-                var yanitSayisi = yanitlar.Count(x => x.KategoriId == kategori.Id && x.OgrenciId == ogrenci.Id);
-
-                lblSoru.Text = soruSayisi.ToString();
-                lblYanýt.Text = yanitSayisi.ToString();
-                lblDurum.Text = (soruSayisi > 0 && soruSayisi == yanitSayisi) ? "Tamamlandý" : "Eksik";
-                lblDurum.TextColor = (soruSayisi == yanitSayisi) ? Colors.LimeGreen : Colors.OrangeRed;
-            };
-
+            frame.Content = grid;
             return frame;
         });
 
-        CollectionViewKategori.ItemsSource = kategoriler;
+        CollectionViewKategori.ItemsSource = uygunKategoriler; // Anonymous deðil, gerçek model
     }
+
+
 
 
     private async void CollectionViewKategori_SelectionChanged(object sender, SelectionChangedEventArgs e)

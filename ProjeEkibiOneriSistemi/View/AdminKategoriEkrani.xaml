@@ -6,7 +6,7 @@
              Loaded="ContentPage_Loaded">
 
     <Grid RowDefinitions="Auto,*,Auto">
-        
+
         <Image Source="adminekrani.png"
                Aspect="AspectFill"
                Opacity="0.1"
@@ -14,7 +14,6 @@
                HorizontalOptions="FillAndExpand"
                Grid.RowSpan="3"/>
 
-        
         <Frame Grid.Row="0" Padding="20" Margin="10" CornerRadius="25" BackgroundColor="#252525" HasShadow="True">
             <SearchBar x:Name="SearchBarTest" 
                        Placeholder="kategori ara..." 
@@ -25,7 +24,6 @@
                        TextChanged="SearchBarTest_TextChanged"/>
         </Frame>
 
-        
         <ScrollView Grid.Row="1" Padding="20">
             <CollectionView x:Name="CollectionViewTestler"
                             SelectionMode="Single"
@@ -34,15 +32,20 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="#26A69A" CornerRadius="15" Padding="20" Margin="10" BackgroundColor="#222222" HasShadow="True">
-                            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*" RowSpacing="15" ColumnSpacing="15">
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*" RowSpacing="15" ColumnSpacing="15">
+
                                 <Label Text="Id:" TextColor="#26A69A" FontSize="16" FontAttributes="Bold" Grid.Row="0" Grid.Column="0"/>
                                 <Label Text="{Binding Id}" TextColor="White" FontSize="16" Grid.Row="0" Grid.Column="1"/>
 
                                 <Label Text="Kategori:" TextColor="#26A69A" FontSize="16" FontAttributes="Bold" Grid.Row="1" Grid.Column="0"/>
                                 <Label Text="{Binding KategoriAdi}" TextColor="White" FontSize="16" Grid.Row="1" Grid.Column="1"/>
 
-                                <Label Text="Soru Sayısı:" TextColor="#26A69A" FontSize="16" FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
-                                <Label Text="{Binding SoruSayisi}" TextColor="White" FontSize="16" Grid.Row="2" Grid.Column="1"/>
+                                <Label Text="İlgili Bölüm:" TextColor="#26A69A" FontSize="16" FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
+                                <Label Text="{Binding IlgiliBolum}" TextColor="White" FontSize="16" Grid.Row="2" Grid.Column="1"/>
+
+                                <Label Text="Soru Sayısı:" TextColor="#26A69A" FontSize="16" FontAttributes="Bold" Grid.Row="3" Grid.Column="0"/>
+                                <Label Text="{Binding SoruSayisi}" TextColor="White" FontSize="16" Grid.Row="3" Grid.Column="1"/>
+
                             </Grid>
                         </Frame>
                     </DataTemplate>
@@ -50,7 +53,6 @@
             </CollectionView>
         </ScrollView>
 
-        
         <Frame Grid.Row="2" Padding="20" Margin="10" CornerRadius="25" BackgroundColor="#252525" HasShadow="True">
             <StackLayout Spacing="15">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="25">

@@ -23,23 +23,20 @@ namespace ProjeEkibiOneriSistemi.View
             InitializeComponent();
             _grupServices = new GrupServices();
             _ogrenciServices = new OgrenciServices();
-            _katilimciServices = new KatilimciServices(); 
+            _katilimciServices = new KatilimciServices();
         }
 
-        public void setGrup(Grup grup)
+        public void setGrup(Grup grup) => _grup = grup;
+        public void setProje(Proje proje) => _proje = proje;
+        public void setOgrenci(Ogrenci ogrenci) => _Ogrenci = ogrenci;
+
+        private class EtiketliOgrenci : Ogrenci
         {
-            _grup = grup;
+            public string Etiket { get; set; }
+            public Color EtiketRenk { get; set; }
+            public bool OneriMi { get; set; }
         }
 
-        public void setProje(Proje proje)
-        {
-            _proje = proje;
-        }
-
-        public void setOgrenci(Ogrenci ogrenci)
-        {
-            _Ogrenci = ogrenci;
-        }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -54,25 +51,96 @@ namespace ProjeEkibiOneriSistemi.View
                 var tumKatilimcilar = await _katilimciServices.GetKatilimcis();
                 var tumGruplar = await _grupServices.getGrups();
 
-                
-                var grubaEklenenOgrenciIdleri = tumGruplar
-                    .Where(g => g.ProjeId == _grup.ProjeId)
-                    .Select(g => g.OgrenciId)
-                    .ToList();
-
-                
-                var katilimciOgrenciIdleri = tumKatilimcilar
+                var projeOgrenciIdleri = tumKatilimcilar
                     .Where(k => k.ProjeId == _grup.ProjeId)
                     .Select(k => k.OgrenciId)
                     .ToList();
 
-               
-                var gruptaOlmayanOgrenciler = tumOgrenciler
-                    .Where(o => katilimciOgrenciIdleri.Contains(o.Id) && !grubaEklenenOgrenciIdleri.Contains(o.Id))
+                var projeOgrencileri = tumOgrenciler
+                    .Where(o => projeOgrenciIdleri.Contains(o.Id))
                     .ToList();
 
-                
-                OgrenciListView.ItemsSource = gruptaOlmayanOgrenciler;
+                var mevcutGrupOgrenciIdleri = tumGruplar
+                    .Where(g => g.ProjeId == _grup.ProjeId && g.GrupNo == _grup.GrupNo)
+                    .Select(g => g.OgrenciId)
+                    .ToList();
+
+                var digerGrupOgrenciIdleri = tumGruplar
+                    .Where(g => g.ProjeId == _grup.ProjeId && g.GrupNo != _grup.GrupNo)
+                    .Select(g => g.OgrenciId)
+                    .ToList();
+
+                float mevcutGrupToplam = projeOgrencileri
+                    .Where(o => mevcutGrupOgrenciIdleri.Contains(o.Id))
+                    .Sum(o => o.OrtalamaPuan);
+
+                int mevcutGrupSayisi = mevcutGrupOgrenciIdleri.Count;
+
+                float digerGrupOrtalama = projeOgrencileri
+                    .Where(o => digerGrupOgrenciIdleri.Contains(o.Id))
+                    .Select(o => o.OrtalamaPuan)
+                    .DefaultIfEmpty(0)
+                    .Average();
+
+                var gruptaOlmayanOgrenciler = projeOgrencileri
+                    .Where(o => !mevcutGrupOgrenciIdleri.Contains(o.Id) && !digerGrupOgrenciIdleri.Contains(o.Id))
+                    .ToList();
+
+                var etiketeGoreOgrenciler = gruptaOlmayanOgrenciler.Select(o =>
+                {
+                    float yeniOrtalama = (mevcutGrupToplam + o.OrtalamaPuan) / (mevcutGrupSayisi + 1);
+                    float fark = yeniOrtalama - digerGrupOrtalama;
+
+                    string etiket;
+                    Color renk;
+
+                    if (digerGrupOrtalama == 0)
+                    {
+                        etiket = $"Yeni Ortalama: {yeniOrtalama:F2}";
+                        renk = Colors.SlateGray;
+                    }
+                    else if (Math.Abs(fark) <= 0.5f)
+                    {
+                        etiket = $"Dengeli (+{fark:F2})";
+                        renk = Colors.Goldenrod;
+                    }
+                    else if (fark < -0.5f)
+                    {
+                        etiket = $"Grubu Yükseltir ({fark:F2})";
+                        renk = Colors.LimeGreen;
+                    }
+                    else
+                    {
+                        etiket = $"Aðýrlaþýr (+{fark:F2})";
+                        renk = Colors.OrangeRed;
+                    }
+
+                    return new EtiketliOgrenci
+                    {
+                        Id = o.Id,
+                        Ad = o.Ad,
+                        Soyad = o.Soyad,
+                        OrtalamaPuan = o.OrtalamaPuan,
+                        ogrenciNo = o.ogrenciNo,
+                        Sinif = o.Sinif,
+                        Etiket = etiket,
+                        EtiketRenk = renk,
+                        OneriMi = false
+                    };
+                }).ToList();
+
+                // Öneri yapýlabilecek (Aðýrlaþýr olmayan) öðrenciler içinden en uygun olaný bul
+                var onerilebilirler = etiketeGoreOgrenciler
+                    .Where(e => !e.Etiket.Contains("Aðýrlaþýr"))
+                    .OrderBy(e => Math.Abs(((mevcutGrupToplam + e.OrtalamaPuan) / (mevcutGrupSayisi + 1)) - digerGrupOrtalama))
+                    .ToList();
+
+                if (onerilebilirler.Any())
+                {
+                    onerilebilirler.First().OneriMi = true;
+                }
+
+                OgrenciListView.ItemsSource = etiketeGoreOgrenciler;
             }
             catch (Exception ex)
             {
@@ -98,11 +166,9 @@ namespace ProjeEkibiOneriSistemi.View
 
             try
             {
-                
                 await _grupServices.ekleGrup(yeniGrupKaydi);
                 await DisplayAlert("Baþarýlý", $"{selectedOgrenci.Ad} gruba eklendi.", "Tamam");
-                await LoadOgrenciler(); 
-
+                await LoadOgrenciler();
             }
             catch (Exception ex)
             {
