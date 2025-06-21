@@ -51,9 +51,11 @@ namespace ProjeEkibiOneriSistemi.View
                 var tumKatilimcilar = await _katilimciServices.GetKatilimcis();
                 var tumGruplar = await _grupServices.getGrups();
 
+                // Projeye kayýtlý tüm öðrenci ID'leri
                 var projeOgrenciIdleri = tumKatilimcilar
                     .Where(k => k.ProjeId == _grup.ProjeId)
                     .Select(k => k.OgrenciId)
+                    .Distinct()
                     .ToList();
 
                 var projeOgrencileri = tumOgrenciler
@@ -70,17 +72,20 @@ namespace ProjeEkibiOneriSistemi.View
                     .Select(g => g.OgrenciId)
                     .ToList();
 
-                float mevcutGrupToplam = projeOgrencileri
+                var mevcutGrupOgrencileri = projeOgrencileri
                     .Where(o => mevcutGrupOgrenciIdleri.Contains(o.Id))
-                    .Sum(o => o.OrtalamaPuan);
+                    .ToList();
 
-                int mevcutGrupSayisi = mevcutGrupOgrenciIdleri.Count;
-
-                float digerGrupOrtalama = projeOgrencileri
+                var digerGrupOgrencileri = projeOgrencileri
                     .Where(o => digerGrupOgrenciIdleri.Contains(o.Id))
-                    .Select(o => o.OrtalamaPuan)
-                    .DefaultIfEmpty(0)
-                    .Average();
+                    .ToList();
+
+                float mevcutGrupToplam = mevcutGrupOgrencileri.Sum(o => o.OrtalamaPuan);
+                int mevcutGrupSayisi = mevcutGrupOgrencileri.Count;
+
+                float digerGrupOrtalama = digerGrupOgrencileri.Any()
+                    ? digerGrupOgrencileri.Average(o => o.OrtalamaPuan)
+                    : 0f;
 
                 var gruptaOlmayanOgrenciler = projeOgrencileri
                     .Where(o => !mevcutGrupOgrenciIdleri.Contains(o.Id) && !digerGrupOgrenciIdleri.Contains(o.Id))
@@ -88,7 +93,13 @@ namespace ProjeEkibiOneriSistemi.View
 
                 var etiketeGoreOgrenciler = gruptaOlmayanOgrenciler.Select(o =>
                 {
-                    float yeniOrtalama = (mevcutGrupToplam + o.OrtalamaPuan) / (mevcutGrupSayisi + 1);
+                    float yeniOrtalama;
+
+                    if (mevcutGrupSayisi == 0)
+                        yeniOrtalama = o.OrtalamaPuan;
+                    else
+                        yeniOrtalama = (mevcutGrupToplam + o.OrtalamaPuan) / (mevcutGrupSayisi + 1);
+
                     float fark = yeniOrtalama - digerGrupOrtalama;
 
                     string etiket;
@@ -96,23 +107,23 @@ namespace ProjeEkibiOneriSistemi.View
 
                     if (digerGrupOrtalama == 0)
                     {
-                        etiket = $"Yeni Ortalama: {yeniOrtalama:F2}";
+                        etiket = $"Yeni Ort.: {yeniOrtalama:F2}";
                         renk = Colors.SlateGray;
                     }
-                    else if (Math.Abs(fark) <= 0.5f)
+                    else if (fark >= 0.5f)
                     {
-                        etiket = $"Dengeli (+{fark:F2})";
-                        renk = Colors.Goldenrod;
+                        etiket = $"Aðýrlaþýr (+{fark:F2})";
+                        renk = Colors.OrangeRed;
                     }
-                    else if (fark < -0.5f)
+                    else if (fark <= -0.5f)
                     {
                         etiket = $"Grubu Yükseltir ({fark:F2})";
                         renk = Colors.LimeGreen;
                     }
                     else
                     {
-                        etiket = $"Aðýrlaþýr (+{fark:F2})";
-                        renk = Colors.OrangeRed;
+                        etiket = $"Dengeli ({(fark >= 0 ? "+" : "")}{fark:F2})";
+                        renk = Colors.Goldenrod;
                     }
 
                     return new EtiketliOgrenci
@@ -129,16 +140,20 @@ namespace ProjeEkibiOneriSistemi.View
                     };
                 }).ToList();
 
-                // Öneri yapýlabilecek (Aðýrlaþýr olmayan) öðrenciler içinden en uygun olaný bul
+                // Uygun öðrenciler içinden önerilen olaný belirle (Aðýrlaþýr olmayanlar arasýndan farký en az olan)
                 var onerilebilirler = etiketeGoreOgrenciler
-                    .Where(e => !e.Etiket.Contains("Aðýrlaþýr"))
-                    .OrderBy(e => Math.Abs(((mevcutGrupToplam + e.OrtalamaPuan) / (mevcutGrupSayisi + 1)) - digerGrupOrtalama))
+                    .Where(e => !e.Etiket.StartsWith("Aðýrlaþýr"))
+                    .OrderBy(e =>
+                    {
+                        float yeniOrt = (mevcutGrupSayisi == 0)
+                            ? e.OrtalamaPuan
+                            : (mevcutGrupToplam + e.OrtalamaPuan) / (mevcutGrupSayisi + 1);
+                        return Math.Abs(yeniOrt - digerGrupOrtalama);
+                    })
                     .ToList();
 
                 if (onerilebilirler.Any())
-                {
                     onerilebilirler.First().OneriMi = true;
-                }
 
                 OgrenciListView.ItemsSource = etiketeGoreOgrenciler;
             }
@@ -147,6 +162,7 @@ namespace ProjeEkibiOneriSistemi.View
                 await DisplayAlert("Hata", "Öðrenciler yüklenemedi: " + ex.Message, "Tamam");
             }
         }
+
 
         private async void OgrenciListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
