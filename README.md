@@ -35,7 +35,7 @@ API'nin çalıştığı bilgisayarın yerel IP adresi
 Bu adres yalnızca UrlHelper.cs üzerinden merkezi olarak değiştirilerek yönetilir.
 
 - 🔁 BaseService
-- 
+
 Tüm HTTP isteklerini (GET, POST, PUT, DELETE) ortaklaştırır.
 
 Kod tekrarını engeller.
