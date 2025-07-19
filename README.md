@@ -44,8 +44,6 @@ Servis sınıfları BaseService'i kalıtım alarak API ile iletişim kurar.
 
 ## 🛠️ Kullanılan Teknolojiler
 
-- Backend (API):
-
 - ASP.NET Core Web API (.NET 6)
 
 - Entity Framework Core
