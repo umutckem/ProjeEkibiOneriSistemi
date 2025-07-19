@@ -74,7 +74,7 @@ Bu projeyle ilgili görüş, öneri veya katkı sağlamak isterseniz lütfen biz
 
 ## Uyarı
 
-Bu görseller örnek amaçlıdır ve gerçek verileri yansıtmayabilir.
+Bu görseller içersindeki bilgiler örnek amaçlıdır ve gerçek verileri yansıtmayabilir.
 
 ## Giriş Ekranı
 
